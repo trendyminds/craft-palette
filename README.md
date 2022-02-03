@@ -2,6 +2,6 @@
 ⌨️ CMD+K your way around Craft!
 
 ## 🤔 What is Palette?
-Palette allows you to easily jump to specific areas within Craft without lifting your hands off the keyboard.
+Palette allows you to easily jump to specific areas within Craft without lifting your hands off the keyboard. That's the elevator pitch, at least. But, sometimes, you just need a visual:
 
-<img src="docs/palette-in-cp.png" alt="Palette being demonstrated in the control panel. A search bar with text and results for that search depicted below." width="563">
+<img src="docs/tour.gif" alt="Palette being demonstrated with a user typing a variety of strings into the search field">
