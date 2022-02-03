@@ -1,0 +1,1 @@
+(()=>{"fetch"in window&&fetch("/actions/palette/access").then(e=>{if(e.status===200)return e.json()}).then(e=>{if(!e)return;let{css:c,js:s}=e,n=document.createElement("script");n.src=s,document.body.appendChild(n);let t=document.createElement("link");t.rel="stylesheet",t.href=c,document.body.appendChild(t)});})();
