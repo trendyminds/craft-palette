@@ -93,11 +93,12 @@ function Portal() {
 	return (
 		<>
 			<KBarPortal>
-				<KBarPositioner className="vtw-backdrop-blur-sm vtw-z-[9999]">
+				<KBarPositioner>
 					<KBarAnimator
 						className={clsx(
 							'vtw-bg-zinc-50',
-							'vtw-rounded-lg vtw-overflow-hidden vtw-shadow-xl',
+							'vtw-rounded-lg vtw-overflow-hidden vtw-shadow-2xl',
+							'vtw-border vtw-border-solid vtw-border-zinc-200',
 							'vtw-max-w-lg vtw-w-full'
 						)}
 					>
@@ -116,7 +117,14 @@ function Portal() {
 			</KBarPortal>
 
 			<button
-				className="vtw-fixed vtw-bottom-0 vtw-left-0 vtw-mb-4 vtw-flex vtw-items-center vtw-justify-center vtw-ml-4 vtw-bg-zinc-50/70 vtw-backdrop-blur-md vtw-shadow vtw-rounded-full vtw-h-8 vtw-w-8 hover:vtw-bg-zinc-50/90 vtw-z-[9999]"
+				className={clsx(
+					'vtw-fixed vtw-bottom-0 vtw-left-0',
+					'vtw-mb-4 vtw-ml-4',
+					'vtw-flex vtw-items-center vtw-justify-center',
+					'vtw-backdrop-blur-md vtw-shadow vtw-rounded-full',
+					'vtw-bg-zinc-50/70 hover:vtw-bg-zinc-50/90',
+					'vtw-h-8 vtw-w-8 vtw-z-[9999]'
+				)}
 				onClick={query.toggle}
 			>
 				<Icon name="TerminalIcon" className="vtw-h-5 vtw-w-5" />
