@@ -29,24 +29,32 @@ function RenderResults() {
 				items={results}
 				onRender={({ item, active }) =>
 					typeof item === 'string' ? (
-						<p className="vtw-text-[11px] vtw-font-bold vtw-uppercase vtw-h-auto vtw-pt-4 vtw-pb-1 vtw-opacity-50 vtw-px-2">
+						<p
+							className={clsx(
+								'vtw-text-[11px] vtw-font-bold vtw-uppercase',
+								'vtw-pt-4 vtw-pb-1 vtw-px-2',
+								'vtw-text-black/50 dark:vtw-text-white/30'
+							)}
+						>
 							{item}
 						</p>
 					) : (
 						<div
 							className={clsx(
 								'vtw-flex vtw-items-center vtw-gap-2',
-								'vtw-text-sm vtw-text-gray-800',
+								'vtw-text-sm vtw-text-gray-800 dark:vtw-text-neutral-300',
 								'vtw-p-2',
 								'vtw-mx-2',
 								'vtw-rounded-lg',
-								active && 'vtw-bg-white/50 vtw-shadow'
+								active && 'vtw-bg-white/50 vtw-shadow dark:vtw-bg-neutral-50/20'
 							)}
 						>
 							<div
 								className={clsx(
 									'vtw-h-5 vtw-w-5',
-									active ? 'vtw-text-gray-800' : 'vtw-text-gray-600'
+									active
+										? 'vtw-text-gray-800 dark:vtw-text-neutral-200'
+										: 'vtw-text-gray-600 dark:vtw-text-neutral-400'
 								)}
 							>
 								<Icon name={item.icon} />
@@ -54,7 +62,7 @@ function RenderResults() {
 							<div className="vtw-flex vtw-flex-col vtw-gap-1">
 								<p className="vtw-leading-none vtw-m-0">{item.name}</p>
 								{item.subtitle && (
-									<p className="vtw-leading-none vtw-text-xs vtw-text-gray-500 vtw-m-0">
+									<p className="vtw-leading-none vtw-text-xs vtw-text-gray-500 dark:vtw-text-neutral-500 vtw-m-0">
 										{item.subtitle}
 									</p>
 								)}
@@ -96,9 +104,9 @@ function Portal() {
 				<KBarPositioner>
 					<KBarAnimator
 						className={clsx(
-							'vtw-bg-zinc-50',
+							'vtw-bg-zinc-50 dark:vtw-bg-neutral-800',
 							'vtw-rounded-lg vtw-overflow-hidden vtw-shadow-2xl',
-							'vtw-border vtw-border-solid vtw-border-zinc-200',
+							'vtw-border vtw-border-solid vtw-border-zinc-200 dark:vtw-border-none',
 							'vtw-max-w-lg vtw-w-full'
 						)}
 					>
@@ -108,6 +116,7 @@ function Portal() {
 								'vtw-w-full',
 								'vtw-px-4 vtw-py-3',
 								'vtw-border-none',
+								'dark:vtw-text-neutral-300 dark:placeholder:vtw-text-neutral-500',
 								'focus:vtw-border-none focus:vtw-outline-none focus:vtw-ring-0'
 							)}
 						/>
@@ -122,7 +131,8 @@ function Portal() {
 					'vtw-mb-4 vtw-ml-4',
 					'vtw-flex vtw-items-center vtw-justify-center',
 					'vtw-backdrop-blur-md vtw-shadow vtw-rounded-full',
-					'vtw-bg-zinc-50/70 hover:vtw-bg-zinc-50/90',
+					'vtw-bg-zinc-50/70 dark:vtw-bg-neutral-800/90',
+					'dark:vtw-text-neutral-300',
 					'vtw-h-8 vtw-w-8 vtw-z-[9999]'
 				)}
 				onClick={query.toggle}
