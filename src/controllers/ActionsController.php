@@ -32,13 +32,13 @@ class ActionsController extends Controller
 		return [
 			[
 				'name' => 'Edit your profile',
-				'section' => 'User',
+				'subtitle' => 'User',
 				'icon' => 'UserCircleIcon',
 				'url' => UrlHelper::cpUrl('myaccount'),
 			],
 			[
 				'name' => 'Logout',
-				'section' => 'User',
+				'subtitle' => 'User',
 				'icon' => 'LogoutIcon',
 				'url' => UrlHelper::siteUrl(
 					Craft::$app->getConfig()->getGeneral()->getLogoutPath()
@@ -64,7 +64,7 @@ class ActionsController extends Controller
 
 				return [
 					'name' => $i['label'],
-					'section' => 'Navigation',
+					'subtitle' => '',
 					'icon' => 'MenuIcon',
 					'url' => UrlHelper::cpUrl($url),
 				];
@@ -82,7 +82,7 @@ class ActionsController extends Controller
 		return collect(Craft::$app->getUtilities()->getAuthorizedUtilityTypes())
 			->map(fn($class) => [
 				'name' => $class::displayName(),
-				'section' => 'Utilities',
+				'subtitle' => 'Utilities',
 				'icon' => 'AdjustmentsIcon',
 				'url' => UrlHelper::cpUrl("utilities/{$class::id()}"),
 			])
@@ -114,8 +114,7 @@ class ActionsController extends Controller
 		$fields = collect(Craft::$app->getFields()->getAllFields())
 			->map(fn($i) => [
 				'name' => $i->name,
-				'section' => 'Fields',
-				'subtitle' => $i->displayName(),
+				'subtitle' => "Fields > {$i->getGroup()->name} > {$i->displayName()}",
 				'icon' => 'CodeIcon',
 				'url' => UrlHelper::cpUrl("settings/fields/edit/{$i->id}"),
 			])->toArray();
@@ -123,8 +122,7 @@ class ActionsController extends Controller
 		$sections = collect(Craft::$app->getSections()->getAllSections())
 			->map(fn($i) => [
 				'name' => $i->name,
-				'section' => 'Sections',
-				'subtitle' => ucfirst($i->type),
+				'subtitle' => 'Sections > ' . ucfirst($i->type),
 				'icon' => 'CollectionIcon',
 				'url' => UrlHelper::cpUrl("settings/sections/{$i->id}"),
 			])->toArray();
@@ -140,8 +138,7 @@ class ActionsController extends Controller
 							'icon' => $section === 'Plugins'
 								? 'LightningBoltIcon'
 								: 'CogIcon',
-							'subtitle' => $section,
-							'section' => "Settings",
+							'subtitle' => "Settings > $section",
 						];
 					})->toArray();
 			})
