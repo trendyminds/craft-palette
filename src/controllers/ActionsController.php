@@ -15,10 +15,10 @@ class ActionsController extends Controller
 	public function actionIndex()
 	{
 		return $this->asJson([
-			...$this->_userActions(),
 			...$this->_navigationActions(),
 			...$this->_adminActions(),
 			...$this->_utilityActions(),
+			...$this->_userActions(),
 		]);
 	}
 
@@ -149,9 +149,9 @@ class ActionsController extends Controller
 			->toArray();
 
 		return [
-			...$fields,
-			...$sections,
 			...$settings,
+			...$sections,
+			...$fields,
 		];
 	}
 }
