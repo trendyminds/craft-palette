@@ -46,7 +46,7 @@ function RenderResults() {
 								'vtw-p-2',
 								'vtw-mx-2',
 								'vtw-rounded-lg',
-								active && 'vtw-bg-white/50 vtw-shadow dark:vtw-bg-neutral-50/10'
+								active && 'vtw-bg-neutral-200 dark:vtw-bg-neutral-600'
 							)}
 						>
 							<div
