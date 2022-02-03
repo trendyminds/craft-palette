@@ -101,7 +101,7 @@ function Portal() {
 	return (
 		<>
 			<KBarPortal>
-				<KBarPositioner>
+				<KBarPositioner className="vtw-bg-neutral-900/20 vtw-z-[9999]">
 					<KBarAnimator
 						className={clsx(
 							'vtw-bg-zinc-50 dark:vtw-bg-neutral-800',
