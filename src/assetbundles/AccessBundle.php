@@ -10,6 +10,7 @@ class AccessBundle extends AssetBundle
 	{
 		$this->sourcePath = "@trendyminds/palette/assetbundles/resources";
 		$this->js = ['access.js'];
+		$this->jsOptions = ['defer' => true];
 
 		parent::init();
 	}

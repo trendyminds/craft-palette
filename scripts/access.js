@@ -27,6 +27,7 @@
 			// Dynamically insert JS
 			const script = document.createElement('script')
 			script.src = js
+			script.defer = true
 			document.body.appendChild(script)
 
 			// Dynamically insert CSS
