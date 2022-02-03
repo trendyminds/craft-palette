@@ -133,7 +133,9 @@ function Portal() {
 					'vtw-backdrop-blur-md vtw-shadow vtw-rounded-full',
 					'vtw-bg-zinc-50/70 dark:vtw-bg-neutral-800/90',
 					'dark:vtw-text-neutral-300',
-					'vtw-h-8 vtw-w-8 vtw-z-[9999]'
+					'vtw-h-8 vtw-w-8 vtw-z-[9999]',
+					'vtw-cursor-pointer',
+					'vtw-transition-transform hover:vtw-scale-110 active:vtw-scale-90'
 				)}
 				onClick={query.toggle}
 			>
