@@ -33,7 +33,7 @@ function RenderResults() {
 							className={clsx(
 								'vtw-text-[11px] vtw-font-bold vtw-uppercase',
 								'vtw-pt-4 vtw-pb-1 vtw-px-2',
-								'vtw-text-black/50 dark:vtw-text-white/30'
+								'vtw-text-zinc-400 dark:vtw-text-neutral-500'
 							)}
 						>
 							{item}
@@ -46,14 +46,14 @@ function RenderResults() {
 								'vtw-p-2',
 								'vtw-mx-2',
 								'vtw-rounded-lg',
-								active && 'vtw-bg-white/50 vtw-shadow dark:vtw-bg-neutral-50/20'
+								active && 'vtw-bg-white/50 vtw-shadow dark:vtw-bg-neutral-50/10'
 							)}
 						>
 							<div
 								className={clsx(
 									'vtw-h-5 vtw-w-5',
 									active
-										? 'vtw-text-gray-800 dark:vtw-text-neutral-200'
+										? 'vtw-text-gray-800 dark:vtw-text-neutral-300'
 										: 'vtw-text-gray-600 dark:vtw-text-neutral-400'
 								)}
 							>
