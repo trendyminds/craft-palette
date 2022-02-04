@@ -2,7 +2,7 @@
   "name": "trendyminds/craft-palette",
   "description": "A command palette to easily jump to specific areas within Craft",
   "type": "craft-plugin",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "keywords": ["palette", "craft", "craft cms", "cmdk", "spotlight", "craft plugin"],
   "license": "MIT",
   "authors": [
@@ -28,7 +28,8 @@
   "extra": {
     "name": "Palette",
     "handle": "palette",
-    "class": "trendyminds\\palette\\Palette"
+    "class": "trendyminds\\palette\\Palette",
+    "changelogUrl": "https://raw.githubusercontent.com/trendyminds/craft-palette/main/CHANGELOG.md"
   },
   "config": {
     "allow-plugins": {
