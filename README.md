@@ -52,4 +52,4 @@ Palette could not exist without the efforts and incredible work of:
 - The Pixel & Tonic team and their hard work on Craft
 - Resources like [pluginfactory.io](https://pluginfactory.io/), the [nystudio107 blog](https://nystudio107.com/blog), and [CraftQuest](https://craftquest.io/)
 - The wonderful Craft CMS community
-And tools like [Tailwind CSS](https://tailwindcss.com/), [PostCSS](https://postcss.org/), and [esbuild](https://esbuild.github.io/)
+- And tools like [Tailwind CSS](https://tailwindcss.com/), [PostCSS](https://postcss.org/), and [esbuild](https://esbuild.github.io/)
