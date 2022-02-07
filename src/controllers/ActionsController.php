@@ -69,6 +69,12 @@ class ActionsController extends Controller
 					'url' => UrlHelper::cpUrl($url),
 				];
 			})
+			->prepend([
+				'name' => Craft::$app->getSystemName(),
+				'subtitle' => "Go to " . UrlHelper::siteUrl(),
+				'icon' => 'GlobeAltIcon',
+				'url' => UrlHelper::siteUrl()
+			])
 			->toArray();
 	}
 
@@ -81,7 +87,10 @@ class ActionsController extends Controller
 	{
 		return collect(Craft::$app->getUtilities()->getAuthorizedUtilityTypes())
 			->map(fn($class) => [
-				'name' => $class::displayName(),
+				'name' =>
+					$class::badgeCount()
+					? "{$class::displayName()} ({$class::badgeCount()})"
+					: $class::displayName(),
 				'subtitle' => 'Utilities',
 				'icon' => 'AdjustmentsIcon',
 				'url' => UrlHelper::cpUrl("utilities/{$class::id()}"),
