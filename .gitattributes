@@ -7,6 +7,7 @@
 /package.json export-ignore
 /package-lock.json export-ignore
 /postcss.config.js export-ignore
+/esbuild.config.js export-ignore
 /tailwind.config.js export-ignore
 /README.md export-ignore
 /LICENSE.md export-ignore
