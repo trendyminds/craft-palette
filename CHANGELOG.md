@@ -9,6 +9,9 @@
 ### Updated
 - Move the Utility navigation badge count into the `badgeCount` property
 
+### Fixed
+- Exclude source files from being included in the Composer package
+
 ## 1.1.0 - 2022-02-07
 
 ### Added
