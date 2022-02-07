@@ -53,18 +53,47 @@ function RenderResults() {
 								className={clsx(
 									'vtw-h-5 vtw-w-5',
 									active
-										? 'vtw-text-gray-800 dark:vtw-text-neutral-300'
+										? 'vtw-text-gray-800 dark:vtw-text-neutral-200'
 										: 'vtw-text-gray-600 dark:vtw-text-neutral-400'
 								)}
 							>
 								<Icon name={item.icon} />
 							</div>
-							<div className="vtw-flex vtw-flex-col vtw-gap-1">
-								<p className="vtw-leading-none vtw-m-0">{item.name}</p>
-								{item.subtitle && (
-									<p className="vtw-leading-none vtw-text-xs vtw-text-gray-500 dark:vtw-text-neutral-500 vtw-m-0">
-										{item.subtitle}
+							<div className="vtw-flex vtw-justify-between vtw-gap-3 vtw-flex-1">
+								<div className="vtw-flex vtw-flex-col vtw-gap-1 vtw-flex-1 vtw-justify-center">
+									<p
+										className={clsx(
+											'vtw-leading-none vtw-m-0',
+											active && 'dark:vtw-text-neutral-50'
+										)}
+									>
+										{item.name}
 									</p>
+									{item.subtitle && (
+										<p className="vtw-leading-none vtw-text-xs vtw-text-gray-500 dark:vtw-text-neutral-400 vtw-m-0">
+											{item.subtitle}
+										</p>
+									)}
+								</div>
+
+								{item?.badgeCount && (
+									<div
+										className={clsx(
+											'vtw-bg-neutral-600 dark:vtw-bg-neutral-400',
+											'vtw-h-5 vtw-w-5 vtw-rounded-full',
+											'vtw-flex vtw-items-center vtw-justify-center vtw-self-center'
+										)}
+									>
+										<p
+											className={clsx(
+												'vtw-text-[10px] vtw-leading-none vtw-font-bold',
+												'vtw-text-white dark:vtw-text-neutral-800',
+												'vtw-m-0'
+											)}
+										>
+											{item?.badgeCount}
+										</p>
+									</div>
 								)}
 							</div>
 						</div>
@@ -91,6 +120,7 @@ function Portal() {
 					icon: link.icon,
 					subtitle: link.subtitle,
 					section: link.section,
+					badgeCount: link?.badgeCount,
 					perform: () => (window.location = link.url),
 				}))
 
