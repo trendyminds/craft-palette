@@ -53,7 +53,7 @@ function RenderResults() {
 								className={clsx(
 									'vtw-h-5 vtw-w-5',
 									active
-										? 'vtw-text-gray-800 dark:vtw-text-neutral-300'
+										? 'vtw-text-gray-800 dark:vtw-text-neutral-200'
 										: 'vtw-text-gray-600 dark:vtw-text-neutral-400'
 								)}
 							>
@@ -61,7 +61,14 @@ function RenderResults() {
 							</div>
 							<div className="vtw-flex vtw-justify-between vtw-gap-3 vtw-flex-1">
 								<div className="vtw-flex vtw-flex-col vtw-gap-1 vtw-flex-1 vtw-justify-center">
-									<p className="vtw-leading-none vtw-m-0">{item.name}</p>
+									<p
+										className={clsx(
+											'vtw-leading-none vtw-m-0',
+											active && 'dark:vtw-text-neutral-50'
+										)}
+									>
+										{item.name}
+									</p>
 									{item.subtitle && (
 										<p className="vtw-leading-none vtw-text-xs vtw-text-gray-500 dark:vtw-text-neutral-400 vtw-m-0">
 											{item.subtitle}
