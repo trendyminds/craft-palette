@@ -66,6 +66,10 @@ class ActionsController extends Controller
 					'name' => $i['label'],
 					'subtitle' => '',
 					'icon' => 'MenuIcon',
+					'badgeCount' =>
+						($i['badgeCount'] && $i['badgeCount'] > 0)
+							? $i['badgeCount']
+							: null,
 					'url' => UrlHelper::cpUrl($url),
 				];
 			})
@@ -87,12 +91,13 @@ class ActionsController extends Controller
 	{
 		return collect(Craft::$app->getUtilities()->getAuthorizedUtilityTypes())
 			->map(fn($class) => [
-				'name' =>
-					$class::badgeCount()
-					? "{$class::displayName()} ({$class::badgeCount()})"
-					: $class::displayName(),
+				'name' => $class::displayName(),
 				'subtitle' => 'Utilities',
 				'icon' => 'AdjustmentsIcon',
+				'badgeCount' =>
+					($class::badgeCount() && $class::badgeCount() > 0)
+						? $class::badgeCount()
+						: null,
 				'url' => UrlHelper::cpUrl("utilities/{$class::id()}"),
 			])
 			->toArray();
