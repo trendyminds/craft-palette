@@ -69,6 +69,12 @@ class ActionsController extends Controller
 					'url' => UrlHelper::cpUrl($url),
 				];
 			})
+			->prepend([
+				'name' => Craft::$app->getSystemName(),
+				'subtitle' => "Go to " . UrlHelper::siteUrl(),
+				'icon' => 'GlobeAltIcon',
+				'url' => UrlHelper::siteUrl()
+			])
 			->toArray();
 	}
 
