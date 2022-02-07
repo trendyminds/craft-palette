@@ -87,7 +87,10 @@ class ActionsController extends Controller
 	{
 		return collect(Craft::$app->getUtilities()->getAuthorizedUtilityTypes())
 			->map(fn($class) => [
-				'name' => $class::displayName(),
+				'name' =>
+					$class::badgeCount()
+					? "{$class::displayName()} ({$class::badgeCount()})"
+					: $class::displayName(),
 				'subtitle' => 'Utilities',
 				'icon' => 'AdjustmentsIcon',
 				'url' => UrlHelper::cpUrl("utilities/{$class::id()}"),
