@@ -141,6 +141,17 @@ class ActionsController extends Controller
 				'url' => UrlHelper::cpUrl("settings/sections/{$i->id}"),
 			])->toArray();
 
+		$entryTypes = collect(Craft::$app->getSections()->getAllEntryTypes())
+			->map(fn($i) => [
+				'name' =>
+					$i->name === 'Default'
+						? $i->getSection()->name
+						: $i->name,
+				'subtitle' => "Sections > {$i->getSection()->name} > Entry Types",
+				'icon' => 'TableIcon',
+				'url' => UrlHelper::cpUrl("settings/sections/{$i->getSection()->id}/entrytypes/{$i->id}"),
+			])->toArray();
+
 		$settings = collect((new Cp())->settings())
 			->map(function($i, $section) {
 					return collect($i)->map(function ($item, $slug) use ($section) {
@@ -162,6 +173,7 @@ class ActionsController extends Controller
 		return [
 			...$settings,
 			...$sections,
+			...$entryTypes,
 			...$fields,
 		];
 	}

@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 1.3.0 - 2022-02-08
+
+### Added
+- New action: Go to section entry types. If the type is "Default" it's swapped with the name of the section
+
 ## 1.2.0 - 2022-02-07
 
 ### Added
