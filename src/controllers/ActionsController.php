@@ -15,6 +15,7 @@ class ActionsController extends Controller
 	public function actionIndex()
 	{
 		return $this->asJson([
+			...$this->_getContextActions(),
 			...$this->_navigationActions(),
 			...$this->_adminActions(),
 			...$this->_utilityActions(),
@@ -176,5 +177,44 @@ class ActionsController extends Controller
 			...$entryTypes,
 			...$fields,
 		];
+	}
+
+	/**
+	 * Adds a list of actions that are contextual to the front-end page the user is on
+	 *
+	 * @return array
+	 */
+	private function _getContextActions(): array
+	{
+		// If this wasn't a request to the front-end we should just exit
+		if (!Craft::$app->getRequest()->isSiteRequest) {
+			return [];
+		}
+
+		try {
+			// Unfortunately the only way to find the entry the user is on is by getting the referring URL
+			$referrer = Craft::$app->getRequest()->referrer;
+
+			// Pluck out the URI from the full URL
+			$uri = str_replace(
+				Craft::$app->getRequest()->hostInfo . "/",
+				"",
+				$referrer
+			);
+
+			// Find the matching element in Craft
+			$element = Craft::$app->getElements()->getElementByUri($uri);
+
+			return [
+				[
+					'name' => $element->title,
+					'url' => $element->getCpEditUrl(),
+					'subtitle' => 'Edit this element within Craft',
+					'icon' => 'PencilAltIcon',
+				]
+			];
+		} catch(\Exception $e) {
+			return [];
+		}
 	}
 }
