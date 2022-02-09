@@ -1,5 +1,13 @@
 # Release Notes for Palette
 
+## 1.4.0 - 2022-02-08
+
+### Added
+- New action: "Edit this entry". If we can map the URI of the front-end request to a Craft entry it will be added as the first action; allowing you to jump to that entry edit view from the front-end.
+
+### Updated
+- "Go to {systemName}" action now only renders when calling Palette on a control panel route
+
 ## 1.3.0 - 2022-02-08
 
 ### Added

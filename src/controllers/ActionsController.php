@@ -55,7 +55,7 @@ class ActionsController extends Controller
 	 */
 	private function _navigationActions(): array
 	{
-		return collect((new Cp())->nav())
+		$actions = collect((new Cp())->nav())
 			->map(function($i) {
 				$url = str_replace(
 					Craft::$app->getRequest()->hostInfo . "/",
@@ -73,14 +73,19 @@ class ActionsController extends Controller
 							: null,
 					'url' => UrlHelper::cpUrl($url),
 				];
-			})
-			->prepend([
+			});
+
+		// Only include an action to go to the homepage if we're on the control panel
+		if ($this->_isCpRequest()) {
+			$actions->prepend([
 				'name' => Craft::$app->getSystemName(),
 				'subtitle' => "Go to " . UrlHelper::siteUrl(),
 				'icon' => 'GlobeAltIcon',
 				'url' => UrlHelper::siteUrl()
-			])
-			->toArray();
+			]);
+		}
+
+		return $actions->toArray();
 	}
 
 	/**
@@ -186,8 +191,8 @@ class ActionsController extends Controller
 	 */
 	private function _getContextActions(): array
 	{
-		// If this wasn't a request to the front-end we should just exit
-		if (!Craft::$app->getRequest()->isSiteRequest) {
+		// Output an empty array if this is a control panel request
+		if ($this->_isCpRequest()) {
 			return [];
 		}
 
@@ -216,5 +221,32 @@ class ActionsController extends Controller
 		} catch(\Exception $e) {
 			return [];
 		}
+	}
+
+	/**
+	 * Checks if the request was a control panel request
+	 *
+	 * @return bool
+	 */
+	private function _isCpRequest(): bool
+	{
+		// Check the referring URL (it's the only way to know what page called the action)
+		$referrer = Craft::$app->getRequest()->referrer;
+
+		$uri = str_replace(
+			Craft::$app->getRequest()->hostInfo . "/",
+			"",
+			$referrer
+		);
+
+		// Parse the segments from the URI
+		$segments = explode('/', $uri);
+
+		// If the first segment is the cpTrigger we know this is a control panel request
+		if ($segments && $segments[0] === Craft::$app->getConfig()->getGeneral()->cpTrigger) {
+			return true;
+		}
+
+		return false;
 	}
 }
