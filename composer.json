@@ -2,7 +2,7 @@
   "name": "trendyminds/craft-palette",
   "description": "A command palette to easily jump to specific areas within Craft",
   "type": "craft-plugin",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "keywords": ["palette", "craft", "craft cms", "cmdk", "spotlight", "craft plugin"],
   "license": "MIT",
   "authors": [
@@ -17,8 +17,9 @@
     "docs": "https://github.com/trendyminds/craft-palette/blob/master/README.md"
   },
   "require": {
+		"php": ">=7.3",
     "craftcms/cms": "^3.5.0",
-    "tightenco/collect": "^8.81"
+    "illuminate/collections": "^8.83"
   },
   "autoload": {
     "psr-4": {

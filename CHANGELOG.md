@@ -1,5 +1,11 @@
 # Release Notes for Palette
 
+## 1.5.0 - 2022-02-11
+
+### Updated
+- PHP 7.3+ required
+- Swapped tightenco/collect with illuminate/collections
+
 ## 1.4.0 - 2022-02-08
 
 ### Added
