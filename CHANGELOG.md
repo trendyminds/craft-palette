@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 1.6.0 - 2022-02-18
+
+### Added
+- Config options to [enable/disable loading Palette on the frontend](https://github.com/trendyminds/craft-palette/discussions/8) or backend
+
 ## 1.5.0 - 2022-02-11
 
 ### Updated
