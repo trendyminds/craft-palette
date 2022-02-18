@@ -33,6 +33,7 @@ Install Palette one of two ways:
 
 - [Install via Craft's Plugin Store](https://plugins.craftcms.com/palette)
 - Run `composer require trendyminds/craft-palette` and enable the plugin from "Settings > Plugins"
+- Optionally, you can configure Palette by adding a `config/palette.php` file and [modifying the default options](src/config.php)
 
 ## 🤝 Contributing
 

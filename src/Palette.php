@@ -21,6 +21,16 @@ class Palette extends Plugin
 		// Define our alias for referencing the asset bundles (CSS/JS)
 		Craft::setAlias('@trendyminds/palette', $this->getBasePath());
 
+		// Don't load Palette if this is a frontend request and the frontend setting is disabled
+		if (! $this->getSettings()->enableOnFrontend && Craft::$app->getRequest()->isSiteRequest) {
+			return false;
+		}
+
+		// Don't load Palette if this is a backend request and the backend setting is disabled
+		if (! $this->getSettings()->enableOnBackend && Craft::$app->getRequest()->isCpRequest) {
+			return false;
+		}
+
 		// Register the asset bundle so our JS XHR can determine if the user is signed in or not
 		Event::on(
 			View::class,
@@ -33,5 +43,10 @@ class Palette extends Plugin
 				}
 			}
 		);
+	}
+
+	protected function createSettingsModel()
+	{
+		return new Settings();
 	}
 }
