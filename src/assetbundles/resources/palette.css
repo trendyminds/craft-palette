@@ -190,6 +190,14 @@
   max-height: 40rem
 }
 
+.vtw-min-h-screen {
+  min-height: 100vh
+}
+
+.vtw-min-h-\[40rem\] {
+  min-height: 40rem
+}
+
 .vtw-w-5 {
   width: 1.25rem
 }

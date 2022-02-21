@@ -30706,7 +30706,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       active: open
     }, /* @__PURE__ */ import_react3.default.createElement("form", {
       ref: containerRef,
-      className: "vtw-mx-auto vtw-max-h-[40rem] vtw-mt-20 vtw-overflow-auto vtw-max-w-xl vtw-transform vtw-divide-y vtw-divide-gray-100 vtw-rounded-xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black vtw-ring-opacity-5 vtw-transition-all"
+      className: "vtw-mx-auto vtw-flex vtw-flex-col vtw-max-h-[40rem] vtw-mt-20 vtw-overflow-auto vtw-max-w-xl vtw-transform vtw-divide-y vtw-divide-gray-100 vtw-rounded-xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black vtw-ring-opacity-5 vtw-transition-all"
+    }, /* @__PURE__ */ import_react3.default.createElement("div", {
+      className: "vtw-flex-1"
     }, /* @__PURE__ */ import_react3.default.createElement("div", {
       className: "relative"
     }, /* @__PURE__ */ import_react3.default.createElement(SearchIcon_default2, {
@@ -30752,7 +30754,28 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       className: "vtw-mt-4 vtw-font-semibold vtw-text-gray-900"
     }, "Help with searching"), /* @__PURE__ */ import_react3.default.createElement("p", {
       className: "vtw-mt-2 vtw-text-gray-500"
-    }, "Use this tool to quickly search for users and projects across our entire platform. You can also use the search modifiers found in the footer below to limit the results to just users or projects."))))), /* @__PURE__ */ import_react3.default.createElement("button", {
+    }, "Use this tool to quickly search for users and projects across our entire platform. You can also use the search modifiers found in the footer below to limit the results to just users or projects.")), query !== "" && rawQuery !== "?" && filteredActions.length === 0 && /* @__PURE__ */ import_react3.default.createElement("div", {
+      className: "vtw-py-14 vtw-px-6 vtw-text-center vtw-text-sm vtw-sm:px-14"
+    }, /* @__PURE__ */ import_react3.default.createElement(ExclamationIcon_default, {
+      className: "vtw-mx-auto vtw-h-6 vtw-w-6 vtw-text-gray-400",
+      "aria-hidden": "true"
+    }), /* @__PURE__ */ import_react3.default.createElement("p", {
+      className: "vtw-mt-4 vtw-font-semibold vtw-text-gray-900"
+    }, "No results found"), /* @__PURE__ */ import_react3.default.createElement("p", {
+      className: "vtw-mt-2 vtw-text-gray-500"
+    }, "We couldn\u2019t find anything with that term. Please try again."))), /* @__PURE__ */ import_react3.default.createElement("div", {
+      className: "vtw-flex vtw-flex-wrap vtw-items-center vtw-bg-gray-50 vtw-py-2.5 vtw-px-4 vtw-text-xs vtw-text-gray-700"
+    }, "Type", " ", /* @__PURE__ */ import_react3.default.createElement("div", {
+      className: clsx_m_default("vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2", rawQuery.startsWith("#") ? "vtw-border-gray-300 vtw-text-indigo-600" : "vtw-border-gray-400 vtw-text-gray-900")
+    }, "#"), " ", /* @__PURE__ */ import_react3.default.createElement("span", {
+      className: "vtw-sm:hidden"
+    }, "for projects,"), /* @__PURE__ */ import_react3.default.createElement("span", {
+      className: "vtw-hidden vtw-sm:inline"
+    }, "to access projects,"), /* @__PURE__ */ import_react3.default.createElement("div", {
+      className: clsx_m_default("vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2", rawQuery.startsWith(">") ? "vtw-border-gray-300 vtw-text-indigo-600" : "vtw-border-gray-400 vtw-text-gray-900")
+    }, ">"), " ", "for users, and", " ", /* @__PURE__ */ import_react3.default.createElement("div", {
+      className: clsx_m_default("vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2", rawQuery === "?" ? "vtw-border-indigo-600 vtw-text-indigo-600" : "vtw-border-gray-400 vtw-text-gray-900")
+    }, "?"), " ", "for help.")))), /* @__PURE__ */ import_react3.default.createElement("button", {
       className: clsx_m_default("vtw-fixed vtw-bottom-0 vtw-left-0", "vtw-mb-4 vtw-ml-4", "vtw-flex vtw-items-center vtw-justify-center", "vtw-backdrop-blur-md vtw-shadow vtw-rounded-full", "vtw-bg-zinc-50/70 dark:vtw-bg-neutral-800/90", "dark:vtw-text-neutral-300", "vtw-h-8 vtw-w-8 vtw-z-[9999]", "vtw-cursor-pointer", "vtw-transition-transform hover:vtw-scale-110 active:vtw-scale-90"),
       onClick: () => setOpen(!open)
     }, /* @__PURE__ */ import_react3.default.createElement(Icon, {

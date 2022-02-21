@@ -4,8 +4,7 @@ import clsx from 'clsx'
 import { SearchIcon } from '@heroicons/react/solid'
 import useOutsideClick from './hooks/useOutsideClick'
 import FocusTrap from 'focus-trap-react'
-import { SupportIcon } from '@heroicons/react/outline'
-
+import { ExclamationIcon, SupportIcon } from '@heroicons/react/outline'
 
 function Icon({ name, ...props }) {
 	const { ...icons } = HeroIcons
@@ -82,104 +81,164 @@ function TwPalette() {
 					<FocusTrap active={open}>
 						<form
 							ref={containerRef}
-							className="vtw-mx-auto vtw-max-h-[40rem] vtw-mt-20 vtw-overflow-auto vtw-max-w-xl vtw-transform vtw-divide-y vtw-divide-gray-100 vtw-rounded-xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black vtw-ring-opacity-5 vtw-transition-all"
+							className="vtw-mx-auto vtw-flex vtw-flex-col vtw-max-h-[40rem] vtw-mt-20 vtw-overflow-auto vtw-max-w-xl vtw-transform vtw-divide-y vtw-divide-gray-100 vtw-rounded-xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black vtw-ring-opacity-5 vtw-transition-all"
 						>
-							<div className="relative">
-								<SearchIcon
-									className="vtw-pointer-events-none vtw-absolute vtw-top-3.5 vtw-left-4 vtw-h-5 vtw-w-5 vtw-text-gray-400"
-									aria-hidden="true"
-								/>
-								<input
-									className="vtw-h-12 vtw-w-full vtw-border-0 vtw-bg-transparent vtw-pl-11 vtw-pr-4 vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 vtw-focus:ring-0 focus:vtw-border-none focus:vtw-outline-none focus:vtw-ring-0"
-									placeholder="Search..."
-									onChange={(event) => setRawQuery(event.target.value)}
-								/>
-							</div>
-
-							{filteredActions.length > 0 && (
-								<ul
-									autoFocus
-									id="actionElements"
-									className="vtw--mx-4 vtw-text-sm vtw-text-gray-700"
-								>
-									{filteredActions.map((item, idx) => (
-										<div
-											onClick={(e) => handleRoute(e, item)}
-											key={item.id}
-											value={item}
-											className={clsx(
-												'vtw-flex vtw-cursor-pointer vtw-select-none vtw-items-center vtw-px-4 vtw-py-2',
-												'hover:vtw-bg-gray-200 vtw-transition-all vtw-duration-200',
-												idx === active && 'vtw-bg-gray-200',
-											)}
-										>
-											<div
-												className={clsx(
-													'vtw-flex vtw-items-center vtw-gap-2',
-													'vtw-text-sm vtw-text-gray-800 dark:vtw-text-neutral-300',
-													'vtw-p-2',
-													'vtw-mx-2',
-													'vtw-rounded-lg'
-												)}
-											>
-												<div className={clsx('vtw-h-5 vtw-w-5')}>
-													<Icon name={item.icon} />
-												</div>
-												<div className="vtw-flex vtw-justify-between vtw-gap-3 vtw-flex-1">
-													<div className="vtw-flex vtw-flex-col vtw-gap-1 vtw-flex-1 vtw-justify-center">
-														<p className={clsx('vtw-leading-none vtw-m-0')}>
-															{item.name}
-														</p>
-														{item.subtitle && (
-															<p className="vtw-leading-none vtw-text-xs vtw-text-gray-500 dark:vtw-text-neutral-400 vtw-m-0">
-																{item.subtitle}
-															</p>
-														)}
-													</div>
-
-													{item?.badgeCount && (
-														<div
-															className={clsx(
-																'vtw-bg-neutral-600 dark:vtw-bg-neutral-400',
-																'vtw-h-5 vtw-w-5 vtw-rounded-full',
-																'vtw-flex vtw-items-center vtw-justify-center vtw-self-center'
-															)}
-														>
-															<p
-																className={clsx(
-																	'vtw-text-[10px] vtw-leading-none vtw-font-bold',
-																	'vtw-text-white dark:vtw-text-neutral-800',
-																	'vtw-m-0'
-																)}
-															>
-																{item?.badgeCount}
-															</p>
-														</div>
-													)}
-												</div>
-											</div>
-										</div>
-									))}
-								</ul>
-							)}
-
-							{rawQuery === '?' && (
-								<div className="vtw-pb-14 vtw-px-6 vtw-text-center vtw-text-sm vtw-sm:px-14">
-									<SupportIcon
-										className="vtw-mx-auto vtw-h-6 vtw-w-6 vtw-text-gray-400"
+							<div className="vtw-flex-1">
+								<div className="relative">
+									<SearchIcon
+										className="vtw-pointer-events-none vtw-absolute vtw-top-3.5 vtw-left-4 vtw-h-5 vtw-w-5 vtw-text-gray-400"
 										aria-hidden="true"
 									/>
-									<p className="vtw-mt-4 vtw-font-semibold vtw-text-gray-900">
-										Help with searching
-									</p>
-									<p className="vtw-mt-2 vtw-text-gray-500">
-										Use this tool to quickly search for users and projects
-										across our entire platform. You can also use the search
-										modifiers found in the footer below to limit the results to
-										just users or projects.
-									</p>
+									<input
+										className="vtw-h-12 vtw-w-full vtw-border-0 vtw-bg-transparent vtw-pl-11 vtw-pr-4 vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 vtw-focus:ring-0 focus:vtw-border-none focus:vtw-outline-none focus:vtw-ring-0"
+										placeholder="Search..."
+										onChange={(event) => setRawQuery(event.target.value)}
+									/>
 								</div>
-							)}
+
+								{filteredActions.length > 0 && (
+									<ul
+										autoFocus
+										id="actionElements"
+										className="vtw--mx-4 vtw-text-sm vtw-text-gray-700"
+									>
+										{filteredActions.map((item, idx) => (
+											<div
+												onClick={(e) => handleRoute(e, item)}
+												key={item.id}
+												value={item}
+												className={clsx(
+													'vtw-flex vtw-cursor-pointer vtw-select-none vtw-items-center vtw-px-4 vtw-py-2',
+													'hover:vtw-bg-gray-200 vtw-transition-all vtw-duration-200',
+													idx === active && 'vtw-bg-gray-200'
+												)}
+											>
+												<div
+													className={clsx(
+														'vtw-flex vtw-items-center vtw-gap-2',
+														'vtw-text-sm vtw-text-gray-800 dark:vtw-text-neutral-300',
+														'vtw-p-2',
+														'vtw-mx-2',
+														'vtw-rounded-lg'
+													)}
+												>
+													<div className={clsx('vtw-h-5 vtw-w-5')}>
+														<Icon name={item.icon} />
+													</div>
+													<div className="vtw-flex vtw-justify-between vtw-gap-3 vtw-flex-1">
+														<div className="vtw-flex vtw-flex-col vtw-gap-1 vtw-flex-1 vtw-justify-center">
+															<p className={clsx('vtw-leading-none vtw-m-0')}>
+																{item.name}
+															</p>
+															{item.subtitle && (
+																<p className="vtw-leading-none vtw-text-xs vtw-text-gray-500 dark:vtw-text-neutral-400 vtw-m-0">
+																	{item.subtitle}
+																</p>
+															)}
+														</div>
+
+														{item?.badgeCount && (
+															<div
+																className={clsx(
+																	'vtw-bg-neutral-600 dark:vtw-bg-neutral-400',
+																	'vtw-h-5 vtw-w-5 vtw-rounded-full',
+																	'vtw-flex vtw-items-center vtw-justify-center vtw-self-center'
+																)}
+															>
+																<p
+																	className={clsx(
+																		'vtw-text-[10px] vtw-leading-none vtw-font-bold',
+																		'vtw-text-white dark:vtw-text-neutral-800',
+																		'vtw-m-0'
+																	)}
+																>
+																	{item?.badgeCount}
+																</p>
+															</div>
+														)}
+													</div>
+												</div>
+											</div>
+										))}
+									</ul>
+								)}
+
+								{rawQuery === '?' && (
+									<div className="vtw-pb-14 vtw-px-6 vtw-text-center vtw-text-sm vtw-sm:px-14">
+										<SupportIcon
+											className="vtw-mx-auto vtw-h-6 vtw-w-6 vtw-text-gray-400"
+											aria-hidden="true"
+										/>
+										<p className="vtw-mt-4 vtw-font-semibold vtw-text-gray-900">
+											Help with searching
+										</p>
+										<p className="vtw-mt-2 vtw-text-gray-500">
+											Use this tool to quickly search for users and projects
+											across our entire platform. You can also use the search
+											modifiers found in the footer below to limit the results
+											to just users or projects.
+										</p>
+									</div>
+								)}
+
+								{query !== '' &&
+									rawQuery !== '?' &&
+									filteredActions.length === 0 && (
+										<div className="vtw-py-14 vtw-px-6 vtw-text-center vtw-text-sm vtw-sm:px-14">
+											<ExclamationIcon
+												className="vtw-mx-auto vtw-h-6 vtw-w-6 vtw-text-gray-400"
+												aria-hidden="true"
+											/>
+											<p className="vtw-mt-4 vtw-font-semibold vtw-text-gray-900">
+												No results found
+											</p>
+											<p className="vtw-mt-2 vtw-text-gray-500">
+												We couldn’t find anything with that term. Please try
+												again.
+											</p>
+										</div>
+									)}
+							</div>
+
+							<div className="vtw-flex vtw-flex-wrap vtw-items-center vtw-bg-gray-50 vtw-py-2.5 vtw-px-4 vtw-text-xs vtw-text-gray-700">
+								Type{' '}
+								<div
+									className={clsx(
+										'vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2',
+										rawQuery.startsWith('#')
+											? 'vtw-border-gray-300 vtw-text-indigo-600'
+											: 'vtw-border-gray-400 vtw-text-gray-900'
+									)}
+								>
+									#
+								</div>{' '}
+								<span className="vtw-sm:hidden">for projects,</span>
+								<span className="vtw-hidden vtw-sm:inline">
+									to access projects,
+								</span>
+								<div
+									className={clsx(
+										'vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2',
+										rawQuery.startsWith('>')
+											? 'vtw-border-gray-300 vtw-text-indigo-600'
+											: 'vtw-border-gray-400 vtw-text-gray-900'
+									)}
+								>
+									&gt;
+								</div>{' '}
+								for users, and{' '}
+								<div
+									className={clsx(
+										'vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2',
+										rawQuery === '?'
+											? 'vtw-border-indigo-600 vtw-text-indigo-600'
+											: 'vtw-border-gray-400 vtw-text-gray-900'
+									)}
+								>
+									?
+								</div>{' '}
+								for help.
+							</div>
 						</form>
 					</FocusTrap>
 				</div>
