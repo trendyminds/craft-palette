@@ -31170,15 +31170,15 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       active: open
     }, /* @__PURE__ */ import_react3.default.createElement("div", {
       onClick: () => setOpen(false),
-      className: "vtw-absolute vtw-inset-0 vtw-z-[9999] vtw-p-4 vtw-sm:p-6 vtw-md:p-20 vtw-flex vtw-flex-col vtw-items-center vtw-bg-gray-500 vtw-bg-opacity-25 vtw-transition-opacity"
+      className: "vtw-absolute vtw-inset-0 vtw-z-[9999] vtw-p-4 vtw-sm:p-6 vtw-md:p-20 vtw-flex vtw-flex-col vtw-items-center vtw-bg-gray-500 vtw-bg-opacity-25 vtw-transition-opacity vtw-mt-8"
     }, /* @__PURE__ */ import_react3.default.createElement("nav", {
       onClick: (e) => e.stopPropagation(),
-      className: "vtw-overflow-y-scroll vtw-relative vtw-text-sm vtw-text-gray-700 vtw-max-h-[40rem] vtw-max-w-xl vtw-w-full vtw-transform vtw-divide-y vtw-divide-gray-100 vtw-rounded-xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black vtw-ring-opacity-5 vtw-transition-all"
+      className: "vtw-overflow-y-scroll vtw-px-3 vtw-relative vtw-text-sm vtw-text-gray-700 vtw-max-h-[40rem] vtw-max-w-xl vtw-w-full vtw-transform vtw-rounded-xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black vtw-ring-opacity-5 vtw-transition-all"
     }, /* @__PURE__ */ import_react3.default.createElement(SearchIcon_default2, {
-      className: "vtw-pointer-events-none vtw-absolute vtw-top-4 vtw-left-4 vtw-h-5 vtw-w-5 vtw-text-gray-400",
+      className: "vtw-pointer-events-none vtw-z-[1000] vtw-absolute vtw-top-4 vtw-left-5 vtw-h-5 vtw-w-5 vtw-text-gray-400",
       "aria-hidden": "true"
     }), /* @__PURE__ */ import_react3.default.createElement("input", {
-      className: "vtw-h-12 vtw-w-[fill-available] vtw-pl-10 vtw-border-0 vtw-bg-transparent vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 vtw-focus:ring-0 focus:vtw-border-none focus:vtw-outline-none focus:vtw-ring-0",
+      className: "vtw-h-12 vtw-w-[fill-available] vtw-pl-10 vtw-border-b vtw-border-gray-50 vtw-border-0 vtw-bg-transparent vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 focus:vtw-ring-0 vtw-bg-white vtw-mb-2",
       placeholder: "Search...",
       onKeyDown: handleKeyDown,
       onChange: (e) => setRawQuery(e.target.value)
@@ -31188,9 +31188,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       onClick: (e) => handleRoute(e, item),
       key: item.id,
       value: item,
-      className: clsx_m_default("vtw-flex vtw-cursor-pointer vtw-select-none vtw-items-center vtw-px-4 vtw-py-2 vtw-w-full vtw-text-left", "hover:vtw-bg-gray-200 vtw-transition-all vtw-duration-200 focus:vtw-bg-gray-200 focus:vtw-outline-none focus:vtw-ring-0")
-    }, /* @__PURE__ */ import_react3.default.createElement("div", {
-      className: clsx_m_default("vtw-flex vtw-items-center vtw-gap-2", "vtw-text-sm vtw-text-gray-800 dark:vtw-text-neutral-300", "vtw-p-2", "vtw-mx-2", "vtw-rounded-lg")
+      className: clsx_m_default("vtw-flex vtw-items-center vtw-gap-3 vtw-w-full vtw-text-left", "vtw-text-sm vtw-text-gray-500 dark:vtw-text-neutral-300", "vtw-px-2 vtw-py-3", "vtw-cursor-pointer vtw-select-none", "vtw-rounded-lg vtw-group", "hover:vtw-bg-gray-200 vtw-transition-colors vtw-duration-200 focus:vtw-bg-gray-200 focus:vtw-outline-none focus:vtw-ring-0 active:vtw-border-0")
     }, /* @__PURE__ */ import_react3.default.createElement("div", {
       className: clsx_m_default("vtw-h-5 vtw-w-5")
     }, /* @__PURE__ */ import_react3.default.createElement(Icon, {
@@ -31200,14 +31198,16 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }, /* @__PURE__ */ import_react3.default.createElement("div", {
       className: "vtw-flex vtw-flex-col vtw-gap-1 vtw-flex-1 vtw-justify-center"
     }, /* @__PURE__ */ import_react3.default.createElement("p", {
-      className: clsx_m_default("vtw-leading-none vtw-m-0")
-    }, item.name), item.subtitle && /* @__PURE__ */ import_react3.default.createElement("p", {
-      className: "vtw-leading-none vtw-text-xs vtw-text-gray-500 dark:vtw-text-neutral-400 vtw-m-0"
-    }, item.subtitle)), item?.badgeCount && /* @__PURE__ */ import_react3.default.createElement("div", {
+      className: clsx_m_default("vtw-leading-none vtw-text-gray-500 vtw-capitalize vtw-m-0")
+    }, item.name, item.subtitle && /* @__PURE__ */ import_react3.default.createElement("span", {
+      className: ""
+    }, " / ", item.subtitle))), /* @__PURE__ */ import_react3.default.createElement("div", null, /* @__PURE__ */ import_react3.default.createElement("p", {
+      className: "group-hover:vtw-opacity-100 group-focus:vtw-opacity-100 vtw-opacity-0 vtw-transition-opacity"
+    }, "Jump to...")), item?.badgeCount && /* @__PURE__ */ import_react3.default.createElement("div", {
       className: clsx_m_default("vtw-bg-neutral-600 dark:vtw-bg-neutral-400", "vtw-h-5 vtw-w-5 vtw-rounded-full", "vtw-flex vtw-items-center vtw-justify-center vtw-self-center")
     }, /* @__PURE__ */ import_react3.default.createElement("p", {
       className: clsx_m_default("vtw-text-[10px] vtw-leading-none vtw-font-bold", "vtw-text-white dark:vtw-text-neutral-800", "vtw-m-0")
-    }, item?.badgeCount)))))), rawQuery === "?" && /* @__PURE__ */ import_react3.default.createElement("div", {
+    }, item?.badgeCount))))), rawQuery === "?" && /* @__PURE__ */ import_react3.default.createElement("div", {
       className: "vtw-py-4 vtw-px-6 vtw-text-center vtw-text-sm vtw-sm:px-14"
     }, /* @__PURE__ */ import_react3.default.createElement(SupportIcon_default, {
       className: "vtw-mx-auto vtw-h-6 vtw-w-6 vtw-text-gray-400",
