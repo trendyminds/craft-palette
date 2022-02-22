@@ -30653,7 +30653,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     });
   }
   function TwPalette() {
-    const [open, setOpen] = (0, import_react3.useState)(false);
+    const [open, setOpen] = (0, import_react3.useState)(true);
+    const [theme, setTheme] = (0, import_react3.useState)(false);
     const [active, setActive] = (0, import_react3.useState)(0);
     const [keyPressed, setKeyPressed] = (0, import_react3.useState)("");
     const [rawQuery, setRawQuery] = (0, import_react3.useState)("");
@@ -30699,17 +30700,15 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       return window.location = item.id;
     };
     return /* @__PURE__ */ import_react3.default.createElement(import_react3.default.Fragment, null, open && /* @__PURE__ */ import_react3.default.createElement("div", {
-      className: "vtw-fixed vtw-inset-0 vtw-z-[99999] vtw-overflow-y-auto vtw-p-4 vtw-sm:p-6 vtw-md:p-20"
+      className: "vtw-fixed vtw-inset-0 vtw-z-[99999] vtw-p-4 vtw-sm:p-6 vtw-md:p-20"
     }, /* @__PURE__ */ import_react3.default.createElement("div", {
       className: "vtw-fixed vtw-inset-0 vtw-bg-gray-500 vtw-bg-opacity-25 vtw-transition-opacity"
     }), /* @__PURE__ */ import_react3.default.createElement(import_focus_trap_react.default, {
       active: open
-    }, /* @__PURE__ */ import_react3.default.createElement("form", {
+    }, /* @__PURE__ */ import_react3.default.createElement("article", {
       ref: containerRef,
-      className: "vtw-mx-auto vtw-flex vtw-flex-col vtw-max-h-[40rem] vtw-mt-20 vtw-overflow-auto vtw-max-w-xl vtw-transform vtw-divide-y vtw-divide-gray-100 vtw-rounded-xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black vtw-ring-opacity-5 vtw-transition-all"
-    }, /* @__PURE__ */ import_react3.default.createElement("div", {
-      className: "vtw-flex-1"
-    }, /* @__PURE__ */ import_react3.default.createElement("div", {
+      className: "vtw-mx-auto vtw-flex vtw-flex-col vtw-max-h-[40rem] vtw-overflow-auto vtw-max-w-xl vtw-transform vtw-divide-y vtw-divide-gray-100 vtw-rounded-xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black vtw-ring-opacity-5 vtw-transition-all"
+    }, /* @__PURE__ */ import_react3.default.createElement("header", {
       className: "relative"
     }, /* @__PURE__ */ import_react3.default.createElement(SearchIcon_default2, {
       className: "vtw-pointer-events-none vtw-absolute vtw-top-3.5 vtw-left-4 vtw-h-5 vtw-w-5 vtw-text-gray-400",
@@ -30718,7 +30717,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       className: "vtw-h-12 vtw-w-full vtw-border-0 vtw-bg-transparent vtw-pl-11 vtw-pr-4 vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 vtw-focus:ring-0 focus:vtw-border-none focus:vtw-outline-none focus:vtw-ring-0",
       placeholder: "Search...",
       onChange: (event) => setRawQuery(event.target.value)
-    })), filteredActions.length > 0 && /* @__PURE__ */ import_react3.default.createElement("ul", {
+    })), /* @__PURE__ */ import_react3.default.createElement("main", {
+      className: "vtw-flex-1 vtw-overflow-y-scroll"
+    }, filteredActions.length > 0 && /* @__PURE__ */ import_react3.default.createElement("ul", {
       autoFocus: true,
       id: "actionElements",
       className: "vtw--mx-4 vtw-text-sm vtw-text-gray-700"
@@ -30763,8 +30764,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       className: "vtw-mt-4 vtw-font-semibold vtw-text-gray-900"
     }, "No results found"), /* @__PURE__ */ import_react3.default.createElement("p", {
       className: "vtw-mt-2 vtw-text-gray-500"
-    }, "We couldn\u2019t find anything with that term. Please try again."))), /* @__PURE__ */ import_react3.default.createElement("div", {
-      className: "vtw-flex vtw-flex-wrap vtw-items-center vtw-bg-gray-50 vtw-py-2.5 vtw-px-4 vtw-text-xs vtw-text-gray-700"
+    }, "We couldn\u2019t find anything with that term. Please try again."))), /* @__PURE__ */ import_react3.default.createElement("footer", {
+      className: "vtw-flex vtw-fixed vtw-bottom-0 vtw-right-0 vtw-left-0 vtw-flex-shrink-0 vtw-mt-auto vtw-flex-wrap vtw-items-center vtw-bg-gray-50 vtw-py-2.5 vtw-px-4 vtw-text-xs vtw-text-gray-700"
     }, "Type", " ", /* @__PURE__ */ import_react3.default.createElement("div", {
       className: clsx_m_default("vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2", rawQuery.startsWith("#") ? "vtw-border-gray-300 vtw-text-indigo-600" : "vtw-border-gray-400 vtw-text-gray-900")
     }, "#"), " ", /* @__PURE__ */ import_react3.default.createElement("span", {

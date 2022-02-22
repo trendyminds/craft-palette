@@ -82,6 +82,10 @@
   top: 0.75rem
 }
 
+.vtw-right-0 {
+  right: 0px
+}
+
 .vtw-z-\[9999\] {
   z-index: 9999
 }
@@ -142,6 +146,10 @@
   margin-top: 5rem
 }
 
+.vtw-mt-auto {
+  margin-top: auto
+}
+
 .vtw-flex {
   display: flex
 }
@@ -190,12 +198,30 @@
   max-height: 40rem
 }
 
+.vtw-max-h-40 {
+  max-height: 10rem
+}
+
+.vtw-max-h-56 {
+  max-height: 14rem
+}
+
 .vtw-min-h-screen {
   min-height: 100vh
 }
 
 .vtw-min-h-\[40rem\] {
   min-height: 40rem
+}
+
+.vtw-min-h-full {
+  min-height: 100%
+}
+
+.vtw-min-h-max {
+  min-height: -webkit-max-content;
+  min-height: -moz-max-content;
+  min-height: max-content
 }
 
 .vtw-w-5 {
@@ -228,6 +254,10 @@
 
 .vtw-flex-1 {
   flex: 1 1 0%
+}
+
+.vtw-flex-shrink-0 {
+  flex-shrink: 0
 }
 
 .vtw-scale-95 {
@@ -282,6 +312,10 @@
   align-items: center
 }
 
+.vtw-items-stretch {
+  align-items: stretch
+}
+
 .vtw-justify-center {
   justify-content: center
 }
@@ -300,6 +334,10 @@
 
 .vtw-gap-1 {
   gap: 0.25rem
+}
+
+.vtw-gap-8 {
+  gap: 2rem
 }
 
 .vtw-space-y-4 > :not([hidden]) ~ :not([hidden]) {
@@ -333,6 +371,10 @@
 
 .vtw-overflow-y-auto {
   overflow-y: auto
+}
+
+.vtw-overflow-y-scroll {
+  overflow-y: scroll
 }
 
 .vtw-rounded-lg {

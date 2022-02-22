@@ -13,7 +13,8 @@ function Icon({ name, ...props }) {
 }
 
 function TwPalette() {
-	const [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(true)
+	const [theme, setTheme] = useState(false)
 	const [active, setActive] = useState(0)
 	const [keyPressed, setKeyPressed] = useState('')
 	const [rawQuery, setRawQuery] = useState('')
@@ -76,26 +77,29 @@ function TwPalette() {
 	return (
 		<>
 			{open && (
-				<div className="vtw-fixed vtw-inset-0 vtw-z-[99999] vtw-overflow-y-auto vtw-p-4 vtw-sm:p-6 vtw-md:p-20">
+				<div className="vtw-fixed vtw-inset-0 vtw-z-[99999] vtw-p-4 vtw-sm:p-6 vtw-md:p-20">
 					<div className="vtw-fixed vtw-inset-0 vtw-bg-gray-500 vtw-bg-opacity-25 vtw-transition-opacity"></div>
+					{/* Content Here */}
 					<FocusTrap active={open}>
-						<form
+						<article
 							ref={containerRef}
-							className="vtw-mx-auto vtw-flex vtw-flex-col vtw-max-h-[40rem] vtw-mt-20 vtw-overflow-auto vtw-max-w-xl vtw-transform vtw-divide-y vtw-divide-gray-100 vtw-rounded-xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black vtw-ring-opacity-5 vtw-transition-all"
+							className="vtw-mx-auto vtw-flex vtw-flex-col vtw-max-h-[40rem] vtw-overflow-auto vtw-max-w-xl vtw-transform vtw-divide-y vtw-divide-gray-100 vtw-rounded-xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black vtw-ring-opacity-5 vtw-transition-all"
 						>
-							<div className="vtw-flex-1">
-								<div className="relative">
-									<SearchIcon
-										className="vtw-pointer-events-none vtw-absolute vtw-top-3.5 vtw-left-4 vtw-h-5 vtw-w-5 vtw-text-gray-400"
-										aria-hidden="true"
-									/>
-									<input
-										className="vtw-h-12 vtw-w-full vtw-border-0 vtw-bg-transparent vtw-pl-11 vtw-pr-4 vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 vtw-focus:ring-0 focus:vtw-border-none focus:vtw-outline-none focus:vtw-ring-0"
-										placeholder="Search..."
-										onChange={(event) => setRawQuery(event.target.value)}
-									/>
-								</div>
+							{/* Search Bar */}
+							<header className="relative">
+								<SearchIcon
+									className="vtw-pointer-events-none vtw-absolute vtw-top-3.5 vtw-left-4 vtw-h-5 vtw-w-5 vtw-text-gray-400"
+									aria-hidden="true"
+								/>
+								<input
+									className="vtw-h-12 vtw-w-full vtw-border-0 vtw-bg-transparent vtw-pl-11 vtw-pr-4 vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 vtw-focus:ring-0 focus:vtw-border-none focus:vtw-outline-none focus:vtw-ring-0"
+									placeholder="Search..."
+									onChange={(event) => setRawQuery(event.target.value)}
+								/>
+							</header>
 
+							{/* List */}
+							<main className="vtw-flex-1 vtw-overflow-y-scroll">
 								{filteredActions.length > 0 && (
 									<ul
 										autoFocus
@@ -198,9 +202,9 @@ function TwPalette() {
 											</p>
 										</div>
 									)}
-							</div>
+							</main>
 
-							<div className="vtw-flex vtw-flex-wrap vtw-items-center vtw-bg-gray-50 vtw-py-2.5 vtw-px-4 vtw-text-xs vtw-text-gray-700">
+							<footer className="vtw-flex vtw-fixed vtw-bottom-0 vtw-right-0 vtw-left-0 vtw-flex-shrink-0 vtw-mt-auto vtw-flex-wrap vtw-items-center vtw-bg-gray-50 vtw-py-2.5 vtw-px-4 vtw-text-xs vtw-text-gray-700">
 								Type{' '}
 								<div
 									className={clsx(
@@ -238,8 +242,8 @@ function TwPalette() {
 									?
 								</div>{' '}
 								for help.
-							</div>
-						</form>
+							</footer>
+						</article>
 					</FocusTrap>
 				</div>
 			)}
