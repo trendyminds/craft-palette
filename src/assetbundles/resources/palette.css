@@ -55,6 +55,10 @@
   position: absolute
 }
 
+.vtw-relative {
+  position: relative
+}
+
 .vtw-inset-0 {
   top: 0px;
   right: 0px;
@@ -84,6 +88,18 @@
 
 .vtw-right-0 {
   right: 0px
+}
+
+.vtw-left-10 {
+  left: 2.5rem
+}
+
+.vtw-top-5 {
+  top: 1.25rem
+}
+
+.vtw-top-4 {
+  top: 1rem
 }
 
 .vtw-z-\[9999\] {
@@ -138,6 +154,22 @@
   margin-top: auto
 }
 
+.vtw-ml-6 {
+  margin-left: 1.5rem
+}
+
+.vtw-box-border {
+  box-sizing: border-box
+}
+
+.vtw-block {
+  display: block
+}
+
+.vtw-inline-block {
+  display: inline-block
+}
+
 .vtw-flex {
   display: flex
 }
@@ -182,12 +214,42 @@
   width: 1.5rem
 }
 
+.vtw-w-fit {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content
+}
+
+.vtw-w-max {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content
+}
+
+.vtw-w-\[\'-webkit-fill-available\'\] {
+  width: '-webkit-fill-available'
+}
+
+.vtw-w-\[-webkit-fill-available\] {
+  width: -webkit-fill-available
+}
+
+.vtw-w-\[fill-available\] {
+  width: -webkit-fill-available;
+  width: -moz-available;
+  width: fill-available
+}
+
 .vtw-max-w-lg {
   max-width: 32rem
 }
 
 .vtw-max-w-xl {
   max-width: 36rem
+}
+
+.vtw-max-w-full {
+  max-width: 100%
 }
 
 .vtw-flex-1 {
@@ -266,6 +328,14 @@
 
 .vtw-overflow-hidden {
   overflow: hidden
+}
+
+.vtw-overflow-y-auto {
+  overflow-y: auto
+}
+
+.vtw-overflow-x-hidden {
+  overflow-x: hidden
 }
 
 .vtw-overflow-y-scroll {
@@ -451,6 +521,22 @@
   padding-bottom: 5rem
 }
 
+.vtw-pl-6 {
+  padding-left: 1.5rem
+}
+
+.vtw-pl-20 {
+  padding-left: 5rem
+}
+
+.vtw-pl-10 {
+  padding-left: 2.5rem
+}
+
+.vtw-text-left {
+  text-align: left
+}
+
 .vtw-text-center {
   text-align: center
 }
@@ -617,6 +703,11 @@
 
 .focus\:vtw-border-none:focus {
   border-style: none
+}
+
+.focus\:vtw-bg-gray-200:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity))
 }
 
 .focus\:vtw-outline-none:focus {

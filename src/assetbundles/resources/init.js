@@ -1056,7 +1056,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useReducer(reducer, initialArg, init);
           }
-          function useRef2(initialValue) {
+          function useRef3(initialValue) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
@@ -1068,7 +1068,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useLayoutEffect(create, deps);
           }
-          function useCallback2(callback, deps) {
+          function useCallback3(callback, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useCallback(callback, deps);
           }
@@ -1627,7 +1627,7 @@
           exports.isValidElement = isValidElement;
           exports.lazy = lazy;
           exports.memo = memo;
-          exports.useCallback = useCallback2;
+          exports.useCallback = useCallback3;
           exports.useContext = useContext;
           exports.useDebugValue = useDebugValue;
           exports.useEffect = useEffect4;
@@ -1635,7 +1635,7 @@
           exports.useLayoutEffect = useLayoutEffect;
           exports.useMemo = useMemo;
           exports.useReducer = useReducer;
-          exports.useRef = useRef2;
+          exports.useRef = useRef3;
           exports.useState = useState3;
           exports.version = ReactVersion;
         })();
@@ -1978,7 +1978,7 @@
               return false;
             }
           }
-          function unstable_runWithPriority(priorityLevel, eventHandler) {
+          function unstable_runWithPriority(priorityLevel, eventHandler2) {
             switch (priorityLevel) {
               case ImmediatePriority:
               case UserBlockingPriority:
@@ -1992,12 +1992,12 @@
             var previousPriorityLevel = currentPriorityLevel;
             currentPriorityLevel = priorityLevel;
             try {
-              return eventHandler();
+              return eventHandler2();
             } finally {
               currentPriorityLevel = previousPriorityLevel;
             }
           }
-          function unstable_next(eventHandler) {
+          function unstable_next(eventHandler2) {
             var priorityLevel;
             switch (currentPriorityLevel) {
               case ImmediatePriority:
@@ -2012,7 +2012,7 @@
             var previousPriorityLevel = currentPriorityLevel;
             currentPriorityLevel = priorityLevel;
             try {
-              return eventHandler();
+              return eventHandler2();
             } finally {
               currentPriorityLevel = previousPriorityLevel;
             }
@@ -12865,8 +12865,8 @@
               lastRenderedReducer: reducer,
               lastRenderedState: initialState
             };
-            var dispatch = queue.dispatch = dispatchAction.bind(null, currentlyRenderingFiber$1, queue);
-            return [hook.memoizedState, dispatch];
+            var dispatch2 = queue.dispatch = dispatchAction.bind(null, currentlyRenderingFiber$1, queue);
+            return [hook.memoizedState, dispatch2];
           }
           function updateReducer(reducer, initialArg, init) {
             var hook = updateWorkInProgressHook();
@@ -12953,8 +12953,8 @@
               hook.baseQueue = newBaseQueueLast;
               queue.lastRenderedState = newState;
             }
-            var dispatch = queue.dispatch;
-            return [hook.memoizedState, dispatch];
+            var dispatch2 = queue.dispatch;
+            return [hook.memoizedState, dispatch2];
           }
           function rerenderReducer(reducer, initialArg, init) {
             var hook = updateWorkInProgressHook();
@@ -12965,7 +12965,7 @@
               }
             }
             queue.lastRenderedReducer = reducer;
-            var dispatch = queue.dispatch;
+            var dispatch2 = queue.dispatch;
             var lastRenderPhaseUpdate = queue.pending;
             var newState = hook.memoizedState;
             if (lastRenderPhaseUpdate !== null) {
@@ -12986,7 +12986,7 @@
               }
               queue.lastRenderedState = newState;
             }
-            return [newState, dispatch];
+            return [newState, dispatch2];
           }
           function readFromUnsubcribedMutableSource(root2, source, getSnapshot) {
             {
@@ -13131,8 +13131,8 @@
               lastRenderedReducer: basicStateReducer,
               lastRenderedState: initialState
             };
-            var dispatch = queue.dispatch = dispatchAction.bind(null, currentlyRenderingFiber$1, queue);
-            return [hook.memoizedState, dispatch];
+            var dispatch2 = queue.dispatch = dispatchAction.bind(null, currentlyRenderingFiber$1, queue);
+            return [hook.memoizedState, dispatch2];
           }
           function updateState(initialState) {
             return updateReducer(basicStateReducer);
@@ -22587,9 +22587,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       Object.defineProperty(exports, "__esModule", { value: true });
       var react = require_react();
       function useForceUpdate() {
-        var _useState = react.useState(/* @__PURE__ */ Object.create(null)), dispatch = _useState[1];
+        var _useState = react.useState(/* @__PURE__ */ Object.create(null)), dispatch2 = _useState[1];
         return react.useCallback(function() {
-          dispatch(/* @__PURE__ */ Object.create(null));
+          dispatch2(/* @__PURE__ */ Object.create(null));
         }, []);
       }
       exports.useForceUpdate = useForceUpdate;
@@ -23029,7 +23029,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
             };
           }
           var _React$useState = React464.useState(nodeRef.current), element = _React$useState[0], setElement = _React$useState[1];
-          var _React$useReducer = React464.useReducer(rectReducer, initialRect), rect = _React$useReducer[0], dispatch = _React$useReducer[1];
+          var _React$useReducer = React464.useReducer(rectReducer, initialRect), rect = _React$useReducer[0], dispatch2 = _React$useReducer[1];
           var initialRectSet = React464.useRef(false);
           useIsomorphicLayoutEffect(function() {
             if (nodeRef.current !== element) {
@@ -23040,7 +23040,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
             if (element && !initialRectSet.current) {
               initialRectSet.current = true;
               var _rect = element.getBoundingClientRect();
-              dispatch({
+              dispatch2({
                 rect: _rect
               });
             }
@@ -23050,7 +23050,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
               return;
             }
             var observer = observeRect(element, function(rect2) {
-              dispatch({
+              dispatch2({
                 rect: rect2
               });
             });
@@ -24455,12 +24455,12 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       var candidateSelector = /* @__PURE__ */ candidateSelectors.join(",");
       var matches = typeof Element === "undefined" ? function() {
       } : Element.prototype.matches || Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
-      var getCandidates = function getCandidates2(el, includeContainer, filter) {
+      var getCandidates = function getCandidates2(el, includeContainer, filter2) {
         var candidates = Array.prototype.slice.apply(el.querySelectorAll(candidateSelector));
         if (includeContainer && matches.call(el, candidateSelector)) {
           candidates.unshift(el);
         }
-        candidates = candidates.filter(filter);
+        candidates = candidates.filter(filter2);
         return candidates;
       };
       var isContentEditable = function isContentEditable2(node) {
@@ -30624,27 +30624,496 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   // node_modules/@heroicons/react/solid/esm/ZoomOutIcon.js
   var React461 = __toESM(require_react(), 1);
 
-  // scripts/hooks/useOutsideClick.js
-  var import_react2 = __toESM(require_react());
-  var useOutsideClick_default = useOutsideClick = (ref, handler) => {
-    (0, import_react2.useEffect)(() => {
-      const listener = (event) => {
-        if (!ref.current || ref.current.contains(event.target)) {
-          return;
-        }
-        handler(event);
-      };
-      document.addEventListener("mousedown", listener);
-      document.addEventListener("touchstart", listener);
-      return () => {
-        document.removeEventListener("mousedown", listener);
-        document.removeEventListener("touchstart", listener);
-      };
-    }, [ref, handler]);
-  };
-
   // scripts/twPalette.js
   var import_focus_trap_react = __toESM(require_focus_trap_react());
+
+  // node_modules/hotkeys-js/dist/hotkeys.esm.js
+  var isff = typeof navigator !== "undefined" ? navigator.userAgent.toLowerCase().indexOf("firefox") > 0 : false;
+  function addEvent(object, event, method) {
+    if (object.addEventListener) {
+      object.addEventListener(event, method, false);
+    } else if (object.attachEvent) {
+      object.attachEvent("on".concat(event), function() {
+        method(window.event);
+      });
+    }
+  }
+  function getMods(modifier, key) {
+    var mods = key.slice(0, key.length - 1);
+    for (var i = 0; i < mods.length; i++) {
+      mods[i] = modifier[mods[i].toLowerCase()];
+    }
+    return mods;
+  }
+  function getKeys(key) {
+    if (typeof key !== "string")
+      key = "";
+    key = key.replace(/\s/g, "");
+    var keys = key.split(",");
+    var index = keys.lastIndexOf("");
+    for (; index >= 0; ) {
+      keys[index - 1] += ",";
+      keys.splice(index, 1);
+      index = keys.lastIndexOf("");
+    }
+    return keys;
+  }
+  function compareArray(a1, a2) {
+    var arr1 = a1.length >= a2.length ? a1 : a2;
+    var arr2 = a1.length >= a2.length ? a2 : a1;
+    var isIndex = true;
+    for (var i = 0; i < arr1.length; i++) {
+      if (arr2.indexOf(arr1[i]) === -1)
+        isIndex = false;
+    }
+    return isIndex;
+  }
+  var _keyMap = {
+    backspace: 8,
+    tab: 9,
+    clear: 12,
+    enter: 13,
+    return: 13,
+    esc: 27,
+    escape: 27,
+    space: 32,
+    left: 37,
+    up: 38,
+    right: 39,
+    down: 40,
+    del: 46,
+    delete: 46,
+    ins: 45,
+    insert: 45,
+    home: 36,
+    end: 35,
+    pageup: 33,
+    pagedown: 34,
+    capslock: 20,
+    num_0: 96,
+    num_1: 97,
+    num_2: 98,
+    num_3: 99,
+    num_4: 100,
+    num_5: 101,
+    num_6: 102,
+    num_7: 103,
+    num_8: 104,
+    num_9: 105,
+    num_multiply: 106,
+    num_add: 107,
+    num_enter: 108,
+    num_subtract: 109,
+    num_decimal: 110,
+    num_divide: 111,
+    "\u21EA": 20,
+    ",": 188,
+    ".": 190,
+    "/": 191,
+    "`": 192,
+    "-": isff ? 173 : 189,
+    "=": isff ? 61 : 187,
+    ";": isff ? 59 : 186,
+    "'": 222,
+    "[": 219,
+    "]": 221,
+    "\\": 220
+  };
+  var _modifier = {
+    "\u21E7": 16,
+    shift: 16,
+    "\u2325": 18,
+    alt: 18,
+    option: 18,
+    "\u2303": 17,
+    ctrl: 17,
+    control: 17,
+    "\u2318": 91,
+    cmd: 91,
+    command: 91
+  };
+  var modifierMap = {
+    16: "shiftKey",
+    18: "altKey",
+    17: "ctrlKey",
+    91: "metaKey",
+    shiftKey: 16,
+    ctrlKey: 17,
+    altKey: 18,
+    metaKey: 91
+  };
+  var _mods = {
+    16: false,
+    18: false,
+    17: false,
+    91: false
+  };
+  var _handlers = {};
+  for (k = 1; k < 20; k++) {
+    _keyMap["f".concat(k)] = 111 + k;
+  }
+  var k;
+  var _downKeys = [];
+  var _scope = "all";
+  var elementHasBindEvent = [];
+  var code = function code2(x) {
+    return _keyMap[x.toLowerCase()] || _modifier[x.toLowerCase()] || x.toUpperCase().charCodeAt(0);
+  };
+  function setScope(scope) {
+    _scope = scope || "all";
+  }
+  function getScope() {
+    return _scope || "all";
+  }
+  function getPressedKeyCodes() {
+    return _downKeys.slice(0);
+  }
+  function filter(event) {
+    var target = event.target || event.srcElement;
+    var tagName = target.tagName;
+    var flag = true;
+    if (target.isContentEditable || (tagName === "INPUT" || tagName === "TEXTAREA" || tagName === "SELECT") && !target.readOnly) {
+      flag = false;
+    }
+    return flag;
+  }
+  function isPressed(keyCode) {
+    if (typeof keyCode === "string") {
+      keyCode = code(keyCode);
+    }
+    return _downKeys.indexOf(keyCode) !== -1;
+  }
+  function deleteScope(scope, newScope) {
+    var handlers;
+    var i;
+    if (!scope)
+      scope = getScope();
+    for (var key in _handlers) {
+      if (Object.prototype.hasOwnProperty.call(_handlers, key)) {
+        handlers = _handlers[key];
+        for (i = 0; i < handlers.length; ) {
+          if (handlers[i].scope === scope)
+            handlers.splice(i, 1);
+          else
+            i++;
+        }
+      }
+    }
+    if (getScope() === scope)
+      setScope(newScope || "all");
+  }
+  function clearModifier(event) {
+    var key = event.keyCode || event.which || event.charCode;
+    var i = _downKeys.indexOf(key);
+    if (i >= 0) {
+      _downKeys.splice(i, 1);
+    }
+    if (event.key && event.key.toLowerCase() === "meta") {
+      _downKeys.splice(0, _downKeys.length);
+    }
+    if (key === 93 || key === 224)
+      key = 91;
+    if (key in _mods) {
+      _mods[key] = false;
+      for (var k in _modifier) {
+        if (_modifier[k] === key)
+          hotkeys[k] = false;
+      }
+    }
+  }
+  function unbind(keysInfo) {
+    if (!keysInfo) {
+      Object.keys(_handlers).forEach(function(key) {
+        return delete _handlers[key];
+      });
+    } else if (Array.isArray(keysInfo)) {
+      keysInfo.forEach(function(info) {
+        if (info.key)
+          eachUnbind(info);
+      });
+    } else if (typeof keysInfo === "object") {
+      if (keysInfo.key)
+        eachUnbind(keysInfo);
+    } else if (typeof keysInfo === "string") {
+      for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        args[_key - 1] = arguments[_key];
+      }
+      var scope = args[0], method = args[1];
+      if (typeof scope === "function") {
+        method = scope;
+        scope = "";
+      }
+      eachUnbind({
+        key: keysInfo,
+        scope,
+        method,
+        splitKey: "+"
+      });
+    }
+  }
+  var eachUnbind = function eachUnbind2(_ref) {
+    var key = _ref.key, scope = _ref.scope, method = _ref.method, _ref$splitKey = _ref.splitKey, splitKey = _ref$splitKey === void 0 ? "+" : _ref$splitKey;
+    var multipleKeys = getKeys(key);
+    multipleKeys.forEach(function(originKey) {
+      var unbindKeys = originKey.split(splitKey);
+      var len = unbindKeys.length;
+      var lastKey = unbindKeys[len - 1];
+      var keyCode = lastKey === "*" ? "*" : code(lastKey);
+      if (!_handlers[keyCode])
+        return;
+      if (!scope)
+        scope = getScope();
+      var mods = len > 1 ? getMods(_modifier, unbindKeys) : [];
+      _handlers[keyCode] = _handlers[keyCode].map(function(record) {
+        var isMatchingMethod = method ? record.method === method : true;
+        if (isMatchingMethod && record.scope === scope && compareArray(record.mods, mods)) {
+          return {};
+        }
+        return record;
+      });
+    });
+  };
+  function eventHandler(event, handler, scope) {
+    var modifiersMatch;
+    if (handler.scope === scope || handler.scope === "all") {
+      modifiersMatch = handler.mods.length > 0;
+      for (var y in _mods) {
+        if (Object.prototype.hasOwnProperty.call(_mods, y)) {
+          if (!_mods[y] && handler.mods.indexOf(+y) > -1 || _mods[y] && handler.mods.indexOf(+y) === -1) {
+            modifiersMatch = false;
+          }
+        }
+      }
+      if (handler.mods.length === 0 && !_mods[16] && !_mods[18] && !_mods[17] && !_mods[91] || modifiersMatch || handler.shortcut === "*") {
+        if (handler.method(event, handler) === false) {
+          if (event.preventDefault)
+            event.preventDefault();
+          else
+            event.returnValue = false;
+          if (event.stopPropagation)
+            event.stopPropagation();
+          if (event.cancelBubble)
+            event.cancelBubble = true;
+        }
+      }
+    }
+  }
+  function dispatch(event) {
+    var asterisk = _handlers["*"];
+    var key = event.keyCode || event.which || event.charCode;
+    if (!hotkeys.filter.call(this, event))
+      return;
+    if (key === 93 || key === 224)
+      key = 91;
+    if (_downKeys.indexOf(key) === -1 && key !== 229)
+      _downKeys.push(key);
+    ["ctrlKey", "altKey", "shiftKey", "metaKey"].forEach(function(keyName) {
+      var keyNum = modifierMap[keyName];
+      if (event[keyName] && _downKeys.indexOf(keyNum) === -1) {
+        _downKeys.push(keyNum);
+      } else if (!event[keyName] && _downKeys.indexOf(keyNum) > -1) {
+        _downKeys.splice(_downKeys.indexOf(keyNum), 1);
+      } else if (keyName === "metaKey" && event[keyName] && _downKeys.length === 3) {
+        if (!(event.ctrlKey || event.shiftKey || event.altKey)) {
+          _downKeys = _downKeys.slice(_downKeys.indexOf(keyNum));
+        }
+      }
+    });
+    if (key in _mods) {
+      _mods[key] = true;
+      for (var k in _modifier) {
+        if (_modifier[k] === key)
+          hotkeys[k] = true;
+      }
+      if (!asterisk)
+        return;
+    }
+    for (var e in _mods) {
+      if (Object.prototype.hasOwnProperty.call(_mods, e)) {
+        _mods[e] = event[modifierMap[e]];
+      }
+    }
+    if (event.getModifierState && !(event.altKey && !event.ctrlKey) && event.getModifierState("AltGraph")) {
+      if (_downKeys.indexOf(17) === -1) {
+        _downKeys.push(17);
+      }
+      if (_downKeys.indexOf(18) === -1) {
+        _downKeys.push(18);
+      }
+      _mods[17] = true;
+      _mods[18] = true;
+    }
+    var scope = getScope();
+    if (asterisk) {
+      for (var i = 0; i < asterisk.length; i++) {
+        if (asterisk[i].scope === scope && (event.type === "keydown" && asterisk[i].keydown || event.type === "keyup" && asterisk[i].keyup)) {
+          eventHandler(event, asterisk[i], scope);
+        }
+      }
+    }
+    if (!(key in _handlers))
+      return;
+    for (var _i = 0; _i < _handlers[key].length; _i++) {
+      if (event.type === "keydown" && _handlers[key][_i].keydown || event.type === "keyup" && _handlers[key][_i].keyup) {
+        if (_handlers[key][_i].key) {
+          var record = _handlers[key][_i];
+          var splitKey = record.splitKey;
+          var keyShortcut = record.key.split(splitKey);
+          var _downKeysCurrent = [];
+          for (var a = 0; a < keyShortcut.length; a++) {
+            _downKeysCurrent.push(code(keyShortcut[a]));
+          }
+          if (_downKeysCurrent.sort().join("") === _downKeys.sort().join("")) {
+            eventHandler(event, record, scope);
+          }
+        }
+      }
+    }
+  }
+  function isElementBind(element) {
+    return elementHasBindEvent.indexOf(element) > -1;
+  }
+  function hotkeys(key, option, method) {
+    _downKeys = [];
+    var keys = getKeys(key);
+    var mods = [];
+    var scope = "all";
+    var element = document;
+    var i = 0;
+    var keyup = false;
+    var keydown = true;
+    var splitKey = "+";
+    if (method === void 0 && typeof option === "function") {
+      method = option;
+    }
+    if (Object.prototype.toString.call(option) === "[object Object]") {
+      if (option.scope)
+        scope = option.scope;
+      if (option.element)
+        element = option.element;
+      if (option.keyup)
+        keyup = option.keyup;
+      if (option.keydown !== void 0)
+        keydown = option.keydown;
+      if (typeof option.splitKey === "string")
+        splitKey = option.splitKey;
+    }
+    if (typeof option === "string")
+      scope = option;
+    for (; i < keys.length; i++) {
+      key = keys[i].split(splitKey);
+      mods = [];
+      if (key.length > 1)
+        mods = getMods(_modifier, key);
+      key = key[key.length - 1];
+      key = key === "*" ? "*" : code(key);
+      if (!(key in _handlers))
+        _handlers[key] = [];
+      _handlers[key].push({
+        keyup,
+        keydown,
+        scope,
+        mods,
+        shortcut: keys[i],
+        method,
+        key: keys[i],
+        splitKey
+      });
+    }
+    if (typeof element !== "undefined" && !isElementBind(element) && window) {
+      elementHasBindEvent.push(element);
+      addEvent(element, "keydown", function(e) {
+        dispatch(e);
+      });
+      addEvent(window, "focus", function() {
+        _downKeys = [];
+      });
+      addEvent(element, "keyup", function(e) {
+        dispatch(e);
+        clearModifier(e);
+      });
+    }
+  }
+  var _api = {
+    setScope,
+    getScope,
+    deleteScope,
+    getPressedKeyCodes,
+    isPressed,
+    filter,
+    unbind
+  };
+  for (a in _api) {
+    if (Object.prototype.hasOwnProperty.call(_api, a)) {
+      hotkeys[a] = _api[a];
+    }
+  }
+  var a;
+  if (typeof window !== "undefined") {
+    _hotkeys = window.hotkeys;
+    hotkeys.noConflict = function(deep) {
+      if (deep && window.hotkeys === hotkeys) {
+        window.hotkeys = _hotkeys;
+      }
+      return hotkeys;
+    };
+    window.hotkeys = hotkeys;
+  }
+  var _hotkeys;
+  var hotkeys_esm_default = hotkeys;
+
+  // node_modules/react-hotkeys-hook/dist/react-hotkeys-hook.esm.js
+  var import_react2 = __toESM(require_react());
+  hotkeys_esm_default.filter = function() {
+    return true;
+  };
+  var tagFilter = function tagFilter2(_ref, enableOnTags) {
+    var target = _ref.target;
+    var targetTagName = target && target.tagName;
+    return Boolean(targetTagName && enableOnTags && enableOnTags.includes(targetTagName));
+  };
+  var isKeyboardEventTriggeredByInput = function isKeyboardEventTriggeredByInput2(ev) {
+    return tagFilter(ev, ["INPUT", "TEXTAREA", "SELECT"]);
+  };
+  function useHotkeys(keys, callback, options, deps) {
+    if (options instanceof Array) {
+      deps = options;
+      options = void 0;
+    }
+    var _ref2 = options || {}, enableOnTags = _ref2.enableOnTags, filter2 = _ref2.filter, keyup = _ref2.keyup, keydown = _ref2.keydown, _ref2$filterPreventDe = _ref2.filterPreventDefault, filterPreventDefault = _ref2$filterPreventDe === void 0 ? true : _ref2$filterPreventDe, _ref2$enabled = _ref2.enabled, enabled = _ref2$enabled === void 0 ? true : _ref2$enabled, _ref2$enableOnContent = _ref2.enableOnContentEditable, enableOnContentEditable = _ref2$enableOnContent === void 0 ? false : _ref2$enableOnContent;
+    var ref = (0, import_react2.useRef)(null);
+    var memoisedCallback = (0, import_react2.useCallback)(function(keyboardEvent, hotkeysEvent) {
+      var _keyboardEvent$target;
+      if (filter2 && !filter2(keyboardEvent)) {
+        return !filterPreventDefault;
+      }
+      if (isKeyboardEventTriggeredByInput(keyboardEvent) && !tagFilter(keyboardEvent, enableOnTags) || (_keyboardEvent$target = keyboardEvent.target) != null && _keyboardEvent$target.isContentEditable && !enableOnContentEditable) {
+        return true;
+      }
+      if (ref.current === null || document.activeElement === ref.current) {
+        callback(keyboardEvent, hotkeysEvent);
+        return true;
+      }
+      return false;
+    }, deps ? [ref, enableOnTags, filter2].concat(deps) : [ref, enableOnTags, filter2]);
+    (0, import_react2.useEffect)(function() {
+      if (!enabled) {
+        hotkeys_esm_default.unbind(keys, memoisedCallback);
+        return;
+      }
+      if (keyup && keydown !== true) {
+        options.keydown = false;
+      }
+      hotkeys_esm_default(keys, options || {}, memoisedCallback);
+      return function() {
+        return hotkeys_esm_default.unbind(keys, memoisedCallback);
+      };
+    }, [memoisedCallback, keys, enabled]);
+    return ref;
+  }
+  var isHotkeyPressed = hotkeys_esm_default.isPressed;
+
+  // scripts/twPalette.js
   function Icon({ name, ...props }) {
     const { ...icons } = esm_exports;
     const HeroIcon = icons[name] ? icons[name] : icons["SearchIcon"];
@@ -30654,28 +31123,11 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   }
   function TwPalette() {
     const [open, setOpen] = (0, import_react3.useState)(true);
-    const [active, setActive] = (0, import_react3.useState)(0);
-    const [keyPressed, setKeyPressed] = (0, import_react3.useState)("");
     const [rawQuery, setRawQuery] = (0, import_react3.useState)("");
     const [actions, setActions] = (0, import_react3.useState)([]);
-    const containerRef = (0, import_react3.useRef)(null);
-    const handleUserKeyPress = (0, import_react3.useCallback)((event) => {
-      const { key } = event;
-      setKeyPressed(key);
-      if ((keyPressed === "Meta" || keyPressed === "Control") && key === "k") {
-        setOpen(!open);
-      }
-      if (key === "Escape") {
-        setOpen(false);
-      }
-    }, [keyPressed]);
-    console.log(actions);
-    (0, import_react3.useEffect)(() => {
-      window.addEventListener("keydown", handleUserKeyPress);
-      return () => {
-        window.removeEventListener("keydown", handleUserKeyPress);
-      };
-    }, [handleUserKeyPress]);
+    useHotkeys("esc", () => setOpen(false));
+    useHotkeys("ctrl+k", () => setOpen(true));
+    useHotkeys("cmd+k", () => setOpen(true));
     (0, import_react3.useEffect)(() => {
       fetch("/actions/palette/actions").then((res) => res.json()).then((data) => {
         const actions2 = data.map((link) => ({
@@ -30689,45 +31141,54 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         setActions(actions2);
       });
     }, []);
-    useOutsideClick_default(containerRef, () => setOpen(false));
     const handleRoute = (event, item) => {
       setOpen(false);
-      if (event.ctrlKey || event.metaKey) {
-        return window.open(item.id, "_blank");
-      }
-      return window.location = item.id;
+      return event.ctrlKey || event.metaKey ? window.open(item.id, "_blank") : window.location = item.id;
     };
     const query = rawQuery.toLowerCase().replace(/^[#>]/, "");
-    const filteredActions = rawQuery.startsWith(">") ? actions.filter((action) => action.subtitle === "Settings > Content").filter((action) => action.name.toLowerCase().includes(query.substring(1).trim())) : rawQuery.startsWith("#") ? actions.filter((action) => action.subtitle === "Settings > System").filter((action) => action.name.toLowerCase().includes(query.substring(1).trim())) : rawQuery.startsWith("^") ? actions.filter((action) => action.subtitle === "Utilities").filter((action) => action.name.toLowerCase().includes(query.substring(1).trim())) : rawQuery.startsWith("$") ? actions.filter((action) => action.subtitle === "User").filter((action) => action.name.toLowerCase().includes(query.substring(1).trim())) : actions.filter((action) => action.name.toLowerCase().includes(query));
-    return /* @__PURE__ */ import_react3.default.createElement(import_react3.default.Fragment, null, open && /* @__PURE__ */ import_react3.default.createElement("div", {
-      className: "vtw-fixed vtw-inset-0 vtw-z-[99999] vtw-p-4 vtw-sm:p-6 vtw-md:p-20"
-    }, /* @__PURE__ */ import_react3.default.createElement("div", {
-      className: "vtw-fixed vtw-inset-0 vtw-bg-gray-500 vtw-bg-opacity-25 vtw-transition-opacity"
-    }), /* @__PURE__ */ import_react3.default.createElement(import_focus_trap_react.default, {
+    const filteredActions = actions.filter((action) => action.name.toLowerCase().includes(query));
+    function handleKeyDown(event) {
+      const el = event.currentTarget;
+      switch (event.key) {
+        case "Escape":
+          return setOpen(false);
+        case "ArrowDown":
+          return el?.nextSibling?.focus();
+        case "ArrowUp":
+          return el?.previousSibling?.focus();
+        default:
+          return;
+      }
+    }
+    return /* @__PURE__ */ import_react3.default.createElement(import_react3.default.Fragment, null, /* @__PURE__ */ import_react3.default.createElement("button", {
+      className: clsx_m_default("vtw-fixed vtw-bottom-0 vtw-left-0", "vtw-mb-4 vtw-ml-4", "vtw-flex vtw-items-center vtw-justify-center", "vtw-backdrop-blur-md vtw-shadow vtw-rounded-full", "vtw-bg-zinc-50/70 dark:vtw-bg-neutral-800/90", "dark:vtw-text-neutral-300", "vtw-h-8 vtw-w-8 vtw-z-[9999]", "vtw-cursor-pointer", "vtw-transition-transform hover:vtw-scale-110 active:vtw-scale-90"),
+      onClick: () => setOpen(!open)
+    }, /* @__PURE__ */ import_react3.default.createElement(Icon, {
+      name: "TerminalIcon",
+      className: "vtw-h-5 vtw-w-5"
+    })), open && /* @__PURE__ */ import_react3.default.createElement(import_focus_trap_react.default, {
       active: open
-    }, /* @__PURE__ */ import_react3.default.createElement("article", {
-      ref: containerRef,
-      className: "vtw-mx-auto vtw-flex vtw-flex-col vtw-max-h-[40rem] vtw-overflow-auto vtw-max-w-xl vtw-transform vtw-divide-y vtw-divide-gray-100 vtw-rounded-xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black vtw-ring-opacity-5 vtw-transition-all"
-    }, /* @__PURE__ */ import_react3.default.createElement("header", {
-      className: "relative"
+    }, /* @__PURE__ */ import_react3.default.createElement("div", {
+      onClick: () => setOpen(false),
+      className: "vtw-absolute vtw-inset-0 vtw-z-[9999] vtw-p-4 vtw-sm:p-6 vtw-md:p-20 vtw-flex vtw-flex-col vtw-items-center vtw-bg-gray-500 vtw-bg-opacity-25 vtw-transition-opacity"
+    }, /* @__PURE__ */ import_react3.default.createElement("nav", {
+      onClick: (e) => e.stopPropagation(),
+      className: "vtw-overflow-y-scroll vtw-relative vtw-text-sm vtw-text-gray-700 vtw-max-h-[40rem] vtw-max-w-xl vtw-w-full vtw-transform vtw-divide-y vtw-divide-gray-100 vtw-rounded-xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black vtw-ring-opacity-5 vtw-transition-all"
     }, /* @__PURE__ */ import_react3.default.createElement(SearchIcon_default2, {
-      className: "vtw-pointer-events-none vtw-absolute vtw-top-3.5 vtw-left-4 vtw-h-5 vtw-w-5 vtw-text-gray-400",
+      className: "vtw-pointer-events-none vtw-absolute vtw-top-4 vtw-left-4 vtw-h-5 vtw-w-5 vtw-text-gray-400",
       "aria-hidden": "true"
     }), /* @__PURE__ */ import_react3.default.createElement("input", {
-      className: "vtw-h-12 vtw-w-full vtw-border-0 vtw-bg-transparent vtw-pl-11 vtw-pr-4 vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 vtw-focus:ring-0 focus:vtw-border-none focus:vtw-outline-none focus:vtw-ring-0",
+      className: "vtw-h-12 vtw-w-[fill-available] vtw-pl-10 vtw-border-0 vtw-bg-transparent vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 vtw-focus:ring-0 focus:vtw-border-none focus:vtw-outline-none focus:vtw-ring-0",
       placeholder: "Search...",
-      onChange: (event) => setRawQuery(event.target.value)
-    })), /* @__PURE__ */ import_react3.default.createElement("main", {
-      className: "vtw-flex-1 vtw-overflow-y-scroll vtw-pb-20"
-    }, filteredActions.length > 0 && /* @__PURE__ */ import_react3.default.createElement("ul", {
-      autoFocus: true,
-      id: "actionElements",
-      className: "vtw--mx-4 vtw-text-sm vtw-text-gray-700"
-    }, filteredActions.map((item, idx) => /* @__PURE__ */ import_react3.default.createElement("div", {
+      onKeyDown: handleKeyDown,
+      onChange: (e) => setRawQuery(e.target.value)
+    }), filteredActions.map((item) => /* @__PURE__ */ import_react3.default.createElement("button", {
+      onKeyDown: handleKeyDown,
+      id: "action",
       onClick: (e) => handleRoute(e, item),
       key: item.id,
       value: item,
-      className: clsx_m_default("vtw-flex vtw-cursor-pointer vtw-select-none vtw-items-center vtw-px-4 vtw-py-2", "hover:vtw-bg-gray-200 vtw-transition-all vtw-duration-200", idx === active && "vtw-bg-gray-200")
+      className: clsx_m_default("vtw-flex vtw-cursor-pointer vtw-select-none vtw-items-center vtw-px-4 vtw-py-2 vtw-w-full vtw-text-left", "hover:vtw-bg-gray-200 vtw-transition-all vtw-duration-200 focus:vtw-bg-gray-200 focus:vtw-outline-none focus:vtw-ring-0")
     }, /* @__PURE__ */ import_react3.default.createElement("div", {
       className: clsx_m_default("vtw-flex vtw-items-center vtw-gap-2", "vtw-text-sm vtw-text-gray-800 dark:vtw-text-neutral-300", "vtw-p-2", "vtw-mx-2", "vtw-rounded-lg")
     }, /* @__PURE__ */ import_react3.default.createElement("div", {
@@ -30746,7 +31207,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       className: clsx_m_default("vtw-bg-neutral-600 dark:vtw-bg-neutral-400", "vtw-h-5 vtw-w-5 vtw-rounded-full", "vtw-flex vtw-items-center vtw-justify-center vtw-self-center")
     }, /* @__PURE__ */ import_react3.default.createElement("p", {
       className: clsx_m_default("vtw-text-[10px] vtw-leading-none vtw-font-bold", "vtw-text-white dark:vtw-text-neutral-800", "vtw-m-0")
-    }, item?.badgeCount))))))), rawQuery === "?" && /* @__PURE__ */ import_react3.default.createElement("div", {
+    }, item?.badgeCount)))))), rawQuery === "?" && /* @__PURE__ */ import_react3.default.createElement("div", {
       className: "vtw-py-4 vtw-px-6 vtw-text-center vtw-text-sm vtw-sm:px-14"
     }, /* @__PURE__ */ import_react3.default.createElement(SupportIcon_default, {
       className: "vtw-mx-auto vtw-h-6 vtw-w-6 vtw-text-gray-400",
@@ -30764,29 +31225,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       className: "vtw-mt-4 vtw-font-semibold vtw-text-gray-900"
     }, "No results found"), /* @__PURE__ */ import_react3.default.createElement("p", {
       className: "vtw-mt-2 vtw-text-gray-500"
-    }, "We couldn\u2019t find anything with that term. Please try again."))), /* @__PURE__ */ import_react3.default.createElement("footer", {
-      className: "vtw-flex vtw-fixed vtw-bottom-0 vtw-right-0 vtw-left-0 vtw-flex-shrink-0 vtw-mt-auto vtw-flex-wrap vtw-items-center vtw-bg-gray-50 vtw-py-2.5 vtw-px-4 vtw-text-xs vtw-text-gray-700"
-    }, "Type", " ", /* @__PURE__ */ import_react3.default.createElement("div", {
-      className: clsx_m_default("vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2", rawQuery.startsWith("#") ? "vtw-border-gray-300 vtw-text-indigo-600" : "vtw-border-gray-400 vtw-text-gray-900")
-    }, "#"), " ", /* @__PURE__ */ import_react3.default.createElement("span", {
-      className: "vtw-sm:hidden"
-    }, "for system settings,"), /* @__PURE__ */ import_react3.default.createElement("span", {
-      className: "vtw-hidden vtw-sm:inline"
-    }, "to access settings system,"), /* @__PURE__ */ import_react3.default.createElement("div", {
-      className: clsx_m_default("vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2", rawQuery.startsWith(">") ? "vtw-border-gray-300 vtw-text-indigo-600" : "vtw-border-gray-400 vtw-text-gray-900")
-    }, ">"), " ", "for settings content,", /* @__PURE__ */ import_react3.default.createElement("div", {
-      className: clsx_m_default("vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2", rawQuery.startsWith("^") ? "vtw-border-gray-300 vtw-text-indigo-600" : "vtw-border-gray-400 vtw-text-gray-900")
-    }, "^"), " ", "for utilities", /* @__PURE__ */ import_react3.default.createElement("div", {
-      className: clsx_m_default("vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2", rawQuery.startsWith("$") ? "vtw-border-gray-300 vtw-text-indigo-600" : "vtw-border-gray-400 vtw-text-gray-900")
-    }, "$"), " ", "for user information, and", " ", /* @__PURE__ */ import_react3.default.createElement("div", {
-      className: clsx_m_default("vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2", rawQuery === "?" ? "vtw-border-indigo-600 vtw-text-indigo-600" : "vtw-border-gray-400 vtw-text-gray-900")
-    }, "?"), " ", "for help.")))), /* @__PURE__ */ import_react3.default.createElement("button", {
-      className: clsx_m_default("vtw-fixed vtw-bottom-0 vtw-left-0", "vtw-mb-4 vtw-ml-4", "vtw-flex vtw-items-center vtw-justify-center", "vtw-backdrop-blur-md vtw-shadow vtw-rounded-full", "vtw-bg-zinc-50/70 dark:vtw-bg-neutral-800/90", "dark:vtw-text-neutral-300", "vtw-h-8 vtw-w-8 vtw-z-[9999]", "vtw-cursor-pointer", "vtw-transition-transform hover:vtw-scale-110 active:vtw-scale-90"),
-      onClick: () => setOpen(!open)
-    }, /* @__PURE__ */ import_react3.default.createElement(Icon, {
-      name: "TerminalIcon",
-      className: "vtw-h-5 vtw-w-5"
-    })));
+    }, "We couldn\u2019t find anything with that term. Please try again."))))));
   }
   var twPalette_default = TwPalette;
 
@@ -30801,6 +31240,15 @@ object-assign
 (c) Sindre Sorhus
 @license MIT
 */
+/*!
+ * hotkeys-js v3.8.7
+ * A simple micro-library for defining and dispatching keyboard shortcuts. It has no dependencies.
+ * 
+ * Copyright (c) 2021 kenny wong <wowohoo@qq.com>
+ * http://jaywcjlove.github.io/hotkeys
+ * 
+ * Licensed under the MIT license.
+ */
 /*!
 * focus-trap 6.7.3
 * @license MIT, https://github.com/focus-trap/focus-trap/blob/master/LICENSE
