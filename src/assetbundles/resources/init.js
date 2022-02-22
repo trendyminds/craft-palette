@@ -30654,13 +30654,11 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   }
   function TwPalette() {
     const [open, setOpen] = (0, import_react3.useState)(true);
-    const [theme, setTheme] = (0, import_react3.useState)(false);
     const [active, setActive] = (0, import_react3.useState)(0);
     const [keyPressed, setKeyPressed] = (0, import_react3.useState)("");
     const [rawQuery, setRawQuery] = (0, import_react3.useState)("");
     const [actions, setActions] = (0, import_react3.useState)([]);
     const containerRef = (0, import_react3.useRef)(null);
-    useOutsideClick_default(containerRef, () => setOpen(false));
     const handleUserKeyPress = (0, import_react3.useCallback)((event) => {
       const { key } = event;
       setKeyPressed(key);
@@ -30671,6 +30669,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         setOpen(false);
       }
     }, [keyPressed]);
+    console.log(actions);
     (0, import_react3.useEffect)(() => {
       window.addEventListener("keydown", handleUserKeyPress);
       return () => {
@@ -30690,8 +30689,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         setActions(actions2);
       });
     }, []);
-    const query = rawQuery.toLowerCase().replace(/^[#>]/, "");
-    const filteredActions = actions.filter((action) => action.name.toLowerCase().includes(query));
+    useOutsideClick_default(containerRef, () => setOpen(false));
     const handleRoute = (event, item) => {
       setOpen(false);
       if (event.ctrlKey || event.metaKey) {
@@ -30699,6 +30697,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       }
       return window.location = item.id;
     };
+    const query = rawQuery.toLowerCase().replace(/^[#>]/, "");
+    const filteredActions = rawQuery.startsWith(">") ? actions.filter((action) => action.subtitle === "Settings > Content").filter((action) => action.name.toLowerCase().includes(query.substring(1).trim())) : rawQuery.startsWith("#") ? actions.filter((action) => action.subtitle === "Settings > System").filter((action) => action.name.toLowerCase().includes(query.substring(1).trim())) : rawQuery.startsWith("^") ? actions.filter((action) => action.subtitle === "Utilities").filter((action) => action.name.toLowerCase().includes(query.substring(1).trim())) : rawQuery.startsWith("$") ? actions.filter((action) => action.subtitle === "User").filter((action) => action.name.toLowerCase().includes(query.substring(1).trim())) : actions.filter((action) => action.name.toLowerCase().includes(query));
     return /* @__PURE__ */ import_react3.default.createElement(import_react3.default.Fragment, null, open && /* @__PURE__ */ import_react3.default.createElement("div", {
       className: "vtw-fixed vtw-inset-0 vtw-z-[99999] vtw-p-4 vtw-sm:p-6 vtw-md:p-20"
     }, /* @__PURE__ */ import_react3.default.createElement("div", {
@@ -30718,7 +30718,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       placeholder: "Search...",
       onChange: (event) => setRawQuery(event.target.value)
     })), /* @__PURE__ */ import_react3.default.createElement("main", {
-      className: "vtw-flex-1 vtw-overflow-y-scroll"
+      className: "vtw-flex-1 vtw-overflow-y-scroll vtw-pb-20"
     }, filteredActions.length > 0 && /* @__PURE__ */ import_react3.default.createElement("ul", {
       autoFocus: true,
       id: "actionElements",
@@ -30747,7 +30747,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }, /* @__PURE__ */ import_react3.default.createElement("p", {
       className: clsx_m_default("vtw-text-[10px] vtw-leading-none vtw-font-bold", "vtw-text-white dark:vtw-text-neutral-800", "vtw-m-0")
     }, item?.badgeCount))))))), rawQuery === "?" && /* @__PURE__ */ import_react3.default.createElement("div", {
-      className: "vtw-pb-14 vtw-px-6 vtw-text-center vtw-text-sm vtw-sm:px-14"
+      className: "vtw-py-4 vtw-px-6 vtw-text-center vtw-text-sm vtw-sm:px-14"
     }, /* @__PURE__ */ import_react3.default.createElement(SupportIcon_default, {
       className: "vtw-mx-auto vtw-h-6 vtw-w-6 vtw-text-gray-400",
       "aria-hidden": "true"
@@ -30756,7 +30756,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }, "Help with searching"), /* @__PURE__ */ import_react3.default.createElement("p", {
       className: "vtw-mt-2 vtw-text-gray-500"
     }, "Use this tool to quickly search for users and projects across our entire platform. You can also use the search modifiers found in the footer below to limit the results to just users or projects.")), query !== "" && rawQuery !== "?" && filteredActions.length === 0 && /* @__PURE__ */ import_react3.default.createElement("div", {
-      className: "vtw-py-14 vtw-px-6 vtw-text-center vtw-text-sm vtw-sm:px-14"
+      className: "vtw-py-4 vtw-px-6 vtw-text-center vtw-text-sm vtw-sm:px-14"
     }, /* @__PURE__ */ import_react3.default.createElement(ExclamationIcon_default, {
       className: "vtw-mx-auto vtw-h-6 vtw-w-6 vtw-text-gray-400",
       "aria-hidden": "true"
@@ -30770,11 +30770,15 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       className: clsx_m_default("vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2", rawQuery.startsWith("#") ? "vtw-border-gray-300 vtw-text-indigo-600" : "vtw-border-gray-400 vtw-text-gray-900")
     }, "#"), " ", /* @__PURE__ */ import_react3.default.createElement("span", {
       className: "vtw-sm:hidden"
-    }, "for projects,"), /* @__PURE__ */ import_react3.default.createElement("span", {
+    }, "for system settings,"), /* @__PURE__ */ import_react3.default.createElement("span", {
       className: "vtw-hidden vtw-sm:inline"
-    }, "to access projects,"), /* @__PURE__ */ import_react3.default.createElement("div", {
+    }, "to access settings system,"), /* @__PURE__ */ import_react3.default.createElement("div", {
       className: clsx_m_default("vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2", rawQuery.startsWith(">") ? "vtw-border-gray-300 vtw-text-indigo-600" : "vtw-border-gray-400 vtw-text-gray-900")
-    }, ">"), " ", "for users, and", " ", /* @__PURE__ */ import_react3.default.createElement("div", {
+    }, ">"), " ", "for settings content,", /* @__PURE__ */ import_react3.default.createElement("div", {
+      className: clsx_m_default("vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2", rawQuery.startsWith("^") ? "vtw-border-gray-300 vtw-text-indigo-600" : "vtw-border-gray-400 vtw-text-gray-900")
+    }, "^"), " ", "for utilities", /* @__PURE__ */ import_react3.default.createElement("div", {
+      className: clsx_m_default("vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2", rawQuery.startsWith("$") ? "vtw-border-gray-300 vtw-text-indigo-600" : "vtw-border-gray-400 vtw-text-gray-900")
+    }, "$"), " ", "for user information, and", " ", /* @__PURE__ */ import_react3.default.createElement("div", {
       className: clsx_m_default("vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2", rawQuery === "?" ? "vtw-border-indigo-600 vtw-text-indigo-600" : "vtw-border-gray-400 vtw-text-gray-900")
     }, "?"), " ", "for help.")))), /* @__PURE__ */ import_react3.default.createElement("button", {
       className: clsx_m_default("vtw-fixed vtw-bottom-0 vtw-left-0", "vtw-mb-4 vtw-ml-4", "vtw-flex vtw-items-center vtw-justify-center", "vtw-backdrop-blur-md vtw-shadow vtw-rounded-full", "vtw-bg-zinc-50/70 dark:vtw-bg-neutral-800/90", "dark:vtw-text-neutral-300", "vtw-h-8 vtw-w-8 vtw-z-[9999]", "vtw-cursor-pointer", "vtw-transition-transform hover:vtw-scale-110 active:vtw-scale-90"),

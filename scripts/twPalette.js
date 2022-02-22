@@ -14,14 +14,12 @@ function Icon({ name, ...props }) {
 
 function TwPalette() {
 	const [open, setOpen] = useState(true)
-	const [theme, setTheme] = useState(false)
+	// This is potentially for scrolling the list
 	const [active, setActive] = useState(0)
 	const [keyPressed, setKeyPressed] = useState('')
 	const [rawQuery, setRawQuery] = useState('')
 	const [actions, setActions] = useState([])
 	const containerRef = useRef(null)
-
-	useOutsideClick(containerRef, () => setOpen(false))
 
 	const handleUserKeyPress = useCallback(
 		(event) => {
@@ -36,6 +34,8 @@ function TwPalette() {
 		},
 		[keyPressed]
 	)
+
+	console.log(actions)
 
 	useEffect(() => {
 		window.addEventListener('keydown', handleUserKeyPress)
@@ -60,11 +60,7 @@ function TwPalette() {
 			})
 	}, [])
 
-	const query = rawQuery.toLowerCase().replace(/^[#>]/, '')
-
-	const filteredActions = actions.filter((action) =>
-		action.name.toLowerCase().includes(query)
-	)
+	useOutsideClick(containerRef, () => setOpen(false))
 
 	const handleRoute = (event, item) => {
 		setOpen(false)
@@ -73,6 +69,21 @@ function TwPalette() {
 		}
 		return (window.location = item.id)
 	}
+
+	const query = rawQuery.toLowerCase().replace(/^[#>]/, '')
+
+	const filteredActions = 
+		rawQuery.startsWith('>')
+		? actions.filter((action) => action.subtitle === 'Settings > Content').filter(action => action.name.toLowerCase().includes(query.substring(1).trim()))
+		: rawQuery.startsWith('#')
+		? actions.filter((action) => action.subtitle === 'Settings > System').filter(action => action.name.toLowerCase().includes(query.substring(1).trim()))
+		: rawQuery.startsWith('^')
+		? actions.filter((action) => action.subtitle === 'Utilities').filter(action => action.name.toLowerCase().includes(query.substring(1).trim()))
+		: rawQuery.startsWith('$')
+		? actions.filter((action) => action.subtitle === 'User').filter(action => action.name.toLowerCase().includes(query.substring(1).trim()))
+		: actions.filter((action) => action.name.toLowerCase().includes(query))
+
+
 
 	return (
 		<>
@@ -99,7 +110,7 @@ function TwPalette() {
 							</header>
 
 							{/* List */}
-							<main className="vtw-flex-1 vtw-overflow-y-scroll">
+							<main className="vtw-flex-1 vtw-overflow-y-scroll vtw-pb-20">
 								{filteredActions.length > 0 && (
 									<ul
 										autoFocus
@@ -168,7 +179,7 @@ function TwPalette() {
 								)}
 
 								{rawQuery === '?' && (
-									<div className="vtw-pb-14 vtw-px-6 vtw-text-center vtw-text-sm vtw-sm:px-14">
+									<div className="vtw-py-4 vtw-px-6 vtw-text-center vtw-text-sm vtw-sm:px-14">
 										<SupportIcon
 											className="vtw-mx-auto vtw-h-6 vtw-w-6 vtw-text-gray-400"
 											aria-hidden="true"
@@ -188,7 +199,7 @@ function TwPalette() {
 								{query !== '' &&
 									rawQuery !== '?' &&
 									filteredActions.length === 0 && (
-										<div className="vtw-py-14 vtw-px-6 vtw-text-center vtw-text-sm vtw-sm:px-14">
+										<div className="vtw-py-4 vtw-px-6 vtw-text-center vtw-text-sm vtw-sm:px-14">
 											<ExclamationIcon
 												className="vtw-mx-auto vtw-h-6 vtw-w-6 vtw-text-gray-400"
 												aria-hidden="true"
@@ -216,9 +227,9 @@ function TwPalette() {
 								>
 									#
 								</div>{' '}
-								<span className="vtw-sm:hidden">for projects,</span>
+								<span className="vtw-sm:hidden">for system settings,</span>
 								<span className="vtw-hidden vtw-sm:inline">
-									to access projects,
+									to access settings system,
 								</span>
 								<div
 									className={clsx(
@@ -230,7 +241,29 @@ function TwPalette() {
 								>
 									&gt;
 								</div>{' '}
-								for users, and{' '}
+								for settings content,
+								<div
+									className={clsx(
+										'vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2',
+										rawQuery.startsWith('^')
+											? 'vtw-border-gray-300 vtw-text-indigo-600'
+											: 'vtw-border-gray-400 vtw-text-gray-900'
+									)}
+								>
+									^
+								</div>{' '}
+								for utilities
+								<div
+									className={clsx(
+										'vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2',
+										rawQuery.startsWith('$')
+											? 'vtw-border-gray-300 vtw-text-indigo-600'
+											: 'vtw-border-gray-400 vtw-text-gray-900'
+									)}
+								>
+									$
+								</div>{' '}
+								for user information, and{' '}
 								<div
 									className={clsx(
 										'vtw-mx-1 vtw-flex vtw-h-5 vtw-w-5 vtw-items-center vtw-justify-center vtw-rounded vtw-border vtw-bg-white vtw-font-semibold vtw-sm:mx-2',
