@@ -27377,7 +27377,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       return el.focus();
     }
     return /* @__PURE__ */ import_react4.default.createElement("nav", {
-      className: clsx_m_default("vtw-overflow-y-scroll vtw-px-3 vtw-relative vtw-text-sm  vtw-max-h-[40rem] vtw-max-w-xl vtw-w-full vtw-transform vtw-rounded-xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black vtw-ring-opacity-5 vtw-transition-all", "dark:vtw-bg-gray-900")
+      className: clsx_m_default("vtw-scrollbar vtw-overflow-y-scroll vtw-px-3 vtw-relative vtw-text-sm  vtw-max-h-[40rem] vtw-max-w-xl vtw-w-full vtw-transform vtw-rounded-xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black vtw-ring-opacity-5 vtw-transition-all", "dark:vtw-bg-gray-900")
     }, /* @__PURE__ */ import_react4.default.createElement("form", {
       className: "vtw-sticky vtw-top-0 vtw-bg-white dark:vtw-bg-gray-900"
     }, /* @__PURE__ */ import_react4.default.createElement(SearchIcon_default, {

@@ -1,3 +1,23 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@layer utilities {
+	.vtw-scrollbar {
+		&::-webkit-scrollbar {
+			@apply vtw-w-2 vtw-h-2;
+		}
+
+		&::-webkit-scrollbar-track {
+			@apply vtw-bg-gray-100 dark:vtw-bg-gray-900;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			@apply vtw-bg-gray-900 dark:vtw-bg-gray-400 vtw-rounded;
+		}
+
+		&::-webkit-scrollbar-thumb:hover {
+			@apply vtw-bg-gray-500;
+		}
+	}
+}
