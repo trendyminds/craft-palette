@@ -80,7 +80,10 @@ export default function Palette() {
 			>
 				<Dialog
 					onClose={setIsOpen}
-					className="vtw-absolute vtw-inset-0 vtw-z-[9999] vtw-p-4 lg:vtw-p-[25vh] vtw-pt-20 vtw-overflow-y-auto"
+					className={clsx(
+						'vtw-absolute vtw-inset-0 vtw-z-[9999] vtw-p-4 lg:vtw-p-[25vh] vtw-pt-20 vtw-overflow-y-auto',
+						'dark:vtw-bg-gray-900/75'
+					)}
 				>
 					<Transition.Child
 						enter="vtw-ease-out vtw-duration-300"
@@ -106,14 +109,20 @@ export default function Palette() {
 									? window.open(project.id, '_blank') && setIsOpen(false)
 									: (window.location.url = project.id && setIsOpen(false))
 							}}
-							className="vtw-relative vtw-mx-auto vtw-mx-w-xl vtw-max-w-2xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black/5 vtw-rounded-xl vtw-divide-y vtw-divide-gray-100 vtw-overflow-hidden"
+							className={clsx(
+								'vtw-relative vtw-mx-auto vtw-mx-w-xl vtw-max-w-2xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black/5 vtw-rounded-xl vtw-divide-y vtw-divide-gray-100 vtw-overflow-hidden',
+								'dark:vtw-bg-gray-900'
+							)}
 							as="div"
 						>
 							<div className="vtw-flex vtw-items-center vtw-pl-6">
 								<SearchIcon className="vtw-h-6 vtw-w-6 vtw-text-gray-500" />
 								<Combobox.Input
 									onChange={(event) => setQuery(event.target.value)}
-									className="vtw-w-full vtw-ring-0 vtw-bg-transparent vtw-border-0 focus:vtw-ring-0 vtw-focus:outline-none vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 vtw-h-12"
+									className={clsx(
+										'vtw-w-full vtw-ring-0 vtw-bg-transparent vtw-border-0 focus:vtw-ring-0 vtw-focus:outline-none vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 vtw-h-12',
+										'dark:vtw-placeholder-neutral-400 dark:vtw-text-white'
+									)}
 									placeholder="Search..."
 								/>
 							</div>
@@ -131,36 +140,27 @@ export default function Palette() {
 											{({ active }) => (
 												<div
 													// onClick={(e) => handleClick(e, project.url)}
-													className={`vtw-p-4 vtw-flex vtw-justify-between vtw-items-center vtw-mx-2 vtw-rounded-lg vtw-space-x-1 vtw-cursor-pointer ${
-														active ? 'vtw-bg-gray-100' : 'vtw-bg-white'
+													className={`vtw-p-4 vtw-flex vtw-justify-between vtw-items-center vtw-mx-2 vtw-rounded-lg vtw-space-x-1 vtw-cursor-pointer focus:vtw-bg-gray-100 ${
+														active
+															? 'vtw-text-gray-700 dark:vtw-text-white vtw-bg-gray-100 dark:vtw-bg-gray-800'
+															: 'vtw-bg-white dark:vtw-bg-gray-900 dark:vtw-text-neutral-400 '
 													}`}
 												>
-													<div className="vtw-flex vtw-text-gray-600 vtw-items-center vtw-gap-2">
+													<div className="vtw-flex vtw-items-center vtw-gap-2">
 														<div className={clsx('vtw-h-6 vtw-w-6')}>
 															<Icon name={project.icon} />
 														</div>
-														<span
-															className={`vtw-capitalize ${
-																active ? 'vtw-text-gray-700' : ''
-															}`}
-														>
+														<span className={`vtw-capitalize`}>
 															{project.name}
 														</span>
 														{project.subtitle && (
-															<span
-																className={`${
-																	active ? 'vtw-text-gray-700' : ''
-																}`}
-															>
-																{' '}
-																/ {project.subtitle}
-															</span>
+															<span> / {project.subtitle}</span>
 														)}
 													</div>
 													<p
 														className={`${
 															active ? 'vtw-opacity-100' : 'vtw-opacity-0'
-														} vtw-m-0 vtw-text-gray-700 vtw-transition-all`}
+														} vtw-m-0 vtw-transition-all`}
 													>
 														Jump to...
 													</p>

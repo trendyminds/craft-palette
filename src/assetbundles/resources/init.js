@@ -27551,7 +27551,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       afterLeave: () => setQuery("")
     }, /* @__PURE__ */ import_react33.default.createElement(An, {
       onClose: setIsOpen,
-      className: "vtw-absolute vtw-inset-0 vtw-z-[9999] vtw-p-4 lg:vtw-p-[25vh] vtw-pt-20 vtw-overflow-y-auto"
+      className: clsx_m_default("vtw-absolute vtw-inset-0 vtw-z-[9999] vtw-p-4 lg:vtw-p-[25vh] vtw-pt-20 vtw-overflow-y-auto", "dark:vtw-bg-gray-900/75")
     }, /* @__PURE__ */ import_react33.default.createElement(mt.Child, {
       enter: "vtw-ease-out vtw-duration-300",
       enterFrom: "vtw-opacity-0",
@@ -27572,7 +27572,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       onChange: (project) => {
         window.event.ctrlKey || window.event.metaKey ? window.open(project.id, "_blank") && setIsOpen(false) : window.location.url = project.id && setIsOpen(false);
       },
-      className: "vtw-relative vtw-mx-auto vtw-mx-w-xl vtw-max-w-2xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black/5 vtw-rounded-xl vtw-divide-y vtw-divide-gray-100 vtw-overflow-hidden",
+      className: clsx_m_default("vtw-relative vtw-mx-auto vtw-mx-w-xl vtw-max-w-2xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black/5 vtw-rounded-xl vtw-divide-y vtw-divide-gray-100 vtw-overflow-hidden", "dark:vtw-bg-gray-900"),
       as: "div"
     }, /* @__PURE__ */ import_react33.default.createElement("div", {
       className: "vtw-flex vtw-items-center vtw-pl-6"
@@ -27580,7 +27580,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       className: "vtw-h-6 vtw-w-6 vtw-text-gray-500"
     }), /* @__PURE__ */ import_react33.default.createElement(Na.Input, {
       onChange: (event) => setQuery(event.target.value),
-      className: "vtw-w-full vtw-ring-0 vtw-bg-transparent vtw-border-0 focus:vtw-ring-0 vtw-focus:outline-none vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 vtw-h-12",
+      className: clsx_m_default("vtw-w-full vtw-ring-0 vtw-bg-transparent vtw-border-0 focus:vtw-ring-0 vtw-focus:outline-none vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 vtw-h-12", "dark:vtw-placeholder-neutral-400 dark:vtw-text-white"),
       placeholder: "Search..."
     })), filteredProjects.length > 0 && /* @__PURE__ */ import_react33.default.createElement(Na.Options, {
       static: true,
@@ -27590,19 +27590,17 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       value: project,
       className: "vtw-list-none"
     }, ({ active }) => /* @__PURE__ */ import_react33.default.createElement("div", {
-      className: `vtw-p-4 vtw-flex vtw-justify-between vtw-items-center vtw-mx-2 vtw-rounded-lg vtw-space-x-1 vtw-cursor-pointer ${active ? "vtw-bg-gray-100" : "vtw-bg-white"}`
+      className: `vtw-p-4 vtw-flex vtw-justify-between vtw-items-center vtw-mx-2 vtw-rounded-lg vtw-space-x-1 vtw-cursor-pointer focus:vtw-bg-gray-100 ${active ? "vtw-text-gray-700 dark:vtw-text-white vtw-bg-gray-100 dark:vtw-bg-gray-800" : "vtw-bg-white dark:vtw-bg-gray-900 dark:vtw-text-neutral-400 "}`
     }, /* @__PURE__ */ import_react33.default.createElement("div", {
-      className: "vtw-flex vtw-text-gray-600 vtw-items-center vtw-gap-2"
+      className: "vtw-flex vtw-items-center vtw-gap-2"
     }, /* @__PURE__ */ import_react33.default.createElement("div", {
       className: clsx_m_default("vtw-h-6 vtw-w-6")
     }, /* @__PURE__ */ import_react33.default.createElement(Icon, {
       name: project.icon
     })), /* @__PURE__ */ import_react33.default.createElement("span", {
-      className: `vtw-capitalize ${active ? "vtw-text-gray-700" : ""}`
-    }, project.name), project.subtitle && /* @__PURE__ */ import_react33.default.createElement("span", {
-      className: `${active ? "vtw-text-gray-700" : ""}`
-    }, " ", "/ ", project.subtitle)), /* @__PURE__ */ import_react33.default.createElement("p", {
-      className: `${active ? "vtw-opacity-100" : "vtw-opacity-0"} vtw-m-0 vtw-text-gray-700 vtw-transition-all`
+      className: `vtw-capitalize`
+    }, project.name), project.subtitle && /* @__PURE__ */ import_react33.default.createElement("span", null, " / ", project.subtitle)), /* @__PURE__ */ import_react33.default.createElement("p", {
+      className: `${active ? "vtw-opacity-100" : "vtw-opacity-0"} vtw-m-0 vtw-transition-all`
     }, "Jump to..."))))), query === "?" && /* @__PURE__ */ import_react33.default.createElement("div", {
       className: "vtw-pb-4 vtw-px-6 vtw-text-center vtw-text-sm vtw-sm:px-14"
     }, /* @__PURE__ */ import_react33.default.createElement(SupportIcon_default, {
