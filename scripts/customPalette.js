@@ -12,7 +12,7 @@ function Icon({ name, ...props }) {
 	return <HeroIcon {...props} />
 }
 
-function TwPalette() {
+function CustomPalette() {
 	const [open, setOpen] = useState(true)
 	const [rawQuery, setRawQuery] = useState('')
 	const [actions, setActions] = useState([])
@@ -207,4 +207,4 @@ function TwPalette() {
 	)
 }
 
-export default TwPalette
+export default CustomPalette

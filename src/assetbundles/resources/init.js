@@ -29918,7 +29918,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   // scripts/palette.js
   var import_kbar = __toESM(require_lib());
 
-  // scripts/twPalette.js
+  // scripts/customPalette.js
   var import_react3 = __toESM(require_react());
 
   // node_modules/@heroicons/react/solid/esm/AcademicCapIcon.js
@@ -30624,7 +30624,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   // node_modules/@heroicons/react/solid/esm/ZoomOutIcon.js
   var React461 = __toESM(require_react(), 1);
 
-  // scripts/twPalette.js
+  // scripts/customPalette.js
   var import_focus_trap_react = __toESM(require_focus_trap_react());
 
   // node_modules/hotkeys-js/dist/hotkeys.esm.js
@@ -31113,7 +31113,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   }
   var isHotkeyPressed = hotkeys_esm_default.isPressed;
 
-  // scripts/twPalette.js
+  // scripts/customPalette.js
   function Icon({ name, ...props }) {
     const { ...icons } = esm_exports;
     const HeroIcon = icons[name] ? icons[name] : icons["SearchIcon"];
@@ -31121,7 +31121,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       ...props
     });
   }
-  function TwPalette() {
+  function CustomPalette() {
     const [open, setOpen] = (0, import_react3.useState)(true);
     const [rawQuery, setRawQuery] = (0, import_react3.useState)("");
     const [actions, setActions] = (0, import_react3.useState)([]);
@@ -31227,13 +31227,13 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       className: "vtw-mt-2 vtw-text-gray-500"
     }, "We couldn\u2019t find anything with that term. Please try again."))))));
   }
-  var twPalette_default = TwPalette;
+  var customPalette_default = CustomPalette;
 
   // scripts/init.js
   var $el = document.createElement("div");
   $el.setAttribute("data-palette", "");
   document.body.appendChild($el);
-  document.querySelectorAll("[data-palette]").forEach(($el2) => (0, import_react_dom.render)(/* @__PURE__ */ import_react4.default.createElement(twPalette_default, null), $el2));
+  document.querySelectorAll("[data-palette]").forEach(($el2) => (0, import_react_dom.render)(/* @__PURE__ */ import_react4.default.createElement(customPalette_default, null), $el2));
 })();
 /*
 object-assign
