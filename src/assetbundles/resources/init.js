@@ -27298,6 +27298,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         if (event.key === "k" && (event.metaKey || event.ctrlKey)) {
           setOpen(!open);
         }
+        if (event.key === "Escape") {
+          setOpen(false);
+        }
       }
       window.addEventListener("keydown", onKeydown);
       return () => {
@@ -27329,17 +27332,20 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     const filteredActions = actions.filter((action) => action.name.toLowerCase().includes(query));
     function handleKeyDown(event) {
       const el = event.currentTarget;
-      setActive(el);
       switch (event.key) {
         case "Escape":
           return setOpen(false);
         case "ArrowDown":
-          return el?.nextSibling?.focus() && setActive(el?.nextSibling);
+          return el?.nextSibling?.focus();
         case "ArrowUp":
-          return el?.previousSibling?.focus() && setActive(el?.previousSibling);
+          return el?.previousSibling?.focus();
         default:
           return;
       }
+    }
+    function handleMouseOver(event) {
+      const el = event.currentTarget;
+      return el.focus();
     }
     console.log(active?.id);
     return /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("button", {
@@ -27365,12 +27371,13 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       onKeyDown: handleKeyDown,
       onChange: (e) => setRawQuery(e.target.value)
     }), filteredActions.map((item, idx) => /* @__PURE__ */ import_react.default.createElement("button", {
+      onMouseOver: handleMouseOver,
       onKeyDown: handleKeyDown,
       id: idx,
       onClick: (e) => handleRoute(e, item),
       key: item.id,
       value: item,
-      className: clsx_m_default("vtw-flex vtw-items-center vtw-gap-3", "vtw-text-sm vtw-text-gray-500 vtw-border-none vtw-bg-white", "vtw-px-2 vtw-py-2 vtw-my-1 vtw-w-full vtw-text-left", "vtw-cursor-pointer vtw-select-none vtw-rounded-lg vtw-group", " focus:vtw-outline-none focus:vtw-ring-0 active:vtw-border-0", "dark:vtw-text-neutral-300", active && "hover:vtw-bg-gray-100 vtw-transition-colors vtw-duration-200 focus:vtw-bg-gray-100")
+      className: clsx_m_default("vtw-flex vtw-items-center vtw-gap-3", "vtw-text-sm vtw-text-gray-500 vtw-border-none vtw-bg-white", "vtw-px-2 vtw-py-3 vtw-my-1 vtw-w-full vtw-text-left", "vtw-cursor-pointer vtw-select-none vtw-rounded-lg vtw-group", " focus:vtw-outline-none focus:vtw-ring-0 active:vtw-border-0", "dark:vtw-text-neutral-300", "vtw-transition-colors vtw-duration-200 focus:vtw-bg-gray-100")
     }, /* @__PURE__ */ import_react.default.createElement("div", {
       className: clsx_m_default("vtw-h-6 vtw-w-6")
     }, /* @__PURE__ */ import_react.default.createElement(Icon, {

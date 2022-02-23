@@ -22,6 +22,9 @@ function Palette() {
 			if (event.key === 'k' && (event.metaKey || event.ctrlKey)) {
 				setOpen(!open)
 			}
+			if (event.key === 'Escape') {
+				setOpen(false)
+			}
 		}
 		window.addEventListener('keydown', onKeydown)
 		return () => {
@@ -64,17 +67,21 @@ function Palette() {
 
 	function handleKeyDown(event) {
 		const el = event.currentTarget
-		setActive(el)
 		switch (event.key) {
 			case 'Escape':
 				return setOpen(false)
 			case 'ArrowDown':
-				return el?.nextSibling?.focus() && setActive(el?.nextSibling)
+				return el?.nextSibling?.focus()
 			case 'ArrowUp':
-				return el?.previousSibling?.focus() && setActive(el?.previousSibling)
+				return el?.previousSibling?.focus()
 			default:
 				return
 		}
+	}
+
+	function handleMouseOver(event) {
+		const el = event.currentTarget
+		return el.focus()
 	}
 
 
@@ -124,6 +131,7 @@ function Palette() {
 							/>
 							{filteredActions.map((item, idx) => (
 								<button
+									onMouseOver={handleMouseOver}
 									onKeyDown={handleKeyDown}
 									id={idx}
 									onClick={(e) => handleRoute(e, item)}
@@ -132,11 +140,11 @@ function Palette() {
 									className={clsx(
 										'vtw-flex vtw-items-center vtw-gap-3',
 										'vtw-text-sm vtw-text-gray-500 vtw-border-none vtw-bg-white',
-										'vtw-px-2 vtw-py-2 vtw-my-1 vtw-w-full vtw-text-left',
+										'vtw-px-2 vtw-py-3 vtw-my-1 vtw-w-full vtw-text-left',
 										'vtw-cursor-pointer vtw-select-none vtw-rounded-lg vtw-group',
 										' focus:vtw-outline-none focus:vtw-ring-0 active:vtw-border-0',
 										'dark:vtw-text-neutral-300',
-										active && 'hover:vtw-bg-gray-100 vtw-transition-colors vtw-duration-200 focus:vtw-bg-gray-100'
+										'vtw-transition-colors vtw-duration-200 focus:vtw-bg-gray-100'
 										)}
 								>
 									<div className={clsx('vtw-h-6 vtw-w-6')}>
