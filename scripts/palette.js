@@ -1,114 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
+import { Dialog, Combobox, Transition } from '@headlessui/react'
 import * as HeroIcons from '@heroicons/react/outline'
 import clsx from 'clsx'
-import {
-	KBarProvider,
-	KBarPortal,
-	KBarPositioner,
-	KBarAnimator,
-	KBarSearch,
-	KBarResults,
-	useMatches,
-	useKBar,
-	useRegisterActions,
-} from 'kbar'
+import { SearchIcon } from '@heroicons/react/solid'
+import { ExclamationIcon, SupportIcon } from '@heroicons/react/outline'
 
 function Icon({ name, ...props }) {
 	const { ...icons } = HeroIcons
 	const HeroIcon = icons[name] ? icons[name] : icons['SearchIcon']
-
 	return <HeroIcon {...props} />
 }
 
-function RenderResults() {
-	const { results } = useMatches()
-
-	return (
-		<div className="vtw-pb-2">
-			<KBarResults
-				items={results}
-				onRender={({ item, active }) =>
-					typeof item === 'string' ? (
-						<p
-							className={clsx(
-								'vtw-text-[11px] vtw-font-bold vtw-uppercase',
-								'vtw-pt-4 vtw-pb-1 vtw-px-2',
-								'vtw-text-zinc-400 dark:vtw-text-neutral-500'
-							)}
-						>
-							{item}
-						</p>
-					) : (
-						<div
-							className={clsx(
-								'vtw-flex vtw-items-center vtw-gap-2',
-								'vtw-text-sm vtw-text-gray-800 dark:vtw-text-neutral-300',
-								'vtw-p-2',
-								'vtw-mx-2',
-								'vtw-rounded-lg',
-								active && 'vtw-bg-neutral-200 dark:vtw-bg-neutral-600'
-							)}
-						>
-							<div
-								className={clsx(
-									'vtw-h-5 vtw-w-5',
-									active
-										? 'vtw-text-gray-800 dark:vtw-text-neutral-200'
-										: 'vtw-text-gray-600 dark:vtw-text-neutral-400'
-								)}
-							>
-								<Icon name={item.icon} />
-							</div>
-							<div className="vtw-flex vtw-justify-between vtw-gap-3 vtw-flex-1">
-								<div className="vtw-flex vtw-flex-col vtw-gap-1 vtw-flex-1 vtw-justify-center">
-									<p
-										className={clsx(
-											'vtw-leading-none vtw-m-0',
-											active && 'dark:vtw-text-neutral-50'
-										)}
-									>
-										{item.name}
-									</p>
-									{item.subtitle && (
-										<p className="vtw-leading-none vtw-text-xs vtw-text-gray-500 dark:vtw-text-neutral-400 vtw-m-0">
-											{item.subtitle}
-										</p>
-									)}
-								</div>
-
-								{item?.badgeCount && (
-									<div
-										className={clsx(
-											'vtw-bg-neutral-600 dark:vtw-bg-neutral-400',
-											'vtw-h-5 vtw-w-5 vtw-rounded-full',
-											'vtw-flex vtw-items-center vtw-justify-center vtw-self-center'
-										)}
-									>
-										<p
-											className={clsx(
-												'vtw-text-[10px] vtw-leading-none vtw-font-bold',
-												'vtw-text-white dark:vtw-text-neutral-800',
-												'vtw-m-0'
-											)}
-										>
-											{item?.badgeCount}
-										</p>
-									</div>
-								)}
-							</div>
-						</div>
-					)
-				}
-			/>
-		</div>
-	)
-}
-
-function Portal() {
+export default function Palette() {
+	const [isOpen, setIsOpen] = useState(true)
+	const [query, setQuery] = useState('')
 	const [actions, setActions] = useState([])
-	const { query } = useKBar()
-
-	useRegisterActions(actions, [actions])
 
 	useEffect(() => {
 		fetch('/actions/palette/actions')
@@ -121,40 +27,35 @@ function Portal() {
 					subtitle: link.subtitle,
 					section: link.section,
 					badgeCount: link?.badgeCount,
-					perform: () => (window.location = link.url),
 				}))
-
 				setActions(actions)
 			})
 	}, [])
 
+	useEffect(() => {
+		function onKeydown(event) {
+			if (event.key === 'k' && (event.metaKey || event.ctrlKey)) {
+				setIsOpen(!isOpen)
+			}
+		}
+		window.addEventListener('keydown', onKeydown)
+		return () => {
+			window.removeEventListener('keydown', onKeydown)
+		}
+	}, [isOpen])
+
+	const filteredProjects =
+		query === ''
+			? actions
+			: query
+			? actions.filter((project) =>
+					project.name.toLowerCase().includes(query.toLowerCase())
+			  )
+			: []
+
 	return (
 		<>
-			<KBarPortal>
-				<KBarPositioner className="vtw-bg-neutral-900/20 vtw-z-[9999]">
-					<KBarAnimator
-						className={clsx(
-							'vtw-bg-zinc-50 dark:vtw-bg-neutral-800',
-							'vtw-rounded-lg vtw-overflow-hidden vtw-shadow-2xl',
-							'vtw-border vtw-border-solid vtw-border-zinc-200 dark:vtw-border-none',
-							'vtw-max-w-lg vtw-w-full'
-						)}
-					>
-						<KBarSearch
-							className={clsx(
-								'vtw-bg-transparent',
-								'vtw-w-full',
-								'vtw-px-4 vtw-py-3',
-								'vtw-border-none',
-								'dark:vtw-text-neutral-300 dark:placeholder:vtw-text-neutral-500',
-								'focus:vtw-border-none focus:vtw-outline-none focus:vtw-ring-0'
-							)}
-						/>
-						<RenderResults />
-					</KBarAnimator>
-				</KBarPositioner>
-			</KBarPortal>
-
+			{/* Palette Open Button on the bottom left */}
 			<button
 				className={clsx(
 					'vtw-fixed vtw-bottom-0 vtw-left-0',
@@ -167,18 +68,143 @@ function Portal() {
 					'vtw-cursor-pointer',
 					'vtw-transition-transform hover:vtw-scale-110 active:vtw-scale-90'
 				)}
-				onClick={query.toggle}
+				onClick={() => setIsOpen(!isOpen)}
 			>
 				<Icon name="TerminalIcon" className="vtw-h-5 vtw-w-5" />
 			</button>
-		</>
-	)
-}
 
-export default function Palette() {
-	return (
-		<KBarProvider>
-			<Portal />
-		</KBarProvider>
+			<Transition.Root
+				show={isOpen}
+				as={Fragment}
+				afterLeave={() => setQuery('')}
+			>
+				<Dialog
+					onClose={setIsOpen}
+					className="vtw-absolute vtw-inset-0 vtw-z-[9999] vtw-p-4 lg:vtw-p-[25vh] vtw-pt-20 vtw-overflow-y-auto"
+				>
+					<Transition.Child
+						enter="vtw-ease-out vtw-duration-300"
+						enterFrom="vtw-opacity-0"
+						enterTo="vtw-opacity-100"
+						leave="vtw-ease-in vtw-duration-200"
+						leaveFrom="vtw-opacity-100"
+						leaveTo="vtw-opacity-0"
+					>
+						<Dialog.Overlay className="vtw-fixed vtw-inset-0 vtw-bg-gray-500/75" />
+					</Transition.Child>
+					<Transition.Child
+						enter="vtw-ease-out vtw-duration-300"
+						enterFrom="vtw-opacity-0 vtw-scale-95"
+						enterTo="vtw-opacity-100 vtw-scale-100"
+						leave="vtw-ease-in vtw-duration-200"
+						leaveFrom="vtw-opacity-100 vtw-scale-100"
+						leaveTo="vtw-opacity-0 vtw-scale-95"
+					>
+						<Combobox
+							onChange={(project) => {
+								window.event.ctrlKey || window.event.metaKey
+									? window.open(project.id, '_blank') && setIsOpen(false)
+									: (window.location.url = project.id && setIsOpen(false))
+							}}
+							className="vtw-relative vtw-mx-auto vtw-mx-w-xl vtw-max-w-2xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black/5 vtw-rounded-xl vtw-divide-y vtw-divide-gray-100 vtw-overflow-hidden"
+							as="div"
+						>
+							<div className="vtw-flex vtw-items-center vtw-pl-6">
+								<SearchIcon className="vtw-h-6 vtw-w-6 vtw-text-gray-500" />
+								<Combobox.Input
+									onChange={(event) => setQuery(event.target.value)}
+									className="vtw-w-full vtw-ring-0 vtw-bg-transparent vtw-border-0 focus:vtw-ring-0 vtw-focus:outline-none vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 vtw-h-12"
+									placeholder="Search..."
+								/>
+							</div>
+							{filteredProjects.length > 0 && (
+								<Combobox.Options
+									static
+									className="vtw-text-sm vtw-max-h-96 vtw-overflow-y-auto vtw-m-0 vtw-p-0"
+								>
+									{filteredProjects.map((project) => (
+										<Combobox.Option
+											key={project.id}
+											value={project}
+											className="vtw-list-none"
+										>
+											{({ active }) => (
+												<div
+													// onClick={(e) => handleClick(e, project.url)}
+													className={`vtw-p-4 vtw-flex vtw-justify-between vtw-items-center vtw-mx-2 vtw-rounded-lg vtw-space-x-1 vtw-cursor-pointer ${
+														active ? 'vtw-bg-gray-100' : 'vtw-bg-white'
+													}`}
+												>
+													<div className="vtw-flex vtw-text-gray-600 vtw-items-center vtw-gap-2">
+														<div className={clsx('vtw-h-6 vtw-w-6')}>
+															<Icon name={project.icon} />
+														</div>
+														<span
+															className={`vtw-capitalize ${
+																active ? 'vtw-text-gray-700' : ''
+															}`}
+														>
+															{project.name}
+														</span>
+														{project.subtitle && (
+															<span
+																className={`${
+																	active ? 'vtw-text-gray-700' : ''
+																}`}
+															>
+																{' '}
+																/ {project.subtitle}
+															</span>
+														)}
+													</div>
+													<p
+														className={`${
+															active ? 'vtw-opacity-100' : 'vtw-opacity-0'
+														} vtw-m-0 vtw-text-gray-700 vtw-transition-all`}
+													>
+														Jump to...
+													</p>
+												</div>
+											)}
+										</Combobox.Option>
+									))}
+								</Combobox.Options>
+							)}
+							{query === '?' && (
+								<div className="vtw-pb-4 vtw-px-6 vtw-text-center vtw-text-sm vtw-sm:px-14">
+									<SupportIcon
+										className="vtw-mx-auto vtw-h-6 vtw-w-6 vtw-text-gray-400"
+										aria-hidden="true"
+									/>
+									<p className="vtw-mt-4 vtw-font-semibold vtw-text-gray-900">
+										Help with searching
+									</p>
+									<p className="vtw-mt-2 vtw-text-gray-500">
+										Use this tool to quickly search for users and projects
+										across our entire platform. You can also use the search
+										modifiers found in the footer below to limit the results to
+										just users or projects.
+									</p>
+								</div>
+							)}
+							{query && query !== '?' && filteredProjects.length === 0 && (
+								<div className="vtw-pb-4 vtw-px-6 vtw-text-center vtw-text-sm vtw-sm:px-14">
+									<ExclamationIcon
+										className="vtw-mx-auto vtw-h-6 vtw-w-6 vtw-text-gray-400"
+										aria-hidden="true"
+									/>
+									<p className="vtw-mt-4 vtw-font-semibold vtw-text-gray-900">
+										No results found
+									</p>
+									<p className="vtw-mt-2 vtw-text-gray-500">
+										We couldn’t find anything with that term. Please try again.
+									</p>
+								</div>
+							)}
+						</Combobox>
+					</Transition.Child>
+				</Dialog>
+			</Transition.Root>
+		</>
 	)
 }
