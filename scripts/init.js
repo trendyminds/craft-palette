@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import Palette from './palette'
+import Palette from './components/App'
 
 // Create an element to insert the React component into
 const $el = document.createElement('div')
