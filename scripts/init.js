@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import Palette from './palette'
-import TwPalette from './twPalette'
+import HeadlessUiPalette from './headlessUiPalette'
 
 // Create an element to insert the React component into
 const $el = document.createElement('div')
@@ -11,4 +11,4 @@ document.body.appendChild($el)
 // Select the element and insert Palette into it
 document
 	.querySelectorAll('[data-palette]')
-	.forEach(($el) => render(<TwPalette />, $el))
+	.forEach(($el) => render(<HeadlessUiPalette />, $el))
