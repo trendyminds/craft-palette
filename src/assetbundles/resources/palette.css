@@ -260,6 +260,11 @@ select {
   margin: 0px;
 }
 
+.vtw-my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
 .vtw-mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -271,10 +276,6 @@ select {
 
 .vtw-ml-4 {
   margin-left: 1rem;
-}
-
-.vtw-mt-8 {
-  margin-top: 2rem;
 }
 
 .vtw-mb-2 {
@@ -464,6 +465,11 @@ select {
   padding-right: 0.5rem;
 }
 
+.vtw-py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .vtw-py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -472,6 +478,10 @@ select {
 .vtw-px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+.vtw-pt-20 {
+  padding-top: 5rem;
 }
 
 .vtw-pl-10 {

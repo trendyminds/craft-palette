@@ -4,7 +4,6 @@ import clsx from 'clsx'
 import { SearchIcon } from '@heroicons/react/solid'
 import FocusTrap from 'focus-trap-react'
 import { ExclamationIcon, SupportIcon } from '@heroicons/react/outline'
-import { useHotkeys } from 'react-hotkeys-hook'
 
 function Icon({ name, ...props }) {
 	const { ...icons } = HeroIcons
@@ -18,9 +17,22 @@ function Palette() {
 	const [actions, setActions] = useState([])
 	const [active, setActive] = useState(null)
 
-	useHotkeys('esc', () => setOpen(false))
-	useHotkeys('ctrl+k', () => setOpen(true))
-	useHotkeys('cmd+k', () => setOpen(true))
+	useEffect(() => {
+		function onKeydown(event) {
+			if (event.key === 'k' && (event.metaKey || event.ctrlKey)) {
+				setOpen(!open)
+			}
+		}
+		window.addEventListener('keydown', onKeydown)
+		return () => {
+			window.removeEventListener('keydown', onKeydown)
+		}
+	}, [open])
+
+	useEffect(() => {
+		open && document.body.style.overflow === 'hidden';
+		!open && document.body.style.overflow === 'unset';
+	}, [open])
 
 	useEffect(() => {
 		fetch('/actions/palette/actions')
@@ -65,7 +77,8 @@ function Palette() {
 		}
 	}
 
-	console.log(active);
+
+	console.log(active?.id);
 
 	return (
 		<>
@@ -93,7 +106,7 @@ function Palette() {
 					{/* Overlay */}
 					<div
 						onClick={() => setOpen(false)}
-						className="vtw-absolute vtw-inset-0 vtw-z-[9999] vtw-p-4 vtw-sm:p-6 vtw-md:p-20 vtw-flex vtw-flex-col vtw-items-center vtw-bg-gray-500 vtw-bg-opacity-25 vtw-transition-opacity vtw-mt-8"
+						className="vtw-absolute vtw-inset-0 vtw-z-[9999] vtw-pt-20 vtw-p-4 vtw-sm:p-6 vtw-md:p-20 vtw-flex vtw-flex-col vtw-items-center vtw-bg-gray-500 vtw-bg-opacity-25 vtw-transition-opacity"
 					>
 						<nav
 							onClick={(e) => e.stopPropagation()}
@@ -109,20 +122,21 @@ function Palette() {
 								onKeyDown={handleKeyDown}
 								onChange={(e) => setRawQuery(e.target.value)}
 							/>
-							{filteredActions.map((item) => (
+							{filteredActions.map((item, idx) => (
 								<button
 									onKeyDown={handleKeyDown}
-									id="action"
+									id={idx}
 									onClick={(e) => handleRoute(e, item)}
 									key={item.id}
 									value={item}
 									className={clsx(
 										'vtw-flex vtw-items-center vtw-gap-3',
 										'vtw-text-sm vtw-text-gray-500 vtw-border-none vtw-bg-white',
-										'vtw-px-2 vtw-py-4 vtw-w-full vtw-text-left',
+										'vtw-px-2 vtw-py-2 vtw-my-1 vtw-w-full vtw-text-left',
 										'vtw-cursor-pointer vtw-select-none vtw-rounded-lg vtw-group',
-										'hover:vtw-bg-gray-100 vtw-transition-colors vtw-duration-200 focus:vtw-bg-gray-100 focus:vtw-outline-none focus:vtw-ring-0 active:vtw-border-0',
+										' focus:vtw-outline-none focus:vtw-ring-0 active:vtw-border-0',
 										'dark:vtw-text-neutral-300',
+										active && 'hover:vtw-bg-gray-100 vtw-transition-colors vtw-duration-200 focus:vtw-bg-gray-100'
 										)}
 								>
 									<div className={clsx('vtw-h-6 vtw-w-6')}>
