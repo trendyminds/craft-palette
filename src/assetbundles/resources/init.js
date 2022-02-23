@@ -31125,6 +31125,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     const [open, setOpen] = (0, import_react3.useState)(true);
     const [rawQuery, setRawQuery] = (0, import_react3.useState)("");
     const [actions, setActions] = (0, import_react3.useState)([]);
+    const [active, setActive] = (0, import_react3.useState)(null);
     useHotkeys("esc", () => setOpen(false));
     useHotkeys("ctrl+k", () => setOpen(true));
     useHotkeys("cmd+k", () => setOpen(true));
@@ -31149,17 +31150,19 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     const filteredActions = actions.filter((action) => action.name.toLowerCase().includes(query));
     function handleKeyDown(event) {
       const el = event.currentTarget;
+      setActive(el);
       switch (event.key) {
         case "Escape":
           return setOpen(false);
         case "ArrowDown":
-          return el?.nextSibling?.focus();
+          return el?.nextSibling?.focus() && setActive(el?.nextSibling);
         case "ArrowUp":
-          return el?.previousSibling?.focus();
+          return el?.previousSibling?.focus() && setActive(el?.previousSibling);
         default:
           return;
       }
     }
+    console.log(active);
     return /* @__PURE__ */ import_react3.default.createElement(import_react3.default.Fragment, null, /* @__PURE__ */ import_react3.default.createElement("button", {
       className: clsx_m_default("vtw-fixed vtw-bottom-0 vtw-left-0", "vtw-mb-4 vtw-ml-4", "vtw-flex vtw-items-center vtw-justify-center", "vtw-backdrop-blur-md vtw-shadow vtw-rounded-full", "vtw-bg-zinc-50/70 dark:vtw-bg-neutral-800/90", "dark:vtw-text-neutral-300", "vtw-h-8 vtw-w-8 vtw-z-[9999]", "vtw-cursor-pointer", "vtw-transition-transform hover:vtw-scale-110 active:vtw-scale-90"),
       onClick: () => setOpen(!open)
@@ -31188,9 +31191,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       onClick: (e) => handleRoute(e, item),
       key: item.id,
       value: item,
-      className: clsx_m_default("vtw-flex vtw-border-none vtw-bg-white vtw-items-center vtw-gap-3 vtw-w-full vtw-text-left", "vtw-text-sm vtw-text-gray-500 dark:vtw-text-neutral-300", "vtw-px-2 vtw-py-2", "vtw-cursor-pointer vtw-select-none", "vtw-rounded-lg vtw-group", "hover:vtw-bg-gray-100 vtw-transition-colors vtw-duration-200 focus:vtw-bg-gray-100 focus:vtw-outline-none focus:vtw-ring-0 active:vtw-border-0")
+      className: clsx_m_default("vtw-flex vtw-items-center vtw-gap-3", "vtw-text-sm vtw-text-gray-500 vtw-border-none vtw-bg-white", "vtw-px-2 vtw-py-4 vtw-w-full vtw-text-left", "vtw-cursor-pointer vtw-select-none vtw-rounded-lg vtw-group", "hover:vtw-bg-gray-100 vtw-transition-colors vtw-duration-200 focus:vtw-bg-gray-100 focus:vtw-outline-none focus:vtw-ring-0 active:vtw-border-0", "dark:vtw-text-neutral-300")
     }, /* @__PURE__ */ import_react3.default.createElement("div", {
-      className: clsx_m_default("vtw-h-5 vtw-w-5")
+      className: clsx_m_default("vtw-h-6 vtw-w-6")
     }, /* @__PURE__ */ import_react3.default.createElement(Icon, {
       name: item.icon
     })), /* @__PURE__ */ import_react3.default.createElement("div", {

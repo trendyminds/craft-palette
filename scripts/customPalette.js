@@ -16,6 +16,8 @@ function CustomPalette() {
 	const [open, setOpen] = useState(true)
 	const [rawQuery, setRawQuery] = useState('')
 	const [actions, setActions] = useState([])
+	const [active, setActive] = useState(null)
+
 	useHotkeys('esc', () => setOpen(false))
 	useHotkeys('ctrl+k', () => setOpen(true))
 	useHotkeys('cmd+k', () => setOpen(true))
@@ -50,17 +52,20 @@ function CustomPalette() {
 
 	function handleKeyDown(event) {
 		const el = event.currentTarget
+		setActive(el)
 		switch (event.key) {
 			case 'Escape':
 				return setOpen(false)
 			case 'ArrowDown':
-				return el?.nextSibling?.focus()
+				return el?.nextSibling?.focus() && setActive(el?.nextSibling)
 			case 'ArrowUp':
-				return el?.previousSibling?.focus()
+				return el?.previousSibling?.focus() && setActive(el?.previousSibling)
 			default:
 				return
 		}
 	}
+
+	console.log(active);
 
 	return (
 		<>
@@ -112,15 +117,15 @@ function CustomPalette() {
 									key={item.id}
 									value={item}
 									className={clsx(
-										'vtw-flex vtw-border-none vtw-bg-white vtw-items-center vtw-gap-3 vtw-w-full vtw-text-left',
-										'vtw-text-sm vtw-text-gray-500 dark:vtw-text-neutral-300',
-										'vtw-px-2 vtw-py-2',
-										'vtw-cursor-pointer vtw-select-none',
-										'vtw-rounded-lg vtw-group',
-										'hover:vtw-bg-gray-100 vtw-transition-colors vtw-duration-200 focus:vtw-bg-gray-100 focus:vtw-outline-none focus:vtw-ring-0 active:vtw-border-0'
-									)}
+										'vtw-flex vtw-items-center vtw-gap-3',
+										'vtw-text-sm vtw-text-gray-500 vtw-border-none vtw-bg-white',
+										'vtw-px-2 vtw-py-4 vtw-w-full vtw-text-left',
+										'vtw-cursor-pointer vtw-select-none vtw-rounded-lg vtw-group',
+										'hover:vtw-bg-gray-100 vtw-transition-colors vtw-duration-200 focus:vtw-bg-gray-100 focus:vtw-outline-none focus:vtw-ring-0 active:vtw-border-0',
+										'dark:vtw-text-neutral-300',
+										)}
 								>
-									<div className={clsx('vtw-h-5 vtw-w-5')}>
+									<div className={clsx('vtw-h-6 vtw-w-6')}>
 										<Icon name={item.icon} />
 									</div>
 									<div className="vtw-flex vtw-justify-between vtw-gap-3 vtw-flex-1">
