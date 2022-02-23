@@ -27308,8 +27308,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       };
     }, [open]);
     (0, import_react.useEffect)(() => {
-      open && document.body.style.overflow === "hidden";
-      !open && document.body.style.overflow === "unset";
+      open ? document.body.style.overflow = "hidden" : document.body.style.overflow = "unset";
     }, [open]);
     (0, import_react.useEffect)(() => {
       fetch("/actions/palette/actions").then((res) => res.json()).then((data) => {
@@ -27347,7 +27346,6 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       const el = event.currentTarget;
       return el.focus();
     }
-    console.log(active?.id);
     return /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("button", {
       className: clsx_m_default("vtw-fixed vtw-bottom-0 vtw-left-0", "vtw-mb-4 vtw-ml-4", "vtw-flex vtw-items-center vtw-justify-center", "vtw-backdrop-blur-md vtw-shadow vtw-rounded-full", "vtw-bg-zinc-50/70 dark:vtw-bg-neutral-800/90", "dark:vtw-text-neutral-300", "vtw-h-8 vtw-w-8 vtw-z-[9999]", "vtw-cursor-pointer", "vtw-transition-transform hover:vtw-scale-110 active:vtw-scale-90"),
       onClick: () => setOpen(!open)
@@ -27362,15 +27360,17 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }, /* @__PURE__ */ import_react.default.createElement("nav", {
       onClick: (e) => e.stopPropagation(),
       className: clsx_m_default("vtw-overflow-y-scroll vtw-px-3 vtw-relative vtw-text-sm  vtw-max-h-[40rem] vtw-max-w-xl vtw-w-full vtw-transform vtw-rounded-xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black vtw-ring-opacity-5 vtw-transition-all", "dark:vtw-bg-gray-900")
+    }, /* @__PURE__ */ import_react.default.createElement("form", {
+      className: "vtw-sticky vtw-top-0 vtw-bg-white dark:vtw-bg-gray-900"
     }, /* @__PURE__ */ import_react.default.createElement(SearchIcon_default2, {
-      className: "vtw-pointer-events-none vtw-z-[1000] vtw-absolute vtw-top-4 vtw-left-6 vtw-h-5 vtw-w-5 vtw-text-gray-400",
+      className: "vtw-pointer-events-none vtw-z-[1000] vtw-absolute vtw-top-4 vtw-left-3 vtw-h-5 vtw-w-5 vtw-text-gray-400",
       "aria-hidden": "true"
     }), /* @__PURE__ */ import_react.default.createElement("input", {
       className: clsx_m_default("vtw-h-12 vtw-w-[fill-available] vtw-pl-10 vtw-border-b vtw-border-gray-50 vtw-border-0 vtw-bg-transparent vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 focus:vtw-ring-0 focus:vtw-outline-none vtw-bg-white vtw-mb-2", "dark:vtw-placeholder-neutral-400 dark:vtw-text-white"),
       placeholder: "Search...",
       onKeyDown: handleKeyDown,
       onChange: (e) => setRawQuery(e.target.value)
-    }), filteredActions.map((item, idx) => /* @__PURE__ */ import_react.default.createElement("button", {
+    })), filteredActions.map((item, idx) => /* @__PURE__ */ import_react.default.createElement("button", {
       onMouseOver: handleMouseOver,
       onKeyDown: handleKeyDown,
       id: idx,

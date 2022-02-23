@@ -33,8 +33,9 @@ function Palette() {
 	}, [open])
 
 	useEffect(() => {
-		open && document.body.style.overflow === 'hidden'
-		!open && document.body.style.overflow === 'unset'
+		open
+			? (document.body.style.overflow = 'hidden')
+			: (document.body.style.overflow = 'unset')
 	}, [open])
 
 	useEffect(() => {
@@ -84,8 +85,6 @@ function Palette() {
 		return el.focus()
 	}
 
-	console.log(active?.id)
-
 	return (
 		<>
 			{/* Palette Open Button on the bottom left */}
@@ -124,19 +123,21 @@ function Palette() {
 								'dark:vtw-bg-gray-900'
 							)}
 						>
-							<SearchIcon
-								className="vtw-pointer-events-none vtw-z-[1000] vtw-absolute vtw-top-4 vtw-left-6 vtw-h-5 vtw-w-5 vtw-text-gray-400"
-								aria-hidden="true"
-							/>
-							<input
-								className={clsx(
-									'vtw-h-12 vtw-w-[fill-available] vtw-pl-10 vtw-border-b vtw-border-gray-50 vtw-border-0 vtw-bg-transparent vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 focus:vtw-ring-0 focus:vtw-outline-none vtw-bg-white vtw-mb-2',
-									'dark:vtw-placeholder-neutral-400 dark:vtw-text-white'
-								)}
-								placeholder="Search..."
-								onKeyDown={handleKeyDown}
-								onChange={(e) => setRawQuery(e.target.value)}
-							/>
+							<form className='vtw-sticky vtw-top-0 vtw-bg-white dark:vtw-bg-gray-900'>
+								<SearchIcon
+									className="vtw-pointer-events-none vtw-z-[1000] vtw-absolute vtw-top-4 vtw-left-3 vtw-h-5 vtw-w-5 vtw-text-gray-400"
+									aria-hidden="true"
+								/>
+								<input
+									className={clsx(
+										'vtw-h-12 vtw-w-[fill-available] vtw-pl-10 vtw-border-b vtw-border-gray-50 vtw-border-0 vtw-bg-transparent vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 focus:vtw-ring-0 focus:vtw-outline-none vtw-bg-white vtw-mb-2',
+										'dark:vtw-placeholder-neutral-400 dark:vtw-text-white'
+									)}
+									placeholder="Search..."
+									onKeyDown={handleKeyDown}
+									onChange={(e) => setRawQuery(e.target.value)}
+								/>
+							</form>
 							{filteredActions.map((item, idx) => (
 								<button
 									onMouseOver={handleMouseOver}
