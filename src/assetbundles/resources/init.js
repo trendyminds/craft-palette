@@ -31178,7 +31178,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       className: "vtw-pointer-events-none vtw-z-[1000] vtw-absolute vtw-top-4 vtw-left-5 vtw-h-5 vtw-w-5 vtw-text-gray-400",
       "aria-hidden": "true"
     }), /* @__PURE__ */ import_react3.default.createElement("input", {
-      className: "vtw-h-12 vtw-w-[fill-available] vtw-pl-10 vtw-border-b vtw-border-gray-50 vtw-border-0 vtw-bg-transparent vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 focus:vtw-ring-0 vtw-bg-white vtw-mb-2",
+      className: "vtw-h-12 vtw-w-[fill-available] vtw-pl-10 vtw-border-b vtw-border-gray-50 vtw-border-0 vtw-bg-transparent vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 focus:vtw-ring-0 focus:vtw-outline-none vtw-bg-white vtw-mb-2",
       placeholder: "Search...",
       onKeyDown: handleKeyDown,
       onChange: (e) => setRawQuery(e.target.value)
@@ -31188,7 +31188,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       onClick: (e) => handleRoute(e, item),
       key: item.id,
       value: item,
-      className: clsx_m_default("vtw-flex vtw-items-center vtw-gap-3 vtw-w-full vtw-text-left", "vtw-text-sm vtw-text-gray-500 dark:vtw-text-neutral-300", "vtw-px-2 vtw-py-3", "vtw-cursor-pointer vtw-select-none", "vtw-rounded-lg vtw-group", "hover:vtw-bg-gray-200 vtw-transition-colors vtw-duration-200 focus:vtw-bg-gray-200 focus:vtw-outline-none focus:vtw-ring-0 active:vtw-border-0")
+      className: clsx_m_default("vtw-flex vtw-border-none vtw-bg-white vtw-items-center vtw-gap-3 vtw-w-full vtw-text-left", "vtw-text-sm vtw-text-gray-500 dark:vtw-text-neutral-300", "vtw-px-2 vtw-py-2", "vtw-cursor-pointer vtw-select-none", "vtw-rounded-lg vtw-group", "hover:vtw-bg-gray-100 vtw-transition-colors vtw-duration-200 focus:vtw-bg-gray-100 focus:vtw-outline-none focus:vtw-ring-0 active:vtw-border-0")
     }, /* @__PURE__ */ import_react3.default.createElement("div", {
       className: clsx_m_default("vtw-h-5 vtw-w-5")
     }, /* @__PURE__ */ import_react3.default.createElement(Icon, {

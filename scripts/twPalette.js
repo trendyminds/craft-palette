@@ -99,7 +99,7 @@ function TwPalette() {
 								aria-hidden="true"
 							/>
 							<input
-								className="vtw-h-12 vtw-w-[fill-available] vtw-pl-10 vtw-border-b vtw-border-gray-50 vtw-border-0 vtw-bg-transparent vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 focus:vtw-ring-0 vtw-bg-white vtw-mb-2"
+								className="vtw-h-12 vtw-w-[fill-available] vtw-pl-10 vtw-border-b vtw-border-gray-50 vtw-border-0 vtw-bg-transparent vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 focus:vtw-ring-0 focus:vtw-outline-none vtw-bg-white vtw-mb-2"
 								placeholder="Search..."
 								onKeyDown={handleKeyDown}
 								onChange={(e) => setRawQuery(e.target.value)}
@@ -112,12 +112,12 @@ function TwPalette() {
 									key={item.id}
 									value={item}
 									className={clsx(
-										'vtw-flex vtw-items-center vtw-gap-3 vtw-w-full vtw-text-left',
+										'vtw-flex vtw-border-none vtw-bg-white vtw-items-center vtw-gap-3 vtw-w-full vtw-text-left',
 										'vtw-text-sm vtw-text-gray-500 dark:vtw-text-neutral-300',
-										'vtw-px-2 vtw-py-3',
+										'vtw-px-2 vtw-py-2',
 										'vtw-cursor-pointer vtw-select-none',
 										'vtw-rounded-lg vtw-group',
-										'hover:vtw-bg-gray-200 vtw-transition-colors vtw-duration-200 focus:vtw-bg-gray-200 focus:vtw-outline-none focus:vtw-ring-0 active:vtw-border-0'
+										'hover:vtw-bg-gray-100 vtw-transition-colors vtw-duration-200 focus:vtw-bg-gray-100 focus:vtw-outline-none focus:vtw-ring-0 active:vtw-border-0'
 									)}
 								>
 									<div className={clsx('vtw-h-5 vtw-w-5')}>

@@ -3,5 +3,6 @@ module.exports = {
 	corePlugins: {
 		preflight: false,
 	},
+	plugins: [require('@tailwindcss/forms')],
 	prefix: 'vtw-',
 }
