@@ -27358,15 +27358,15 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       active: open
     }, /* @__PURE__ */ import_react.default.createElement("div", {
       onClick: () => setOpen(false),
-      className: "vtw-absolute vtw-inset-0 vtw-z-[9999] vtw-pt-20 vtw-p-4 vtw-sm:p-6 vtw-md:p-20 vtw-flex vtw-flex-col vtw-items-center vtw-bg-gray-500 vtw-bg-opacity-25 vtw-transition-opacity"
+      className: clsx_m_default("vtw-absolute vtw-inset-0 vtw-z-[9999] vtw-pt-20 vtw-p-4 vtw-sm:p-6 vtw-md:p-20 vtw-flex vtw-flex-col vtw-items-center vtw-bg-gray-500 vtw-bg-opacity-25 vtw-transition-opacity", "dark:vtw-bg-gray-900/75")
     }, /* @__PURE__ */ import_react.default.createElement("nav", {
       onClick: (e) => e.stopPropagation(),
-      className: "vtw-overflow-y-scroll vtw-px-3 vtw-relative vtw-text-sm vtw-text-gray-700 vtw-max-h-[40rem] vtw-max-w-xl vtw-w-full vtw-transform vtw-rounded-xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black vtw-ring-opacity-5 vtw-transition-all"
+      className: clsx_m_default("vtw-overflow-y-scroll vtw-px-3 vtw-relative vtw-text-sm  vtw-max-h-[40rem] vtw-max-w-xl vtw-w-full vtw-transform vtw-rounded-xl vtw-bg-white vtw-shadow-2xl vtw-ring-1 vtw-ring-black vtw-ring-opacity-5 vtw-transition-all", "dark:vtw-bg-gray-900")
     }, /* @__PURE__ */ import_react.default.createElement(SearchIcon_default2, {
-      className: "vtw-pointer-events-none vtw-z-[1000] vtw-absolute vtw-top-4 vtw-left-5 vtw-h-5 vtw-w-5 vtw-text-gray-400",
+      className: "vtw-pointer-events-none vtw-z-[1000] vtw-absolute vtw-top-4 vtw-left-6 vtw-h-5 vtw-w-5 vtw-text-gray-400",
       "aria-hidden": "true"
     }), /* @__PURE__ */ import_react.default.createElement("input", {
-      className: "vtw-h-12 vtw-w-[fill-available] vtw-pl-10 vtw-border-b vtw-border-gray-50 vtw-border-0 vtw-bg-transparent vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 focus:vtw-ring-0 focus:vtw-outline-none vtw-bg-white vtw-mb-2",
+      className: clsx_m_default("vtw-h-12 vtw-w-[fill-available] vtw-pl-10 vtw-border-b vtw-border-gray-50 vtw-border-0 vtw-bg-transparent vtw-text-sm vtw-text-gray-800 vtw-placeholder-gray-400 focus:vtw-ring-0 focus:vtw-outline-none vtw-bg-white vtw-mb-2", "dark:vtw-placeholder-neutral-400 dark:vtw-text-white"),
       placeholder: "Search...",
       onKeyDown: handleKeyDown,
       onChange: (e) => setRawQuery(e.target.value)
@@ -27377,9 +27377,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       onClick: (e) => handleRoute(e, item),
       key: item.id,
       value: item,
-      className: clsx_m_default("vtw-flex vtw-items-center vtw-gap-3", "vtw-text-sm vtw-text-gray-500 vtw-border-none vtw-bg-white", "vtw-px-2 vtw-py-3 vtw-my-1 vtw-w-full vtw-text-left", "vtw-cursor-pointer vtw-select-none vtw-rounded-lg vtw-group", " focus:vtw-outline-none focus:vtw-ring-0 active:vtw-border-0", "dark:vtw-text-neutral-300", "vtw-transition-colors vtw-duration-200 focus:vtw-bg-gray-100")
+      className: clsx_m_default("vtw-flex vtw-items-center vtw-gap-3 vtw-group", "vtw-text-sm vtw-font-light vtw-text-slate-600 vtw-tracking-wide vtw-border-none focus:vtw-bg-white", "vtw-p-3 vtw-py-3 vtw-my-1 vtw-w-full vtw-text-left", "vtw-select-none vtw-rounded-lg", " focus:vtw-outline-none focus:vtw-ring-0 focus:vtw-outline-0 ", "dark:vtw-text-neutral-400 dark:focus:vtw-bg-gray-800 dark:focus:vtw-text-white", "vtw-transition-all focus:vtw-bg-gray-100")
     }, /* @__PURE__ */ import_react.default.createElement("div", {
-      className: clsx_m_default("vtw-h-6 vtw-w-6")
+      className: clsx_m_default("vtw-h-5 vtw-w-5 vtw-text-slate-400")
     }, /* @__PURE__ */ import_react.default.createElement(Icon, {
       name: item.icon
     })), /* @__PURE__ */ import_react.default.createElement("div", {
@@ -27387,11 +27387,11 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }, /* @__PURE__ */ import_react.default.createElement("div", {
       className: "vtw-flex vtw-flex-col vtw-gap-1 vtw-flex-1 vtw-justify-center"
     }, /* @__PURE__ */ import_react.default.createElement("p", {
-      className: clsx_m_default("vtw-leading-none vtw-text-gray-500 vtw-capitalize vtw-m-0")
+      className: clsx_m_default("vtw-leading-none vtw-capitalize vtw-m-0")
     }, item.name, item.subtitle && /* @__PURE__ */ import_react.default.createElement("span", {
       className: ""
     }, " / ", item.subtitle))), /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("p", {
-      className: "group-hover:vtw-opacity-100 group-focus:vtw-opacity-100 vtw-opacity-0 vtw-transition-opacity"
+      className: "group-focus:vtw-opacity-100 vtw-opacity-0 vtw-transition-opacity"
     }, "Jump to...")), item?.badgeCount && /* @__PURE__ */ import_react.default.createElement("div", {
       className: clsx_m_default("vtw-bg-neutral-600 dark:vtw-bg-neutral-400", "vtw-h-5 vtw-w-5 vtw-rounded-full", "vtw-flex vtw-items-center vtw-justify-center vtw-self-center")
     }, /* @__PURE__ */ import_react.default.createElement("p", {
@@ -27402,7 +27402,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       className: "vtw-mx-auto vtw-h-6 vtw-w-6 vtw-text-gray-400",
       "aria-hidden": "true"
     }), /* @__PURE__ */ import_react.default.createElement("p", {
-      className: "vtw-mt-4 vtw-font-semibold vtw-text-gray-900"
+      className: clsx_m_default("vtw-mt-4 vtw-font-semibold vtw-text-gray-900", "dark:vtw-text-white")
     }, "Help with searching"), /* @__PURE__ */ import_react.default.createElement("p", {
       className: "vtw-mt-2 vtw-text-gray-500"
     }, "Use this tool to quickly search for users and projects across our entire platform. You can also use the search modifiers found in the footer below to limit the results to just users or projects.")), query !== "" && rawQuery !== "?" && filteredActions.length === 0 && /* @__PURE__ */ import_react.default.createElement("div", {
@@ -27411,7 +27411,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       className: "vtw-mx-auto vtw-h-6 vtw-w-6 vtw-text-gray-400",
       "aria-hidden": "true"
     }), /* @__PURE__ */ import_react.default.createElement("p", {
-      className: "vtw-mt-4 vtw-font-semibold vtw-text-gray-900"
+      className: clsx_m_default("vtw-mt-4 vtw-font-semibold vtw-text-gray-900", "dark:vtw-text-white")
     }, "No results found"), /* @__PURE__ */ import_react.default.createElement("p", {
       className: "vtw-mt-2 vtw-text-gray-500"
     }, "We couldn\u2019t find anything with that term. Please try again."))))));
