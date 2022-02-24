@@ -10,7 +10,7 @@ function Layout() {
 	if (open) {
 		return (
 			<FocusTrap active={true}>
-				<div className="vtw-fixed vtw-inset-0 vtw-z-[999] vtw-w-screen vtw-h-screen vtw-flex vtw-flex-col vtw-justify-center vtw-items-center">
+				<div className="cp-fixed cp-inset-0 cp-z-[999] cp-w-screen cp-h-screen cp-flex cp-flex-col cp-items-center cp-pt-24">
 					<Overlay />
 					<Modal />
 				</div>

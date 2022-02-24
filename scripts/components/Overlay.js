@@ -9,8 +9,8 @@ export default function Overlay() {
 		<div
 			onClick={() => setOpen(false)}
 			className={clsx(
-				'vtw-absolute vtw-inset-0 vtw-w-full vtw-h-full vtw-bg-gray-500 vtw-bg-opacity-25 vtw-transition-opacity',
-				'dark:vtw-bg-gray-900/75'
+				'cp-absolute cp-inset-0 cp-w-full cp-h-full cp-bg-gray-500 cp-bg-opacity-25 cp-transition-opacity',
+				'dark:cp-bg-gray-900/75'
 			)}
 		/>
 	)

@@ -4,5 +4,5 @@ module.exports = {
 		preflight: false,
 	},
 	plugins: [require('@tailwindcss/forms')],
-	prefix: 'vtw-',
+	prefix: 'cp-',
 }
