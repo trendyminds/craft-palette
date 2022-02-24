@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useEffect } from 'react'
+import React, {
+	createContext,
+	useContext,
+	useState,
+	useEffect,
+	useRef,
+} from 'react'
 
 export const PaletteContext = createContext()
 
@@ -10,8 +16,19 @@ export function PaletteContextWrapper({ children }) {
 	const [open, setOpen] = useState(true)
 	const [rawQuery, setRawQuery] = useState('')
 	const [actions, setActions] = useState([])
+	const searchNode = useRef(null)
+	const firstResultNode = useRef(null)
 
-	const context = { open, setOpen, rawQuery, setRawQuery, actions, setActions }
+	const context = {
+		open,
+		setOpen,
+		rawQuery,
+		setRawQuery,
+		actions,
+		setActions,
+		searchNode,
+		firstResultNode,
+	}
 
 	// Trigger Stuff on Global Key Presses
 	useEffect(() => {

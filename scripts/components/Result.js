@@ -3,33 +3,28 @@ import clsx from 'clsx'
 import Icon from './Icon'
 import { usePaletteContext } from './Context'
 
-
 export default function Result(props) {
-	const { result } = props
-	const { setOpen } = usePaletteContext()
+	const { result, firstResult } = props
+	const { setOpen, firstResultNode, searchNode } = usePaletteContext()
 
-
-	const handleRoute = (event, item) => {
-		setOpen(false)
-		return event.ctrlKey || event.metaKey
-			? window.open(result.id, '_blank')
-			: (window.location = result.id)
-	}
-
-	function handleMouseOver(event) {
-		const el = event.currentTarget
-		return el.focus()
-	}
+	const handleMouseOver = (event) => event.currentTarget.focus()
 
 	function handleKeyDown(event) {
 		const el = event.currentTarget
 		switch (event.key) {
+			case 'Enter':
+				setOpen(false)
+				return event.ctrlKey || event.metaKey
+					? window.open(result.id, '_blank')
+					: (window.location = result.id)
 			case 'Escape':
 				return setOpen(false)
 			case 'ArrowDown':
 				return el?.nextSibling?.focus()
 			case 'ArrowUp':
-				return el?.previousSibling?.focus()
+				return firstResult
+					? searchNode?.current?.focus()
+					: el?.previousSibling?.focus()
 			default:
 				return
 		}
@@ -37,9 +32,10 @@ export default function Result(props) {
 
 	return (
 		<button
+			ref={firstResult ? firstResultNode : null}
 			onMouseOver={handleMouseOver}
 			onKeyDown={handleKeyDown}
-			onClick={(e) => handleRoute(e, result)}
+			onClick={handleKeyDown}
 			value={result}
 			className={clsx(
 				'cp-flex cp-items-center cp-gap-3 cp-group',

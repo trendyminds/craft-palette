@@ -4,17 +4,15 @@ import Icon from './Icon'
 import { usePaletteContext } from './Context'
 
 export default function Search() {
-	const { setRawQuery } = usePaletteContext()
+	const { setRawQuery, searchNode, firstResultNode } = usePaletteContext()
 
 	function handleKeyDown(event) {
-		const el = event.currentTarget
 		switch (event.key) {
 			case 'Escape':
 				return setOpen(false)
 			case 'ArrowDown':
-				return el?.nextSibling?.focus()
-			case 'ArrowUp':
-				return el?.previousSibling?.focus()
+				event.preventDefault()
+				return firstResultNode?.current?.focus()
 			default:
 				return
 		}
@@ -28,6 +26,7 @@ export default function Search() {
 				aria-hidden="true"
 			/>
 			<input
+				ref={searchNode}
 				className={clsx(
 					'cp-py-4 cp-w-[fill-available] cp-border-0',
 					'cp-bg-transparent cp-text-sm cp-text-gray-800 cp-placeholder-gray-400 cp-bg-white',

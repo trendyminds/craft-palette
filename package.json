@@ -21,7 +21,6 @@
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^10.4.0",
-    "browser-sync": "^2.27.5",
     "esbuild": "^0.14.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.4",
@@ -42,7 +41,7 @@
     "@tailwindcss/forms": "^0.4.0",
     "clsx": "^1.1.1",
     "focus-trap-react": "^8.9.2",
-    "kbar": "^0.1.0-beta.27",
+    "framer-motion": "^6.2.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }

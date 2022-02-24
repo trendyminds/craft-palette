@@ -295,6 +295,10 @@ select {
   height: 100vh;
 }
 
+.cp-h-96 {
+  height: 24rem;
+}
+
 .cp-h-6 {
   height: 1.5rem;
 }
@@ -309,10 +313,6 @@ select {
 
 .cp-h-8 {
   height: 2rem;
-}
-
-.cp-max-h-\[350px\] {
-  max-height: 350px;
 }
 
 .cp-w-screen {
@@ -392,8 +392,12 @@ select {
   align-self: center;
 }
 
-.cp-overflow-y-scroll {
-  overflow-y: scroll;
+.cp-overflow-hidden {
+  overflow: hidden;
+}
+
+.cp-overflow-y-auto {
+  overflow-y: auto;
 }
 
 .cp-rounded-xl {
@@ -499,11 +503,6 @@ select {
 
 .cp-text-\[10px\] {
   font-size: 10px;
-}
-
-.cp-text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
 }
 
 .cp-font-semibold {
@@ -639,6 +638,30 @@ select {
   transition-duration: 150ms;
 }
 
+.cp-transition-colors {
+  transition-property: color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.cp-duration-75 {
+  transition-duration: 75ms;
+}
+
+.cp-duration-150 {
+  transition-duration: 150ms;
+}
+
+.cp-ease-out {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cp-ease-in {
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
 .cp-scrollbar::-webkit-scrollbar {
   height: 0.5rem;
   width: 0.5rem;
@@ -719,11 +742,6 @@ select {
 }
 
 @media (prefers-color-scheme: dark) {
-  .dark\:cp-border-gray-600 {
-    --tw-border-opacity: 1;
-    border-color: rgb(75 85 99 / var(--tw-border-opacity));
-  }
-
   .dark\:cp-border-gray-700 {
     --tw-border-opacity: 1;
     border-color: rgb(55 65 81 / var(--tw-border-opacity));
