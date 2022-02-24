@@ -21,7 +21,7 @@ export default function Search() {
 	}
 
 	return (
-		<div className="cp-sticky cp-px-6 cp-top-0 cp-bg-white dark:cp-bg-gray-900 cp-border-b cp-border-solid cp-flex cp-items-center cp-gap-3">
+		<div className="cp-sticky cp-px-6 cp-top-0 cp-bg-white dark:cp-bg-gray-900 cp-border-b cp-border-solid cp-border-gray-100 dark:cp-border-gray-700 cp-flex cp-items-center cp-gap-3">
 			<Icon
 				name="SearchIcon"
 				className="cp-pointer-events-none cp-h-5 cp-w-5 cp-text-gray-400"
