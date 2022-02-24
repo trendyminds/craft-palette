@@ -1,9 +1,13 @@
 import React from 'react'
 import clsx from 'clsx'
 import Icon from './Icon'
+import { usePaletteContext } from './Context'
+
 
 export default function Result(props) {
 	const { result } = props
+	const { setOpen } = usePaletteContext()
+
 
 	const handleRoute = (event, item) => {
 		setOpen(false)
@@ -54,13 +58,15 @@ export default function Result(props) {
 				<div className="cp-flex cp-flex-col cp-gap-1 cp-flex-1 cp-justify-center">
 					<p className={clsx('cp-leading-none cp-capitalize cp-m-0')}>
 						{result.name}
-						{result.subtitle && <span className=""> / {result.subtitle}</span>}
 					</p>
 				</div>
 				<div>
-					<p className="group-focus:cp-opacity-100 cp-opacity-0 cp-transition-opacity">
-						Jump to...
-					</p>
+					{result.subtitle && (
+						<p className="group-focus:cp-opacity-100 cp-opacity-0 cp-transition-opacity cp-text-sm">
+							{' '}
+							{result.subtitle}
+						</p>
+					)}
 				</div>
 				{result?.badgeCount && (
 					<div

@@ -26682,8 +26682,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   var import_react5 = __toESM(require_react());
   function Result(props) {
     const { result } = props;
+    const { setOpen: setOpen2 } = usePaletteContext();
     const handleRoute = (event, item) => {
-      setOpen(false);
+      setOpen2(false);
       return event.ctrlKey || event.metaKey ? window.open(result.id, "_blank") : window.location = result.id;
     };
     function handleMouseOver(event) {
@@ -26694,7 +26695,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       const el = event.currentTarget;
       switch (event.key) {
         case "Escape":
-          return setOpen(false);
+          return setOpen2(false);
         case "ArrowDown":
           return el?.nextSibling?.focus();
         case "ArrowUp":
@@ -26719,11 +26720,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       className: "cp-flex cp-flex-col cp-gap-1 cp-flex-1 cp-justify-center"
     }, /* @__PURE__ */ import_react5.default.createElement("p", {
       className: clsx_m_default("cp-leading-none cp-capitalize cp-m-0")
-    }, result.name, result.subtitle && /* @__PURE__ */ import_react5.default.createElement("span", {
-      className: ""
-    }, " / ", result.subtitle))), /* @__PURE__ */ import_react5.default.createElement("div", null, /* @__PURE__ */ import_react5.default.createElement("p", {
-      className: "group-focus:cp-opacity-100 cp-opacity-0 cp-transition-opacity"
-    }, "Jump to...")), result?.badgeCount && /* @__PURE__ */ import_react5.default.createElement("div", {
+    }, result.name)), /* @__PURE__ */ import_react5.default.createElement("div", null, result.subtitle && /* @__PURE__ */ import_react5.default.createElement("p", {
+      className: "group-focus:cp-opacity-100 cp-opacity-0 cp-transition-opacity cp-text-sm"
+    }, " ", result.subtitle)), result?.badgeCount && /* @__PURE__ */ import_react5.default.createElement("div", {
       className: clsx_m_default("cp-bg-neutral-600 dark:cp-bg-neutral-400", "cp-h-5 cp-w-5 cp-rounded-full", "cp-flex cp-items-center cp-justify-center cp-self-center")
     }, /* @__PURE__ */ import_react5.default.createElement("p", {
       className: clsx_m_default("cp-text-[10px] cp-leading-none cp-font-bold", "cp-text-white dark:cp-text-neutral-800", "cp-m-0")
@@ -26739,8 +26738,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       className: clsx_m_default("cp-scrollbar cp-overflow-y-scroll cp-relative cp-text-sm  cp-max-h-[350px]", "cp-max-w-xl cp-w-full cp-transform cp-rounded-xl cp-bg-white cp-shadow-2xl cp-ring-1", "cp-ring-black cp-ring-opacity-5 cp-transition-all", "dark:cp-bg-gray-900")
     }, /* @__PURE__ */ import_react6.default.createElement(Search, null), /* @__PURE__ */ import_react6.default.createElement("div", {
       className: "cp-px-3"
-    }, filteredActions.map((item) => /* @__PURE__ */ import_react6.default.createElement(Result, {
-      key: item.title,
+    }, filteredActions.map((item, i) => /* @__PURE__ */ import_react6.default.createElement(Result, {
+      key: i,
       result: item
     }))), rawQuery === "?" && /* @__PURE__ */ import_react6.default.createElement("div", {
       className: "cp-py-4 cp-px-6 cp-text-center cp-text-sm cp-sm:px-14"

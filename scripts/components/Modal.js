@@ -25,7 +25,7 @@ export default function Modal() {
 		>
 			<Search />
 			<div className="cp-px-3">
-				{filteredActions.map((item) => <Result key={item.title} result={item} />)}
+				{filteredActions.map((item, i) => <Result key={i} result={item} />)}
 			</div>
 
 			{rawQuery === '?' && (
