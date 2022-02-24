@@ -45,7 +45,7 @@ export default function Result(props) {
 				'cp-flex cp-items-center cp-gap-3 cp-group',
 				'cp-text-sm cp-font-light cp-text-slate-600 cp-tracking-wide cp-border-none focus:cp-bg-white',
 				'cp-p-3 cp-py-3 cp-my-1 cp-w-full cp-text-left',
-				'cp-select-none cp-rounded-lg',
+				'cp-cursor-pointer cp-select-none cp-rounded-lg',
 				' focus:cp-outline-none focus:cp-ring-0 focus:cp-outline-0 ',
 				'dark:cp-text-neutral-400 dark:focus:cp-bg-gray-800 dark:focus:cp-text-white',
 				'cp-transition-all focus:cp-bg-gray-100'
