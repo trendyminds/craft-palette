@@ -10,8 +10,10 @@ export default function Modal() {
 	const { setOpen, rawQuery, actions } = usePaletteContext()
 
 	const query = rawQuery.toLowerCase().replace(/^[#>]/, '')
-	const filteredActions = actions.filter((action) =>
-		action.name.toLowerCase().includes(query)
+	const filteredActions = actions.filter(
+		(action) =>
+			action.name.toLowerCase().includes(query) ||
+			action.subtitle.toLowerCase().includes(query)
 	)
 
 	return (
@@ -25,7 +27,9 @@ export default function Modal() {
 		>
 			<Search />
 			<div className="cp-px-3">
-				{filteredActions.map((item, i) => <Result key={i} result={item} />)}
+				{filteredActions.map((item, i) => (
+					<Result key={i} result={item} />
+				))}
 			</div>
 
 			{rawQuery === '?' && (
