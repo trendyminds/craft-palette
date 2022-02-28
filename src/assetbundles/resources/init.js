@@ -27159,6 +27159,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     const handleMouseOver = (event) => event.currentTarget.focus();
     function handleKeyDown(event) {
       const el = event.currentTarget;
+      console.log(event);
       switch (event.key) {
         case "Enter":
           setOpen2(false);
@@ -27169,8 +27170,10 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
           return el?.nextSibling?.focus();
         case "ArrowUp":
           return firstResult ? searchNode?.current?.focus() : el?.previousSibling?.focus();
-        default:
+        case "Tab":
           return;
+        default:
+          return searchNode?.current?.focus();
       }
     }
     return /* @__PURE__ */ import_react5.default.createElement("button", {

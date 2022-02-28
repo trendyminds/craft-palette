@@ -11,6 +11,7 @@ export default function Result(props) {
 
 	function handleKeyDown(event) {
 		const el = event.currentTarget
+		console.log(event);
 		switch (event.key) {
 			case 'Enter':
 				setOpen(false)
@@ -25,8 +26,10 @@ export default function Result(props) {
 				return firstResult
 					? searchNode?.current?.focus()
 					: el?.previousSibling?.focus()
-			default:
+			case 'Tab': 
 				return
+			default:
+				return searchNode?.current?.focus()
 		}
 	}
 
