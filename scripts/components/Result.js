@@ -11,7 +11,6 @@ export default function Result(props) {
 
 	function handleKeyDown(event) {
 		const el = event.currentTarget
-		console.log(event);
 		switch (event.key) {
 			case 'Enter':
 				setOpen(false)

@@ -27161,7 +27161,6 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     const handleMouseOver = (event) => event.currentTarget.focus();
     function handleKeyDown(event) {
       const el = event.currentTarget;
-      console.log(event);
       switch (event.key) {
         case "Enter":
           setOpen2(false);
