@@ -13,7 +13,6 @@ export default function Result(props) {
 		const el = event.currentTarget
 		switch (event.key) {
 			case 'Enter':
-				setOpen(false)
 				return event.ctrlKey || event.metaKey
 					? window.open(result.id, '_blank')
 					: (window.location = result.id)
@@ -26,6 +25,10 @@ export default function Result(props) {
 					? searchNode?.current?.focus()
 					: el?.previousSibling?.focus()
 			case 'Tab': 
+				return
+			case 'Meta':
+				return
+			case 'Control':
 				return
 			default:
 				return searchNode?.current?.focus()

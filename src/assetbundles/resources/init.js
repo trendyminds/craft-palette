@@ -22580,7 +22580,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     return (0, import_react.useContext)(PaletteContext);
   }
   function PaletteContextWrapper({ children }) {
-    const [open, setOpen2] = (0, import_react.useState)(true);
+    const [open, setOpen2] = (0, import_react.useState)(false);
     const [rawQuery, setRawQuery] = (0, import_react.useState)("");
     const [actions, setActions] = (0, import_react.useState)([]);
     const searchNode = (0, import_react.useRef)(null);
@@ -27163,7 +27163,6 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       const el = event.currentTarget;
       switch (event.key) {
         case "Enter":
-          setOpen2(false);
           return event.ctrlKey || event.metaKey ? window.open(result.id, "_blank") : window.location = result.id;
         case "Escape":
           return setOpen2(false);
@@ -27172,6 +27171,10 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         case "ArrowUp":
           return firstResult ? searchNode?.current?.focus() : el?.previousSibling?.focus();
         case "Tab":
+          return;
+        case "Meta":
+          return;
+        case "Control":
           return;
         default:
           return searchNode?.current?.focus();

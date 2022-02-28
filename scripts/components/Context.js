@@ -13,7 +13,7 @@ export function usePaletteContext() {
 }
 
 export function PaletteContextWrapper({ children }) {
-	const [open, setOpen] = useState(true)
+	const [open, setOpen] = useState(false)
 	const [rawQuery, setRawQuery] = useState('')
 	const [actions, setActions] = useState([])
 	const searchNode = useRef(null)
