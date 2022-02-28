@@ -1,20 +1,13 @@
-import React from 'react'
 import clsx from 'clsx'
 import { ExclamationIcon, SupportIcon } from '@heroicons/react/outline'
 import { usePaletteContext } from './Context'
-import Icon from './Icon'
 import Search from './Search'
 import Result from './Result'
+import fuzzysort from 'fuzzysort'
 
 export default function Modal() {
 	const { rawQuery, actions } = usePaletteContext()
-
-	const query = rawQuery.toLowerCase().replace(/^[#>]/, '')
-	const filteredActions = actions.filter(
-		(action) =>
-			action.name.toLowerCase().includes(query) ||
-			action.subtitle.toLowerCase().includes(query)
-	)
+	const filteredActions = fuzzysort.go(rawQuery, actions)
 
 	return (
 		<nav
@@ -26,10 +19,12 @@ export default function Modal() {
 			)}
 		>
 			<Search />
-			<div className={`cp-px-3 cp-overflow-y-auto cp-scrollbar ${filteredActions.length && 'cp-h-96'}`}>
-				{filteredActions.map((item, i) => (
-					<Result key={i} result={item} firstResult={i === 0} />
-				))}
+			<div className={`cp-px-3 cp-overflow-y-auto cp-scrollbar ${filteredActions.length > 6 && 'cp-h-96'}`}>
+				{filteredActions.map((item, i) => {
+					return (
+						<Result key={i} result={item} firstResult={i === 0} />
+					)
+				})}
 			</div>
 
 			{rawQuery === '?' && (

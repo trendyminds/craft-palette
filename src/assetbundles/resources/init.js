@@ -27206,11 +27206,13 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   function Modal() {
     const { rawQuery, actions } = usePaletteContext();
     const query = rawQuery.toLowerCase().replace(/^[#>]/, "");
-    const filteredActions = actions.filter((action) => action.name.toLowerCase().includes(query) || action.subtitle.toLowerCase().includes(query));
+    const filteredActions = actions.filter((action) => action.name.toLowerCase().includes(query) || action.subtitle.toLowerCase().includes(query) || (action.name.toLowerCase() + " " + action.subtitle.toLowerCase()).includes(query));
+    console.log("query:", query);
+    console.log("FA:", filteredActions);
     return /* @__PURE__ */ import_react6.default.createElement("nav", {
       className: clsx_m_default("cp-relative cp-text-sm cp-overflow-hidden", "cp-max-w-xl cp-w-full cp-transform cp-rounded-xl cp-bg-white cp-shadow-2xl cp-ring-1", "cp-ring-black cp-ring-opacity-5 cp-transition-all", "dark:cp-bg-gray-900")
     }, /* @__PURE__ */ import_react6.default.createElement(Search, null), /* @__PURE__ */ import_react6.default.createElement("div", {
-      className: `cp-px-3 cp-overflow-y-auto cp-scrollbar ${filteredActions.length && "cp-h-96"}`
+      className: `cp-px-3 cp-overflow-y-auto cp-scrollbar ${filteredActions.length > 6 && "cp-h-96"}`
     }, filteredActions.map((item, i) => /* @__PURE__ */ import_react6.default.createElement(Result, {
       key: i,
       result: item,
