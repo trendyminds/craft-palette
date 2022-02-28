@@ -26,7 +26,7 @@ export default function Modal() {
 			)}
 		>
 			<Search />
-			<div className="cp-px-3 cp-overflow-y-auto cp-scrollbar cp-h-96">
+			<div className={`cp-px-3 cp-overflow-y-auto cp-scrollbar ${filteredActions.length && 'cp-h-96'}`}>
 				{filteredActions.map((item, i) => (
 					<Result key={i} result={item} firstResult={i === 0} />
 				))}
