@@ -27111,6 +27111,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   }
   var ZoomOutIcon_default = ZoomOutIcon;
 
+  // scripts/components/Search.js
+  var import_react4 = __toESM(require_react());
+
   // scripts/components/Icon.js
   var import_react3 = __toESM(require_react());
   function Icon({ name, ...props }) {
@@ -27122,7 +27125,6 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   }
 
   // scripts/components/Search.js
-  var import_react4 = __toESM(require_react());
   function Search() {
     const { setRawQuery, searchNode, firstResultNode } = usePaletteContext();
     function handleKeyDown(event) {
@@ -27206,18 +27208,18 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
   function Modal() {
     const { rawQuery, actions } = usePaletteContext();
     const query = rawQuery.toLowerCase().replace(/^[#>]/, "");
-    const filteredActions = actions.filter((action) => action.name.toLowerCase().includes(query) || action.subtitle.toLowerCase().includes(query) || (action.name.toLowerCase() + " " + action.subtitle.toLowerCase()).includes(query));
-    console.log("query:", query);
-    console.log("FA:", filteredActions);
+    const filteredActions = actions.filter((action) => action.name.toLowerCase().includes(query) || action.subtitle.toLowerCase().includes(query));
     return /* @__PURE__ */ import_react6.default.createElement("nav", {
       className: clsx_m_default("cp-relative cp-text-sm cp-overflow-hidden", "cp-max-w-xl cp-w-full cp-transform cp-rounded-xl cp-bg-white cp-shadow-2xl cp-ring-1", "cp-ring-black cp-ring-opacity-5 cp-transition-all", "dark:cp-bg-gray-900")
     }, /* @__PURE__ */ import_react6.default.createElement(Search, null), /* @__PURE__ */ import_react6.default.createElement("div", {
-      className: `cp-px-3 cp-overflow-y-auto cp-scrollbar ${filteredActions.length > 6 && "cp-h-96"}`
-    }, filteredActions.map((item, i) => /* @__PURE__ */ import_react6.default.createElement(Result, {
-      key: i,
-      result: item,
-      firstResult: i === 0
-    }))), rawQuery === "?" && /* @__PURE__ */ import_react6.default.createElement("div", {
+      className: `cp-px-3 cp-overflow-y-auto cp-scrollbar ${filteredActions?.length > 6 && "cp-h-96"}`
+    }, filteredActions?.map((item, i) => {
+      return /* @__PURE__ */ import_react6.default.createElement(Result, {
+        key: i,
+        result: item,
+        firstResult: i === 0
+      });
+    })), rawQuery === "?" && /* @__PURE__ */ import_react6.default.createElement("div", {
       className: "cp-py-4 cp-px-6 cp-text-center cp-text-sm cp-sm:px-14"
     }, /* @__PURE__ */ import_react6.default.createElement(SupportIcon_default, {
       className: "cp-mx-auto cp-h-6 cp-w-6 cp-text-gray-400",
@@ -27226,7 +27228,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       className: clsx_m_default("cp-mt-4 cp-font-semibold cp-text-gray-900", "dark:cp-text-white")
     }, "Help with searching"), /* @__PURE__ */ import_react6.default.createElement("p", {
       className: "cp-mt-2 cp-text-gray-500"
-    }, "Use this tool to quickly search for users and projects across our entire platform. You can also use the search modifiers found in the footer below to limit the results to just users or projects.")), query !== "" && rawQuery !== "?" && filteredActions.length === 0 && /* @__PURE__ */ import_react6.default.createElement("div", {
+    }, "Use this tool to quickly search for users and projects across our entire platform. You can also use the search modifiers found in the footer below to limit the results to just users or projects.")), rawQuery !== "" && rawQuery !== "?" && filteredActions.length === 0 && /* @__PURE__ */ import_react6.default.createElement("div", {
       className: "cp-py-4 cp-px-6 cp-text-center cp-text-sm cp-sm:px-14"
     }, /* @__PURE__ */ import_react6.default.createElement(ExclamationIcon_default, {
       className: "cp-mx-auto cp-h-6 cp-w-6 cp-text-gray-400",
