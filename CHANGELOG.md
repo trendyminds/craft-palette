@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 2.0.0 - 2022-07-12
+
+### Added
+- Craft 4.0 support
+
 ## 1.6.0 - 2022-02-18
 
 ### Added
