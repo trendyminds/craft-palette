@@ -10,9 +10,9 @@ use craft\web\twig\variables\Cp;
 
 class ActionsController extends Controller
 {
-	protected $allowAnonymous = false;
+	protected array|int|bool $allowAnonymous = false;
 
-	public function actionIndex()
+	public function actionIndex(): \craft\web\Response
 	{
 		return $this->asJson([
 			...$this->_getContextActions(),

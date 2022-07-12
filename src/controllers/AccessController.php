@@ -10,9 +10,9 @@ use trendyminds\palette\assetbundles\PaletteBundle;
 
 class AccessController extends Controller
 {
-	protected $allowAnonymous = true;
+	protected array|int|bool $allowAnonymous = true;
 
-	public function actionIndex()
+	public function actionIndex(): \craft\web\Response
 	{
 		// We don't want to do anything for anonymous users
 		if (Craft::$app->user->isGuest) {
