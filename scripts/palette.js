@@ -1,17 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import * as HeroIcons from '@heroicons/react/outline'
 import clsx from 'clsx'
-import {
-	KBarProvider,
-	KBarPortal,
-	KBarPositioner,
-	KBarAnimator,
-	KBarSearch,
-	KBarResults,
-	useMatches,
-	useKBar,
-	useRegisterActions,
-} from 'kbar'
+import { useHotkeys } from 'react-hotkeys-hook'
+import useOnClickOutside from 'use-onclickoutside'
 
 function Icon({ name, ...props }) {
 	const { ...icons } = HeroIcons
@@ -20,140 +11,125 @@ function Icon({ name, ...props }) {
 	return <HeroIcon {...props} />
 }
 
-function RenderResults() {
-	const { results } = useMatches()
+export default function Palette() {
+	const modal = useRef(null)
+	const list = useRef(null)
+	const [isOpen, setIsOpen] = useState(false)
+	const [query, setQuery] = useState('')
+	const [options, setOptions] = useState([])
+	useOnClickOutside(modal, () => setIsOpen(false))
 
-	return (
-		<div className="vtw-pb-2">
-			<KBarResults
-				items={results}
-				onRender={({ item, active }) =>
-					typeof item === 'string' ? (
-						<p
-							className={clsx(
-								'vtw-text-[11px] vtw-font-bold vtw-uppercase',
-								'vtw-pt-4 vtw-pb-1 vtw-px-2',
-								'vtw-text-zinc-400 dark:vtw-text-neutral-500'
-							)}
-						>
-							{item}
-						</p>
-					) : (
-						<div
-							className={clsx(
-								'vtw-flex vtw-items-center vtw-gap-2',
-								'vtw-text-sm vtw-text-gray-800 dark:vtw-text-neutral-300',
-								'vtw-p-2',
-								'vtw-mx-2',
-								'vtw-rounded-lg',
-								active && 'vtw-bg-neutral-200 dark:vtw-bg-neutral-600'
-							)}
-						>
-							<div
-								className={clsx(
-									'vtw-h-5 vtw-w-5',
-									active
-										? 'vtw-text-gray-800 dark:vtw-text-neutral-200'
-										: 'vtw-text-gray-600 dark:vtw-text-neutral-400'
-								)}
-							>
-								<Icon name={item.icon} />
-							</div>
-							<div className="vtw-flex vtw-justify-between vtw-gap-3 vtw-flex-1">
-								<div className="vtw-flex vtw-flex-col vtw-gap-1 vtw-flex-1 vtw-justify-center">
-									<p
-										className={clsx(
-											'vtw-leading-none vtw-m-0',
-											active && 'dark:vtw-text-neutral-50'
-										)}
-									>
-										{item.name}
-									</p>
-									{item.subtitle && (
-										<p className="vtw-leading-none vtw-text-xs vtw-text-gray-500 dark:vtw-text-neutral-400 vtw-m-0">
-											{item.subtitle}
-										</p>
-									)}
-								</div>
-
-								{item?.badgeCount && (
-									<div
-										className={clsx(
-											'vtw-bg-neutral-600 dark:vtw-bg-neutral-400',
-											'vtw-h-5 vtw-w-5 vtw-rounded-full',
-											'vtw-flex vtw-items-center vtw-justify-center vtw-self-center'
-										)}
-									>
-										<p
-											className={clsx(
-												'vtw-text-[10px] vtw-leading-none vtw-font-bold',
-												'vtw-text-white dark:vtw-text-neutral-800',
-												'vtw-m-0'
-											)}
-										>
-											{item?.badgeCount}
-										</p>
-									</div>
-								)}
-							</div>
-						</div>
-					)
-				}
-			/>
-		</div>
+	useHotkeys(
+		'ctrl+k, command+k',
+		() => {
+			setIsOpen((prevStatus) => !prevStatus)
+			setQuery('')
+		},
+		{ enableOnTags: ['INPUT'] }
 	)
-}
-
-function Portal() {
-	const [actions, setActions] = useState([])
-	const { query } = useKBar()
-
-	useRegisterActions(actions, [actions])
+	useHotkeys(
+		'esc',
+		() => {
+			setIsOpen(false)
+			setQuery('')
+		},
+		{ enableOnTags: ['INPUT'] }
+	)
 
 	useEffect(() => {
 		fetch('/actions/palette/actions')
 			.then((res) => res.json())
 			.then((data) => {
-				const actions = data.map((link) => ({
-					id: link.url,
-					name: link.name,
-					icon: link.icon,
-					subtitle: link.subtitle,
-					section: link.section,
-					badgeCount: link?.badgeCount,
-					perform: () => (window.location = link.url),
-				}))
-
-				setActions(actions)
+				setOptions(data)
 			})
 	}, [])
 
 	return (
 		<>
-			<KBarPortal>
-				<KBarPositioner className="vtw-bg-neutral-900/20 vtw-z-[9999]">
-					<KBarAnimator
+			{isOpen && (
+				<div
+					className={clsx(
+						'vtw-bg-neutral-900/20 vtw-z-[9999] vtw-fixed vtw-inset-0 vtw-h-full vtw-w-full',
+						'vtw-flex vtw-justify-center vtw-items-start'
+					)}
+				>
+					<div
+						ref={modal}
 						className={clsx(
 							'vtw-bg-zinc-50 dark:vtw-bg-neutral-800',
 							'vtw-rounded-lg vtw-overflow-hidden vtw-shadow-2xl',
 							'vtw-border vtw-border-solid vtw-border-zinc-200 dark:vtw-border-none',
-							'vtw-max-w-lg vtw-w-full'
+							'vtw-max-w-lg vtw-w-full',
+							'vtw-translate-y-40'
 						)}
 					>
-						<KBarSearch
+						<input
+							type="text"
+							value={query}
+							onInput={({ target }) => setQuery(target.value)}
+							placeholder="Search"
 							className={clsx(
-								'vtw-bg-transparent',
-								'vtw-w-full',
-								'vtw-px-4 vtw-py-3',
-								'vtw-border-none',
-								'dark:vtw-text-neutral-300 dark:placeholder:vtw-text-neutral-500',
-								'focus:vtw-border-none focus:vtw-outline-none focus:vtw-ring-0'
+								'vtw-w-full vtw-font-sans vtw-py-3 vtw-px-5 vtw-text-base',
+								'vtw-border-none vtw-bg-transparent vtw-outline-none focus:vtw-border-none !vtw-ring-0 !vtw-shadow-none'
 							)}
+							autoFocus
 						/>
-						<RenderResults />
-					</KBarAnimator>
-				</KBarPositioner>
-			</KBarPortal>
+						<div
+							className={clsx(
+								'vtw-max-h-[400px] vtw-overflow-scroll vtw-transition-all'
+							)}
+							ref={list}
+						>
+							{options
+								.filter(
+									(option) =>
+										option.name.toLowerCase().includes(query.toLowerCase()) ||
+										option.subtitle.toLowerCase().includes(query.toLowerCase())
+								)
+								.map((option, index) => (
+									<a
+										key={option.url}
+										className={clsx(
+											'vtw-flex vtw-items-center vtw-gap-2',
+											'vtw-font-sans vtw-text-sm vtw-text-gray-800 dark:vtw-text-neutral-300',
+											'vtw-p-2',
+											'vtw-mx-2',
+											'vtw-rounded-lg',
+											'focus:vtw-bg-red-500'
+										)}
+										href={option.url}
+									>
+										<Icon
+											name={option.icon}
+											className={clsx(
+												'vtw-h-5 vtw-w-5',
+												'vtw-text-gray-600 dark:vtw-text-neutral-400'
+											)}
+										/>
+										<div className={clsx('vtw-flex vtw-flex-col vtw-gap-1')}>
+											<span
+												className={clsx(
+													'vtw-block vtw-leading-none vtw-m-0 vtw-font-sans'
+												)}
+											>
+												{option.name}
+											</span>
+											{option.subtitle && (
+												<span
+													className={clsx(
+														'vtw-block vtw-leading-none vtw-text-xs vtw-text-gray-500 dark:vtw-text-neutral-400 vtw-m-0 vtw-font-sans'
+													)}
+												>
+													{option.subtitle}
+												</span>
+											)}
+										</div>
+									</a>
+								))}
+						</div>
+					</div>
+				</div>
+			)}
 
 			<button
 				className={clsx(
@@ -165,20 +141,12 @@ function Portal() {
 					'dark:vtw-text-neutral-300',
 					'vtw-h-8 vtw-w-8 vtw-z-[9999]',
 					'vtw-cursor-pointer',
+					'vtw-border-0',
 					'vtw-transition-transform hover:vtw-scale-110 active:vtw-scale-90'
 				)}
-				onClick={query.toggle}
 			>
 				<Icon name="TerminalIcon" className="vtw-h-5 vtw-w-5" />
 			</button>
 		</>
-	)
-}
-
-export default function Palette() {
-	return (
-		<KBarProvider>
-			<Portal />
-		</KBarProvider>
 	)
 }
