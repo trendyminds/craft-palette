@@ -17,6 +17,7 @@ export default function Palette() {
 	const [isOpen, setIsOpen] = useState(false)
 	const [query, setQuery] = useState('')
 	const [options, setOptions] = useState([])
+	const [focus, setFocus] = useState(0)
 	useOnClickOutside(modal, () => setIsOpen(false))
 
 	useHotkeys(
@@ -35,6 +36,14 @@ export default function Palette() {
 		},
 		{ enableOnTags: ['INPUT'] }
 	)
+
+	useEffect(() => {
+		if (!options || !list.current) {
+			return
+		}
+
+		// list.current.querySelectorAll('a')[focus].scrollIntoView({ block: 'end' })
+	}, [focus])
 
 	useEffect(() => {
 		fetch('/actions/palette/actions')
@@ -66,7 +75,10 @@ export default function Palette() {
 						<input
 							type="text"
 							value={query}
-							onInput={({ target }) => setQuery(target.value)}
+							onInput={({ target }) => {
+								setQuery(target.value)
+								setFocus(0)
+							}}
 							placeholder="Search"
 							className={clsx(
 								'vtw-w-full vtw-font-sans vtw-py-3 vtw-px-5 vtw-text-base',
@@ -86,46 +98,57 @@ export default function Palette() {
 										option.name.toLowerCase().includes(query.toLowerCase()) ||
 										option.subtitle.toLowerCase().includes(query.toLowerCase())
 								)
-								.map((option, index) => (
-									<a
-										key={option.url}
-										className={clsx(
-											'vtw-flex vtw-items-center vtw-gap-2',
-											'vtw-font-sans vtw-text-sm vtw-text-gray-800 dark:vtw-text-neutral-300',
-											'vtw-p-2',
-											'vtw-mx-2',
-											'vtw-rounded-lg',
-											'focus:vtw-bg-red-500'
-										)}
-										href={option.url}
-									>
-										<Icon
-											name={option.icon}
+								.map((option, index) => {
+									const isActive = index === focus
+									const isLast = index + 1 === options.length
+									return (
+										<a
+											key={option.url}
 											className={clsx(
-												'vtw-h-5 vtw-w-5',
-												'vtw-text-gray-600 dark:vtw-text-neutral-400'
+												'vtw-flex vtw-items-center vtw-gap-2',
+												'vtw-font-sans vtw-text-sm vtw-text-gray-800 dark:vtw-text-neutral-300',
+												'vtw-p-2',
+												'vtw-mx-2',
+												'vtw-rounded-lg',
+												isLast && 'vtw-mb-2',
+												isActive && 'vtw-bg-neutral-200 dark:vtw-bg-neutral-600'
 											)}
-										/>
-										<div className={clsx('vtw-flex vtw-flex-col vtw-gap-1')}>
-											<span
+											onMouseEnter={() => setFocus(index)}
+											onMouseLeave={() => setFocus(null)}
+											href={option.url}
+										>
+											<Icon
+												name={option.icon}
 												className={clsx(
-													'vtw-block vtw-leading-none vtw-m-0 vtw-font-sans'
+													'vtw-h-5 vtw-w-5',
+													'vtw-text-gray-600 dark:vtw-text-neutral-400',
+													isActive
+														? 'vtw-text-gray-800 dark:vtw-text-neutral-200'
+														: 'vtw-text-gray-600 dark:vtw-text-neutral-400'
 												)}
-											>
-												{option.name}
-											</span>
-											{option.subtitle && (
+											/>
+											<div className={clsx('vtw-flex vtw-flex-col vtw-gap-1')}>
 												<span
 													className={clsx(
-														'vtw-block vtw-leading-none vtw-text-xs vtw-text-gray-500 dark:vtw-text-neutral-400 vtw-m-0 vtw-font-sans'
+														'vtw-block vtw-leading-none vtw-m-0 vtw-font-sans',
+														isActive && 'dark:vtw-text-neutral-50'
 													)}
 												>
-													{option.subtitle}
+													{option.name}
 												</span>
-											)}
-										</div>
-									</a>
-								))}
+												{option.subtitle && (
+													<span
+														className={clsx(
+															'vtw-block vtw-leading-none vtw-text-xs vtw-text-gray-500 dark:vtw-text-neutral-400 vtw-m-0 vtw-font-sans'
+														)}
+													>
+														{option.subtitle}
+													</span>
+												)}
+											</div>
+										</a>
+									)
+								})}
 						</div>
 					</div>
 				</div>
