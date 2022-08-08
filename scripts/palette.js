@@ -162,7 +162,7 @@ export default function Palette() {
 					'vtw-backdrop-blur-md vtw-shadow vtw-rounded-full',
 					'vtw-bg-zinc-50/70 dark:vtw-bg-neutral-800/90',
 					'dark:vtw-text-neutral-300',
-					'vtw-h-8 vtw-w-8 vtw-z-[9999]',
+					'vtw-h-8 vtw-w-8 vtw-z-[100]',
 					'vtw-cursor-pointer',
 					'vtw-border-0',
 					'vtw-transition-transform hover:vtw-scale-110 active:vtw-scale-90'
