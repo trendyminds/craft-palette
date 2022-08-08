@@ -7,11 +7,14 @@ export default function Modal() {
 	const results = useRef(null)
 	const [query, setQuery] = useState('')
 	const [options, setOptions] = useState([])
+	const [filteredOptions, setFilteredOptions] = useState([])
 	const [focus, setFocus] = useState(0)
 
 	useHotkeys(
 		'up',
-		() => {
+		(ev) => {
+			ev.preventDefault()
+
 			setFocus((prevState) => {
 				// Prevent user from focusing above the top-most item
 				if (prevState === 0) {
@@ -32,9 +35,15 @@ export default function Modal() {
 
 	useHotkeys(
 		'down',
-		() => {
+		(ev) => {
+			ev.preventDefault()
+
 			setFocus((prevState) => {
 				const newFocus = prevState + 1
+
+				if (newFocus === filteredOptions.length) {
+					return prevState
+				}
 
 				results.current
 					.querySelectorAll('a')
@@ -75,8 +84,24 @@ export default function Modal() {
 			.then((res) => res.json())
 			.then((data) => {
 				setOptions(data)
+				setFilteredOptions(data)
 			})
 	}, [])
+
+	useEffect(() => {
+		if (query === '') {
+			setFilteredOptions(options)
+			return
+		}
+
+		setFilteredOptions(() => {
+			return options.filter(
+				(option) =>
+					option.name.toLowerCase().includes(query.toLowerCase()) ||
+					option.subtitle.toLowerCase().includes(query.toLowerCase())
+			)
+		})
+	}, [query])
 
 	return (
 		<div
@@ -107,63 +132,57 @@ export default function Modal() {
 				)}
 				ref={results}
 			>
-				{options
-					.filter(
-						(option) =>
-							option.name.toLowerCase().includes(query.toLowerCase()) ||
-							option.subtitle.toLowerCase().includes(query.toLowerCase())
-					)
-					.map((option, index) => {
-						const isActive = index === focus
-						const isLast = index + 1 === options.length
-						return (
-							<a
-								key={option.url}
+				{filteredOptions.map((option, index) => {
+					const isActive = index === focus
+					const isLast = index + 1 === filteredOptions.length
+					return (
+						<a
+							key={option.url}
+							className={clsx(
+								'vtw-flex vtw-items-center vtw-gap-2',
+								'vtw-font-sans vtw-text-sm vtw-text-gray-800 dark:vtw-text-neutral-300',
+								'vtw-p-2 vtw-mx-2',
+								'vtw-rounded-lg',
+								'hover:vtw-no-underline',
+								isLast && 'vtw-mb-2',
+								isActive && 'vtw-bg-neutral-200 dark:vtw-bg-neutral-600'
+							)}
+							onMouseEnter={() => setFocus(index)}
+							onMouseLeave={() => setFocus(null)}
+							href={option.url}
+						>
+							<Icon
+								name={option.icon}
 								className={clsx(
-									'vtw-flex vtw-items-center vtw-gap-2',
-									'vtw-font-sans vtw-text-sm vtw-text-gray-800 dark:vtw-text-neutral-300',
-									'vtw-p-2 vtw-mx-2',
-									'vtw-rounded-lg',
-									'hover:vtw-no-underline',
-									isLast && 'vtw-mb-2',
-									isActive && 'vtw-bg-neutral-200 dark:vtw-bg-neutral-600'
+									'vtw-h-5 vtw-w-5',
+									'vtw-text-gray-600 dark:vtw-text-neutral-400',
+									isActive
+										? 'vtw-text-gray-800 dark:vtw-text-neutral-200'
+										: 'vtw-text-gray-600 dark:vtw-text-neutral-400'
 								)}
-								onMouseEnter={() => setFocus(index)}
-								onMouseLeave={() => setFocus(null)}
-								href={option.url}
-							>
-								<Icon
-									name={option.icon}
+							/>
+							<div className={clsx('vtw-flex vtw-flex-col vtw-gap-1')}>
+								<span
 									className={clsx(
-										'vtw-h-5 vtw-w-5',
-										'vtw-text-gray-600 dark:vtw-text-neutral-400',
-										isActive
-											? 'vtw-text-gray-800 dark:vtw-text-neutral-200'
-											: 'vtw-text-gray-600 dark:vtw-text-neutral-400'
+										'vtw-block vtw-leading-none vtw-m-0 vtw-font-sans',
+										isActive && 'dark:vtw-text-neutral-50'
 									)}
-								/>
-								<div className={clsx('vtw-flex vtw-flex-col vtw-gap-1')}>
+								>
+									{option.name}
+								</span>
+								{option.subtitle && (
 									<span
 										className={clsx(
-											'vtw-block vtw-leading-none vtw-m-0 vtw-font-sans',
-											isActive && 'dark:vtw-text-neutral-50'
+											'vtw-block vtw-leading-none vtw-text-xs vtw-text-gray-500 dark:vtw-text-neutral-400 vtw-m-0 vtw-font-sans'
 										)}
 									>
-										{option.name}
+										{option.subtitle}
 									</span>
-									{option.subtitle && (
-										<span
-											className={clsx(
-												'vtw-block vtw-leading-none vtw-text-xs vtw-text-gray-500 dark:vtw-text-neutral-400 vtw-m-0 vtw-font-sans'
-											)}
-										>
-											{option.subtitle}
-										</span>
-									)}
-								</div>
-							</a>
-						)
-					})}
+								)}
+							</div>
+						</a>
+					)
+				})}
 			</div>
 		</div>
 	)

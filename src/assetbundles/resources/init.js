@@ -25499,8 +25499,10 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     const results = (0, import_react5.useRef)(null);
     const [query, setQuery] = (0, import_react5.useState)("");
     const [options, setOptions] = (0, import_react5.useState)([]);
+    const [filteredOptions, setFilteredOptions] = (0, import_react5.useState)([]);
     const [focus, setFocus] = (0, import_react5.useState)(0);
-    useHotkeys("up", () => {
+    useHotkeys("up", (ev) => {
+      ev.preventDefault();
       setFocus((prevState) => {
         if (prevState === 0) {
           return 0;
@@ -25510,9 +25512,13 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         return newFocus;
       });
     }, { enableOnTags: ["INPUT"] });
-    useHotkeys("down", () => {
+    useHotkeys("down", (ev) => {
+      ev.preventDefault();
       setFocus((prevState) => {
         const newFocus = prevState + 1;
+        if (newFocus === filteredOptions.length) {
+          return prevState;
+        }
         results.current.querySelectorAll("a")[newFocus].scrollIntoView({ block: "center" });
         return newFocus;
       });
@@ -25531,8 +25537,18 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     (0, import_react5.useEffect)(() => {
       fetch("/actions/palette/actions").then((res) => res.json()).then((data) => {
         setOptions(data);
+        setFilteredOptions(data);
       });
     }, []);
+    (0, import_react5.useEffect)(() => {
+      if (query === "") {
+        setFilteredOptions(options);
+        return;
+      }
+      setFilteredOptions(() => {
+        return options.filter((option) => option.name.toLowerCase().includes(query.toLowerCase()) || option.subtitle.toLowerCase().includes(query.toLowerCase()));
+      });
+    }, [query]);
     return /* @__PURE__ */ import_react5.default.createElement("div", {
       className: clsx_m_default("vtw-bg-zinc-50 dark:vtw-bg-neutral-800", "vtw-rounded-lg vtw-overflow-hidden vtw-shadow-2xl", "vtw-border vtw-border-solid vtw-border-zinc-200 dark:vtw-border-none", "vtw-translate-y-40")
     }, /* @__PURE__ */ import_react5.default.createElement("input", {
@@ -25548,9 +25564,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }), /* @__PURE__ */ import_react5.default.createElement("div", {
       className: clsx_m_default("vtw-max-h-[400px] vtw-overflow-scroll vtw-transition-all"),
       ref: results
-    }, options.filter((option) => option.name.toLowerCase().includes(query.toLowerCase()) || option.subtitle.toLowerCase().includes(query.toLowerCase())).map((option, index2) => {
+    }, filteredOptions.map((option, index2) => {
       const isActive = index2 === focus;
-      const isLast = index2 + 1 === options.length;
+      const isLast = index2 + 1 === filteredOptions.length;
       return /* @__PURE__ */ import_react5.default.createElement("a", {
         key: option.url,
         className: clsx_m_default("vtw-flex vtw-items-center vtw-gap-2", "vtw-font-sans vtw-text-sm vtw-text-gray-800 dark:vtw-text-neutral-300", "vtw-p-2 vtw-mx-2", "vtw-rounded-lg", "hover:vtw-no-underline", isLast && "vtw-mb-2", isActive && "vtw-bg-neutral-200 dark:vtw-bg-neutral-600"),
