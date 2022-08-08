@@ -107,9 +107,9 @@ export default function Palette() {
 											className={clsx(
 												'vtw-flex vtw-items-center vtw-gap-2',
 												'vtw-font-sans vtw-text-sm vtw-text-gray-800 dark:vtw-text-neutral-300',
-												'vtw-p-2',
-												'vtw-mx-2',
+												'vtw-p-2 vtw-mx-2',
 												'vtw-rounded-lg',
+												'hover:vtw-no-underline',
 												isLast && 'vtw-mb-2',
 												isActive && 'vtw-bg-neutral-200 dark:vtw-bg-neutral-600'
 											)}

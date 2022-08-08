@@ -25538,7 +25538,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       const isLast = index2 + 1 === options.length;
       return /* @__PURE__ */ import_react4.default.createElement("a", {
         key: option.url,
-        className: clsx_m_default("vtw-flex vtw-items-center vtw-gap-2", "vtw-font-sans vtw-text-sm vtw-text-gray-800 dark:vtw-text-neutral-300", "vtw-p-2", "vtw-mx-2", "vtw-rounded-lg", isLast && "vtw-mb-2", isActive && "vtw-bg-neutral-200 dark:vtw-bg-neutral-600"),
+        className: clsx_m_default("vtw-flex vtw-items-center vtw-gap-2", "vtw-font-sans vtw-text-sm vtw-text-gray-800 dark:vtw-text-neutral-300", "vtw-p-2 vtw-mx-2", "vtw-rounded-lg", "hover:vtw-no-underline", isLast && "vtw-mb-2", isActive && "vtw-bg-neutral-200 dark:vtw-bg-neutral-600"),
         onMouseEnter: () => setFocus(index2),
         onMouseLeave: () => setFocus(null),
         href: option.url
