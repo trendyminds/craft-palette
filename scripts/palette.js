@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import clsx from 'clsx'
 import { useHotkeys } from 'react-hotkeys-hook'
+import useOnClickOutside from 'use-onclickoutside'
 import Icon from './icon'
 import Modal from './modal'
 
 export default function Palette() {
+	const modalWrap = useRef(null)
 	const [isOpen, setIsOpen] = useState(false)
+	useOnClickOutside(modalWrap, () => setIsOpen(false))
 
 	useHotkeys(
 		'ctrl+k, command+k',
@@ -31,7 +34,9 @@ export default function Palette() {
 						'vtw-flex vtw-justify-center vtw-items-start'
 					)}
 				>
-					<Modal />
+					<div ref={modalWrap} className="vtw-w-full vtw-max-w-lg">
+						<Modal />
+					</div>
 				</div>
 			)}
 

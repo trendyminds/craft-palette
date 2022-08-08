@@ -1,20 +1,31 @@
 import React, { useEffect, useRef, useState } from 'react'
-import useOnClickOutside from 'use-onclickoutside'
 import clsx from 'clsx'
 import { useHotkeys } from 'react-hotkeys-hook'
 import Icon from './icon'
 
 export default function Modal() {
-	const modal = useRef(null)
+	const results = useRef(null)
 	const [query, setQuery] = useState('')
 	const [options, setOptions] = useState([])
 	const [focus, setFocus] = useState(0)
-	useOnClickOutside(modal, () => setIsOpen(false))
 
 	useHotkeys(
 		'up',
 		() => {
-			console.log('ya')
+			setFocus((prevState) => {
+				// Prevent user from focusing above the top-most item
+				if (prevState === 0) {
+					return 0
+				}
+
+				const newFocus = prevState - 1
+
+				results.current
+					.querySelectorAll('a')
+					[newFocus].scrollIntoView({ block: 'center' })
+
+				return newFocus
+			})
 		},
 		{ enableOnTags: ['INPUT'] }
 	)
@@ -22,10 +33,42 @@ export default function Modal() {
 	useHotkeys(
 		'down',
 		() => {
-			console.log('ya')
+			setFocus((prevState) => {
+				const newFocus = prevState + 1
+
+				results.current
+					.querySelectorAll('a')
+					[newFocus].scrollIntoView({ block: 'center' })
+
+				return newFocus
+			})
 		},
 		{ enableOnTags: ['INPUT'] }
 	)
+
+	// Open in same window if opening with enter key
+	useHotkeys(
+		'enter',
+		() => {
+			const url = focusedElement().getAttribute('href')
+			window.location = url
+		},
+		{ enableOnTags: ['INPUT'] }
+	)
+
+	// Open in new window if using cmd+enter on the link
+	useHotkeys(
+		'cmd+enter',
+		() => {
+			const url = focusedElement().getAttribute('href')
+			window.open(url, '_blank')
+		},
+		{ enableOnTags: ['INPUT'] }
+	)
+
+	function focusedElement() {
+		return results.current.querySelectorAll('a')[focus]
+	}
 
 	useEffect(() => {
 		fetch('/actions/palette/actions')
@@ -37,12 +80,11 @@ export default function Modal() {
 
 	return (
 		<div
-			ref={modal}
 			className={clsx(
 				'vtw-bg-zinc-50 dark:vtw-bg-neutral-800',
 				'vtw-rounded-lg vtw-overflow-hidden vtw-shadow-2xl',
 				'vtw-border vtw-border-solid vtw-border-zinc-200 dark:vtw-border-none',
-				'vtw-max-w-lg vtw-w-full',
+
 				'vtw-translate-y-40'
 			)}
 		>
@@ -64,6 +106,7 @@ export default function Modal() {
 				className={clsx(
 					'vtw-max-h-[400px] vtw-overflow-scroll vtw-transition-all'
 				)}
+				ref={results}
 			>
 				{options
 					.filter(
