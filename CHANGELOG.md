@@ -1,9 +1,6 @@
 # Release Notes for Palette
 
-## 2.1.0 - Unreleased
-
-### Added
-- New UI
+## 3.0.0 - Unreleased
 
 ## 2.0.0 - 2022-07-12
 
