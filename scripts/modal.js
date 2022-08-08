@@ -13,6 +13,7 @@ export default function Modal() {
 	useHotkeys(
 		'up',
 		(ev) => {
+			// Prevent keyboard from modifying the input field
 			ev.preventDefault()
 
 			setFocus((prevState) => {
@@ -21,8 +22,10 @@ export default function Modal() {
 					return 0
 				}
 
+				// Get the new focus
 				const newFocus = prevState - 1
 
+				// Scroll to the element in the list
 				results.current
 					.querySelectorAll('a')
 					[newFocus].scrollIntoView({ block: 'center' })
@@ -36,15 +39,19 @@ export default function Modal() {
 	useHotkeys(
 		'down',
 		(ev) => {
+			// Prevent keyboard from modifying the input field
 			ev.preventDefault()
 
 			setFocus((prevState) => {
+				// Get the new focus
 				const newFocus = prevState + 1
 
+				// Prevent the user from scrolling past the options
 				if (newFocus === filteredOptions.length) {
 					return prevState
 				}
 
+				// Scroll to the element in the list
 				results.current
 					.querySelectorAll('a')
 					[newFocus].scrollIntoView({ block: 'center' })
@@ -88,6 +95,7 @@ export default function Modal() {
 			})
 	}, [])
 
+	// Filter the results based on the user's query
 	useEffect(() => {
 		if (query === '') {
 			setFilteredOptions(options)
