@@ -25577,12 +25577,18 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
         name: option.icon,
         className: clsx_m_default("vtw-h-5 vtw-w-5", "vtw-text-gray-600 dark:vtw-text-neutral-400", isActive ? "vtw-text-gray-800 dark:vtw-text-neutral-200" : "vtw-text-gray-600 dark:vtw-text-neutral-400")
       }), /* @__PURE__ */ import_react5.default.createElement("div", {
+        className: clsx_m_default("vtw-flex vtw-items-center vtw-justify-between vtw-gap-2", "vtw-flex-1")
+      }, /* @__PURE__ */ import_react5.default.createElement("div", {
         className: clsx_m_default("vtw-flex vtw-flex-col vtw-gap-1")
       }, /* @__PURE__ */ import_react5.default.createElement("span", {
         className: clsx_m_default("vtw-block vtw-leading-none vtw-m-0 vtw-font-sans", isActive && "dark:vtw-text-neutral-50")
       }, option.name), option.subtitle && /* @__PURE__ */ import_react5.default.createElement("span", {
         className: clsx_m_default("vtw-block vtw-leading-none vtw-text-xs vtw-text-gray-500 dark:vtw-text-neutral-400 vtw-m-0 vtw-font-sans")
-      }, option.subtitle)));
+      }, option.subtitle)), option?.badgeCount && /* @__PURE__ */ import_react5.default.createElement("div", {
+        className: clsx_m_default("vtw-bg-neutral-600 dark:vtw-bg-neutral-400", "vtw-h-5 vtw-w-5 vtw-rounded-full", "vtw-flex vtw-items-center vtw-justify-center vtw-self-center")
+      }, /* @__PURE__ */ import_react5.default.createElement("p", {
+        className: clsx_m_default("vtw-text-[10px] vtw-leading-none vtw-font-bold", "vtw-text-white dark:vtw-text-neutral-800", "vtw-m-0")
+      }, option?.badgeCount))));
     })));
   }
 

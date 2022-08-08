@@ -169,23 +169,50 @@ export default function Modal() {
 										: 'vtw-text-gray-600 dark:vtw-text-neutral-400'
 								)}
 							/>
-							<div className={clsx('vtw-flex vtw-flex-col vtw-gap-1')}>
-								<span
-									className={clsx(
-										'vtw-block vtw-leading-none vtw-m-0 vtw-font-sans',
-										isActive && 'dark:vtw-text-neutral-50'
-									)}
-								>
-									{option.name}
-								</span>
-								{option.subtitle && (
+							<div
+								className={clsx(
+									'vtw-flex vtw-items-center vtw-justify-between vtw-gap-2',
+									'vtw-flex-1'
+								)}
+							>
+								<div className={clsx('vtw-flex vtw-flex-col vtw-gap-1')}>
 									<span
 										className={clsx(
-											'vtw-block vtw-leading-none vtw-text-xs vtw-text-gray-500 dark:vtw-text-neutral-400 vtw-m-0 vtw-font-sans'
+											'vtw-block vtw-leading-none vtw-m-0 vtw-font-sans',
+											isActive && 'dark:vtw-text-neutral-50'
 										)}
 									>
-										{option.subtitle}
+										{option.name}
 									</span>
+									{option.subtitle && (
+										<span
+											className={clsx(
+												'vtw-block vtw-leading-none vtw-text-xs vtw-text-gray-500 dark:vtw-text-neutral-400 vtw-m-0 vtw-font-sans'
+											)}
+										>
+											{option.subtitle}
+										</span>
+									)}
+								</div>
+
+								{option?.badgeCount && (
+									<div
+										className={clsx(
+											'vtw-bg-neutral-600 dark:vtw-bg-neutral-400',
+											'vtw-h-5 vtw-w-5 vtw-rounded-full',
+											'vtw-flex vtw-items-center vtw-justify-center vtw-self-center'
+										)}
+									>
+										<p
+											className={clsx(
+												'vtw-text-[10px] vtw-leading-none vtw-font-bold',
+												'vtw-text-white dark:vtw-text-neutral-800',
+												'vtw-m-0'
+											)}
+										>
+											{option?.badgeCount}
+										</p>
+									</div>
 								)}
 							</div>
 						</a>
