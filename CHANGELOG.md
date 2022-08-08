@@ -1,5 +1,17 @@
 # Release Notes for Palette
 
+## 1.7.0 - 2022-08-08
+
+### Added
+- Rebuilt command palette to support opening links in new tab via keyboard and mouse inputs
+
+### Updated
+- Updated all dependencies
+- Removed kbar dependency
+
+### Fixed
+- Palette no longer steals focused inputs in control panel
+
 ## 1.6.0 - 2022-02-18
 
 ### Added
