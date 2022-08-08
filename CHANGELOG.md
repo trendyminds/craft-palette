@@ -1,6 +1,15 @@
 # Release Notes for Palette
 
-## 3.0.0 - Unreleased
+## 3.0.0 - 2022-08-08
+
+### Added
+- Rebuilt command palette to support opening links in new tab via keyboard and mouse inputs
+
+### Updated
+- Removed kbar dependency
+
+### Fixed
+- Palette no longer steals focused inputs in control panel
 
 ## 2.0.0 - 2022-07-12
 
