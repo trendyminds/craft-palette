@@ -31,7 +31,8 @@ export default function Palette() {
 				<div
 					className={clsx(
 						'vtw-bg-neutral-900/20 vtw-z-[9999] vtw-fixed vtw-inset-0 vtw-h-full vtw-w-full',
-						'vtw-flex vtw-justify-center vtw-items-start'
+						'vtw-flex vtw-justify-center vtw-items-start',
+						'vtw-antialiased'
 					)}
 				>
 					<div ref={modalWrap} className="vtw-w-full vtw-max-w-lg">
