@@ -6,6 +6,7 @@
 - Rebuilt command palette to support opening links in new tab via keyboard and mouse inputs
 
 ### Updated
+- Updated all dependencies
 - Removed kbar dependency
 
 ### Fixed
