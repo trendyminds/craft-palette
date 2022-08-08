@@ -53,6 +53,7 @@ export default function Palette() {
 					'vtw-border-0',
 					'vtw-transition-transform hover:vtw-scale-110 active:vtw-scale-90'
 				)}
+				onClick={() => setIsOpen(true)}
 			>
 				<Icon name="TerminalIcon" className="vtw-h-5 vtw-w-5" />
 			</button>

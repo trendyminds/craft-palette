@@ -25609,7 +25609,8 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       ref: modalWrap,
       className: "vtw-w-full vtw-max-w-lg"
     }, /* @__PURE__ */ import_react6.default.createElement(Modal, null))), /* @__PURE__ */ import_react6.default.createElement("button", {
-      className: clsx_m_default("vtw-fixed vtw-bottom-0 vtw-left-0", "vtw-mb-4 vtw-ml-4", "vtw-flex vtw-items-center vtw-justify-center", "vtw-backdrop-blur-md vtw-shadow vtw-rounded-full", "vtw-bg-zinc-50/70 dark:vtw-bg-neutral-800/90", "dark:vtw-text-neutral-300", "vtw-h-8 vtw-w-8 vtw-z-[100]", "vtw-cursor-pointer", "vtw-border-0", "vtw-transition-transform hover:vtw-scale-110 active:vtw-scale-90")
+      className: clsx_m_default("vtw-fixed vtw-bottom-0 vtw-left-0", "vtw-mb-4 vtw-ml-4", "vtw-flex vtw-items-center vtw-justify-center", "vtw-backdrop-blur-md vtw-shadow vtw-rounded-full", "vtw-bg-zinc-50/70 dark:vtw-bg-neutral-800/90", "dark:vtw-text-neutral-300", "vtw-h-8 vtw-w-8 vtw-z-[100]", "vtw-cursor-pointer", "vtw-border-0", "vtw-transition-transform hover:vtw-scale-110 active:vtw-scale-90"),
+      onClick: () => setIsOpen(true)
     }, /* @__PURE__ */ import_react6.default.createElement(Icon, {
       name: "TerminalIcon",
       className: "vtw-h-5 vtw-w-5"
