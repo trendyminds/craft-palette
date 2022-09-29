@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 1.7.1 - 2022-09-29
+
+### Fixed
+- Don't load Palette scripts when Craft is offline
+
 ## 1.7.0 - 2022-08-08
 
 ### Added
