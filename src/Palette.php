@@ -21,6 +21,11 @@ class Palette extends Plugin
 		// Define our alias for referencing the asset bundles (CSS/JS)
 		Craft::setAlias('@trendyminds/palette', $this->getBasePath());
 
+		// Don't load Palette if Craft is in offline mode
+		if (! Craft::$app->getIsLive()) {
+			return false;
+		}
+
 		// Don't load Palette if this is a frontend request and the frontend setting is disabled
 		if (! $this->getSettings()->enableOnFrontend && Craft::$app->getRequest()->isSiteRequest) {
 			return false;
