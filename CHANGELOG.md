@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 1.7.2 - 2022-10-14
+
+### Fixed
+- Improve contrast of search field text in dark mode ([Discussion](https://github.com/trendyminds/craft-palette/discussions/22))
+
 ## 1.7.1 - 2022-09-29
 
 ### Fixed
