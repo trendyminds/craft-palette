@@ -130,7 +130,8 @@ export default function Modal() {
 				placeholder="Search"
 				className={clsx(
 					'vtw-w-full vtw-font-sans vtw-py-3 vtw-px-5 vtw-text-base',
-					'vtw-border-none vtw-bg-transparent vtw-outline-none focus:vtw-border-none !vtw-ring-0 !vtw-shadow-none'
+					'vtw-border-none vtw-bg-transparent vtw-outline-none focus:vtw-border-none !vtw-ring-0 !vtw-shadow-none',
+					'dark:vtw-text-zinc-300'
 				)}
 				autoFocus
 			/>
