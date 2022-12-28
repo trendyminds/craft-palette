@@ -24,6 +24,7 @@ It should also exist in the CMS you use most, right?
 - 🏎 Compatible with full-page static caching strategies like [Blitz](https://putyourlightson.com/plugins/blitz)
 - 🔐 Actions change based on user permissions and if admin changes are allowed
 - 🔌 Plugins that register navigation links, settings areas, and utilities are included automatically
+- 💅 Add your own custom URLs via the config file (Craft 4+ only)
 
 <img src="docs/light-and-dark.png" alt="The light and dark themes of Palette shown side by side with the default list of results">
 
