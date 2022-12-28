@@ -15,9 +15,9 @@
  */
 
 return [
-	// If Palette should be enabled on the frontend of the website
-	'enableOnFrontend' => true,
+    // If Palette should be enabled on the frontend of the website
+    'enableOnFrontend' => true,
 
-	// If Palette should be enabled on the backend of the website
-	'enableOnBackend' => true,
+    // If Palette should be enabled on the backend of the website
+    'enableOnBackend' => true,
 ];

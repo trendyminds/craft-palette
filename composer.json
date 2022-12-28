@@ -36,5 +36,8 @@
       "yiisoft/yii2-composer": false,
       "craftcms/plugin-installer": false
     }
+  },
+  "require-dev": {
+    "laravel/pint": "^1.3"
   }
 }
