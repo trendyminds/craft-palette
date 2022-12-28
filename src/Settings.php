@@ -15,4 +15,9 @@ class Settings extends Model
      * @var bool If Palette should be enabled on the backend of the website
      */
     public $enableOnBackend = true;
+
+    /**
+     * @var array|callable A custom list of URLs to add to Palette
+     */
+    public $customUrls = [];
 }

@@ -7,6 +7,7 @@ use craft\elements\User;
 use craft\helpers\UrlHelper;
 use craft\web\Controller;
 use craft\web\twig\variables\Cp;
+use trendyminds\palette\Palette;
 
 class ActionsController extends Controller
 {
@@ -20,6 +21,7 @@ class ActionsController extends Controller
             ...$this->_adminActions(),
             ...$this->_utilityActions(),
             ...$this->_userActions(),
+            ...$this->_customActions(),
         ]);
     }
 
@@ -245,5 +247,28 @@ class ActionsController extends Controller
         }
 
         return false;
+    }
+
+    /**
+     * Parses the custom URLs defined by a user and maps them back into a valid Palette structure
+     *
+     * @return array
+     */
+    private function _customActions(): array
+    {
+        $customUrls = Palette::getInstance()->getSettings()->customUrls;
+
+        // If the user supplied a closure we need to invoke it and get the result
+        if ($customUrls instanceof \Closure) {
+            $customUrls = $customUrls();
+        }
+
+        return collect($customUrls)
+            ->map(fn ($item) => [
+                'name' => $item['name'] ?? '',
+                'url' => $item['url'] ?? '',
+                'subtitle' => $item['subtitle'] ?? '',
+            ])
+            ->toArray();
     }
 }

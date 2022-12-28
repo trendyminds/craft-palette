@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 3.1.0 - 2022-12-28
+
+### Added
+- Add `customUrls` config option for including your own custom URLs into the Palette interface
+
 ## 3.0.2 - 2022-10-14
 
 ### Fixed
