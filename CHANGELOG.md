@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 3.1.1 - 2023-02-14
+
+### Fixed
+- Corrected issue where query strings prevented the "Edit this element..." from displaying
+
 ## 3.1.0 - 2022-12-28
 
 ### Added
