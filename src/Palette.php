@@ -16,9 +16,24 @@ class Palette extends Plugin
     {
         parent::init();
 
+        // something is causing alot of transactions here Ima find it
+
         // Define our alias for referencing the asset bundles (CSS/JS)
         Craft::setAlias('@trendyminds/palette', $this->getBasePath());
 
+           // Defer most setup tasks until Craft is fully initialized
+        Craft::$app->onInit(function() {
+            $this->attachEventHandlers();
+        });
+    }
+
+    protected function createSettingsModel(): ?craft\base\Model
+    {
+        return new Settings();
+    }
+
+    protected function attachEventHandlers()
+    {
         // Don't load Palette if Craft is in offline mode
         if (! Craft::$app->getIsLive()) {
             return false;
@@ -34,8 +49,13 @@ class Palette extends Plugin
             return false;
         }
 
-        // Register the asset bundle so our JS XHR can determine if the user is signed in or not
-        Event::on(
+        // Prevent Palette from loading for users who don't have access to the control panel
+        if (! Craft::$app->user->identity || ! Craft::$app->user->identity->can('accessCp')) {
+            return false;
+        }
+
+         // Register the asset bundle so our JS XHR can determine if the user is signed in or not
+         Event::on(
             View::class,
             View::EVENT_BEFORE_RENDER_PAGE_TEMPLATE,
             function (TemplateEvent $event) {
@@ -46,10 +66,5 @@ class Palette extends Plugin
                 }
             }
         );
-    }
-
-    protected function createSettingsModel(): ?craft\base\Model
-    {
-        return new Settings();
     }
 }
