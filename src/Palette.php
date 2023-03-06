@@ -16,8 +16,6 @@ class Palette extends Plugin
     {
         parent::init();
 
-        // something is causing alot of transactions here Ima find it
-
         // Define our alias for referencing the asset bundles (CSS/JS)
         Craft::setAlias('@trendyminds/palette', $this->getBasePath());
 
