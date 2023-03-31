@@ -35,8 +35,18 @@ export default function Palette() {
 						'vtw-antialiased'
 					)}
 				>
-					<div ref={modalWrap} className="vtw-w-full vtw-max-w-lg">
-						<Modal />
+					<div className="vtw-w-full vtw-max-w-lg">
+						<div
+							ref={modalWrap}
+							className={clsx(
+								'vtw-bg-zinc-50 dark:vtw-bg-neutral-800',
+								'vtw-rounded-lg vtw-overflow-hidden vtw-shadow-2xl',
+								'vtw-border vtw-border-solid vtw-border-zinc-200 dark:vtw-border-none',
+								'vtw-translate-y-40'
+							)}
+						>
+							<Modal />
+						</div>
 					</div>
 				</div>
 			)}
