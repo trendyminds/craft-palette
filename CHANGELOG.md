@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 3.1.3 - 2023-03-31
+
+### Fixed
+- Fixes an issue where slugs with special characters may not be properly decoded ([Discussion](https://github.com/trendyminds/craft-palette/discussions/24))
+
 ## 3.1.2 - 2023-03-31
 
 ### Fixed

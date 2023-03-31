@@ -206,8 +206,9 @@ class ActionsController extends Controller
                 $referrer
             );
 
-            // Remove any query strings
+            // Remove any query strings and decode any special characters
             $uri = UrlHelper::stripQueryString($uri);
+            $uri = urldecode($uri);
 
             // Find the matching element in Craft
             $element = Craft::$app->getElements()->getElementByUri($uri);
