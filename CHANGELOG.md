@@ -1,6 +1,6 @@
 # Release Notes for Palette
 
-## 3.1.1 - 2023-03-31
+## 3.1.2 - 2023-03-31
 
 ### Fixed
 - Fixes an issue when clicking above or below the modal won't close it, but clicking to the sides will ([Discussion](https://github.com/trendyminds/craft-palette/discussions/28))
