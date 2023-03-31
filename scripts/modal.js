@@ -112,14 +112,7 @@ export default function Modal() {
 	}, [query])
 
 	return (
-		<div
-			className={clsx(
-				'vtw-bg-zinc-50 dark:vtw-bg-neutral-800',
-				'vtw-rounded-lg vtw-overflow-hidden vtw-shadow-2xl',
-				'vtw-border vtw-border-solid vtw-border-zinc-200 dark:vtw-border-none',
-				'vtw-translate-y-40'
-			)}
-		>
+		<>
 			<input
 				type="text"
 				value={query}
@@ -220,6 +213,6 @@ export default function Modal() {
 					)
 				})}
 			</div>
-		</div>
+		</>
 	)
 }
