@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 3.1.4 - 2023-05-10
+
+### Fixed
+- Return an empty array if no unmatched entry was found
+
 ## 3.1.3 - 2023-03-31
 
 ### Fixed
