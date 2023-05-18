@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 3.1.5 - 2023-05-18
+
+### Fixed
+- Prevent default to ensure browser shortcuts aren't triggered when invoking Palette ([Discussion](https://github.com/trendyminds/craft-palette/discussions/31))
+
 ## 3.1.4 - 2023-05-10
 
 ### Fixed

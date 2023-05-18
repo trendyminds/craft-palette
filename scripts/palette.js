@@ -12,7 +12,8 @@ export default function Palette() {
 
 	useHotkeys(
 		'ctrl+k, command+k',
-		() => {
+		(ev) => {
+			ev.preventDefault()
 			setIsOpen((prevStatus) => !prevStatus)
 		},
 		{ enableOnTags: ['INPUT'] }
