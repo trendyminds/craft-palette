@@ -21,8 +21,8 @@ class Settings extends Model
      */
     public $customUrls = [];
 
-	/**
-	 * @var ?String If Craft is installed outside of the webroot
-	 */
-	public $baseUrl = null;
+    /**
+     * @var ?string If Craft is installed outside of the webroot
+     */
+    public $baseUrl = null;
 }

@@ -213,7 +213,7 @@ class ActionsController extends Controller
             // Find the matching element in Craft
             $element = Craft::$app->getElements()->getElementByUri($uri);
 
-			// Return an empty array if no element was found
+            // Return an empty array if no element was found
             if (! $element) {
                 return [];
             }
