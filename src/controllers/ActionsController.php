@@ -199,15 +199,15 @@ class ActionsController extends Controller
             // Unfortunately the only way to find the entry the user is on is by getting the referring URL
             $referrer = Craft::$app->getRequest()->referrer;
 
-			// Normalize the referrer and the Craft base URL
-			$referrer = rtrim($referrer, '/') . '/';
-			$url = rtrim(UrlHelper::baseUrl(), '/') . '/';
+            // Normalize the referrer and the Craft base URL
+            $referrer = rtrim($referrer, '/').'/';
+            $url = rtrim(UrlHelper::baseUrl(), '/').'/';
 
             // Pluck out the URI using the referrer and the Craft base URL
             $uri = str_replace($url, '', $referrer);
 
-			// Normalize the URI
-			$uri = rtrim($uri, '/');
+            // Normalize the URI
+            $uri = rtrim($uri, '/');
 
             // Remove any query strings and decode any special characters
             $uri = UrlHelper::stripQueryString($uri);
