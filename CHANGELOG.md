@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 3.2.1 - 2023-07-12
+
+### Fixed
+- Correctly format URLs when using a custom `baseUrl` ([Discussion](https://github.com/trendyminds/craft-palette/discussions/27))
+
 ## 3.2.0 - 2023-07-12
 
 ### Added
