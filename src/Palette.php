@@ -41,6 +41,18 @@ class Palette extends Plugin
             function (TemplateEvent $event) {
                 try {
                     Craft::$app->getView()->registerAssetBundle(AccessBundle::class);
+
+                    // If the baseUrl was set we need to use that URL in our JS files for requests
+                    // Otherwise, let's skip this part entirely and not try and set window-level properties
+                    if (! is_null($this->getSettings()->baseUrl)) {
+                        Craft::$app->getView()->registerJs(
+                            "
+                                window.palette = window.palette || {};
+                                window.palette.baseUrl = '{$this->getSettings()->baseUrl}'
+                            ",
+                            View::POS_HEAD
+                        );
+                    }
                 } catch (InvalidConfigException $e) {
                     Craft::error('Error registering Palette asset bundle');
                 }

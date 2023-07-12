@@ -20,4 +20,9 @@ class Settings extends Model
      * @var array|callable A custom list of URLs to add to Palette
      */
     public $customUrls = [];
+
+    /**
+     * @var ?string If Craft is installed outside of the webroot
+     */
+    public $baseUrl = null;
 }
