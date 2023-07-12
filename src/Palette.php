@@ -47,9 +47,9 @@ class Palette extends Plugin
                     if (! is_null($this->getSettings()->baseUrl)) {
                         Craft::$app->getView()->registerJs(
                             "
-								window.palette = window.palette || {};
-								window.palette.baseUrl = '{$this->getSettings()->baseUrl}'
-							",
+                                window.palette = window.palette || {};
+                                window.palette.baseUrl = '{$this->getSettings()->baseUrl}'
+                            ",
                             View::POS_HEAD
                         );
                     }
