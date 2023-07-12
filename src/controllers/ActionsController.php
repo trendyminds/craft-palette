@@ -60,7 +60,7 @@ class ActionsController extends Controller
         $actions = collect((new Cp())->nav())
             ->map(function ($i) {
                 $url = str_replace(
-                    Craft::$app->getRequest()->hostInfo.'/',
+                    UrlHelper::baseUrl(),
                     '',
                     $i['url']
                 );
@@ -199,9 +199,9 @@ class ActionsController extends Controller
             // Unfortunately the only way to find the entry the user is on is by getting the referring URL
             $referrer = Craft::$app->getRequest()->referrer;
 
-            // Pluck out the URI from the full URL
+            // Pluck out the URI using the referrer and the Craft base URL
             $uri = str_replace(
-                Craft::$app->getRequest()->hostInfo.'/',
+                UrlHelper::baseUrl(),
                 '',
                 $referrer
             );
@@ -242,7 +242,7 @@ class ActionsController extends Controller
         $referrer = Craft::$app->getRequest()->referrer;
 
         $uri = str_replace(
-            Craft::$app->getRequest()->hostInfo.'/',
+            UrlHelper::baseUrl(),
             '',
             $referrer
         );
