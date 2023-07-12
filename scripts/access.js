@@ -4,8 +4,18 @@
 		return
 	}
 
+	// If a custom baseUrl was set we need to use that. Otherwise use the webroot
+	let url = '/'
+
+	if (window.palette && window.palette.baseUrl) {
+		url = `${window.palette.baseUrl}/`
+
+		// If URL has multiple slashes, remove them all and add a single slash
+		url = url.replace(/\/+$/, '/')
+	}
+
 	// Run the request to see if the user is authenticated
-	fetch(`/actions/palette/access`)
+	fetch(`${url}actions/palette/access`)
 		.then((res) => {
 			// If we received anything other than an OK, exit out
 			if (res.status !== 200) {

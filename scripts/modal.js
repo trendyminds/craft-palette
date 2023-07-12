@@ -87,7 +87,17 @@ export default function Modal() {
 	}
 
 	useEffect(() => {
-		fetch('/actions/palette/actions')
+		// If a custom baseUrl was set we need to use that. Otherwise use the webroot
+		let url = '/'
+
+		if (window.palette && window.palette.baseUrl) {
+			url = `${window.palette.baseUrl}/`
+
+			// If URL has multiple slashes, remove them all and add a single slash
+			url = url.replace(/\/+$/, '/')
+		}
+
+		fetch(`${url}actions/palette/actions`)
 			.then((res) => res.json())
 			.then((data) => {
 				setOptions(data)

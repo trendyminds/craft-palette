@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 3.2.0 - 2023-07-12
+
+### Added
+- Palette now allows the ability to customize the `baseUrl` in the `palette.php` config file. This ensures Palette loads correctly when running Craft in a subdirectory (Ex: https://mysite.com/craft/). ([Discussion](https://github.com/trendyminds/craft-palette/discussions/27))
+
 ## 3.1.5 - 2023-05-18
 
 ### Fixed
