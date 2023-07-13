@@ -60,7 +60,7 @@ class ActionsController extends Controller
         $actions = collect((new Cp())->nav())
             ->map(function ($i) {
                 $url = str_replace(
-                    UrlHelper::baseUrl(),
+                    UrlHelper::siteUrl(),
                     '',
                     $i['url']
                 );
@@ -201,7 +201,7 @@ class ActionsController extends Controller
 
             // Normalize the referrer and the Craft base URL
             $referrer = rtrim($referrer, '/').'/';
-            $url = rtrim(UrlHelper::baseUrl(), '/').'/';
+            $url = rtrim(UrlHelper::siteUrl(), '/').'/';
 
             // Pluck out the URI using the referrer and the Craft base URL
             $uri = str_replace($url, '', $referrer);
@@ -245,7 +245,7 @@ class ActionsController extends Controller
         $referrer = Craft::$app->getRequest()->referrer;
 
         $uri = str_replace(
-            UrlHelper::baseUrl(),
+            UrlHelper::siteUrl(),
             '',
             $referrer
         );
