@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 4.0.0 - 2024-01-01
+
+### Added
+- Ensure Palette has Craft 5.0.0 (Alpha 3) compatibility
+
 ## 3.2.1 - 2023-07-12
 
 ### Fixed
