@@ -1,9 +1,10 @@
 # Release Notes for Palette
 
-## 4.0.0 - 2024-01-01
+## 4.0.0 - TBD
 
 ### Added
-- Ensure Palette has Craft 5.0.0 (Alpha 3) compatibility
+- 🪄 New design: Palette is now wider, has a translucent background, new subtitle position and more
+- 🔍 Contexts: On top of searching through Craft "actions" you can now search your site content! Easily perform searches for entries, assets, and users.
 
 ## 3.2.1 - 2023-07-12
 
