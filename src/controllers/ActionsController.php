@@ -16,9 +16,10 @@ class ActionsController extends Controller
     public function actionIndex(): \craft\web\Response
     {
         return $this->asJson([
-            ...$this->_getContextActions(),
+            ...$this->_getRouteContextActions(),
+			...$this->_getContextActions(),
             ...$this->_navigationActions(),
-            ...$this->_adminActions(),
+            // ...$this->_adminActions(),
             ...$this->_utilityActions(),
             ...$this->_userActions(),
             ...$this->_customActions(),
@@ -34,12 +35,14 @@ class ActionsController extends Controller
     {
         return [
             [
+				'type' => 'link',
                 'name' => 'Edit your profile',
                 'subtitle' => 'User',
                 'icon' => 'UserCircleIcon',
                 'url' => UrlHelper::cpUrl('myaccount'),
             ],
             [
+				'type' => 'link',
                 'name' => 'Logout',
                 'subtitle' => 'User',
                 'icon' => 'LogoutIcon',
@@ -66,6 +69,7 @@ class ActionsController extends Controller
                 );
 
                 return [
+					'type' => 'link',
                     'name' => $i['label'],
                     'subtitle' => '',
                     'icon' => 'MenuIcon',
@@ -79,6 +83,7 @@ class ActionsController extends Controller
         // Only include an action to go to the homepage if we're on the control panel
         if ($this->_isCpRequest()) {
             $actions->prepend([
+				'type' => 'link',
                 'name' => Craft::$app->getSystemName(),
                 'subtitle' => 'Go to '.UrlHelper::siteUrl(),
                 'icon' => 'GlobeAltIcon',
@@ -98,6 +103,7 @@ class ActionsController extends Controller
     {
         return collect(Craft::$app->getUtilities()->getAuthorizedUtilityTypes())
             ->map(fn ($class) => [
+				'type' => 'link',
                 'name' => $class::displayName(),
                 'subtitle' => 'Utilities',
                 'icon' => 'AdjustmentsIcon',
@@ -133,6 +139,7 @@ class ActionsController extends Controller
 
         $fields = collect(Craft::$app->getFields()->getAllFields())
             ->map(fn ($i) => [
+				'type' => 'link',
                 'name' => $i->name,
                 'subtitle' => "Fields > {$i->displayName()}",
                 'icon' => 'CodeIcon',
@@ -141,6 +148,7 @@ class ActionsController extends Controller
 
         $sections = collect(Craft::$app->entries->getAllSections())
             ->map(fn ($i) => [
+				'type' => 'link',
                 'name' => $i->name,
                 'subtitle' => 'Sections > '.ucfirst($i->type),
                 'icon' => 'CollectionIcon',
@@ -149,6 +157,7 @@ class ActionsController extends Controller
 
         $entryTypes = collect(Craft::$app->entries->getAllEntryTypes())
             ->map(fn ($i) => [
+				'type' => 'link',
                 'name' => $i->name,
                 'subtitle' => "Sections > Entry Types",
                 'icon' => 'TableIcon',
@@ -159,6 +168,7 @@ class ActionsController extends Controller
             ->map(function ($i, $section) {
                 return collect($i)->map(function ($item, $slug) use ($section) {
                     return [
+						'type' => 'link',
                         'name' => $item['label'],
                         'url' => $section === 'Plugins'
                             ? UrlHelper::cpUrl($item['url'])
@@ -181,12 +191,25 @@ class ActionsController extends Controller
         ];
     }
 
+	private function _getContextActions(): array
+    {
+        return [
+            [
+                'type' => 'context',
+                'name' => 'Find content',
+                'subtitle' => 'Query for entries, assets, and users across the site',
+                'icon' => 'search',
+                'url' => 'SEARCH_ENTRIES',
+            ],
+        ];
+    }
+
     /**
      * Adds a list of actions that are contextual to the front-end page the user is on
      *
      * @return array
      */
-    private function _getContextActions(): array
+    private function _getRouteContextActions(): array
     {
         // Output an empty array if this is a control panel request
         if ($this->_isCpRequest()) {
@@ -221,6 +244,7 @@ class ActionsController extends Controller
 
             return [
                 [
+					'type' => 'link',
                     'name' => $element->title,
                     'url' => $element->getCpEditUrl(),
                     'subtitle' => 'Edit this element within Craft',
@@ -275,6 +299,7 @@ class ActionsController extends Controller
 
         return collect($customUrls)
             ->map(fn ($item) => [
+				'type' => 'link',
                 'name' => $item['name'] ?? '',
                 'url' => $item['url'] ?? '',
                 'subtitle' => $item['subtitle'] ?? '',
