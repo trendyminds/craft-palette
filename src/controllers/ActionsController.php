@@ -17,7 +17,7 @@ class ActionsController extends Controller
     {
         return $this->asJson([
             ...$this->_getRouteContextActions(),
-			...$this->_getContextActions(),
+            ...$this->_getContextActions(),
             ...$this->_navigationActions(),
             // ...$this->_adminActions(),
             ...$this->_utilityActions(),
@@ -28,21 +28,19 @@ class ActionsController extends Controller
 
     /**
      * Return a static list of user actions available to all users regardless of permissions
-     *
-     * @return array
      */
     private function _userActions(): array
     {
         return [
             [
-				'type' => 'link',
+                'type' => 'link',
                 'name' => 'Edit your profile',
                 'subtitle' => 'User',
                 'icon' => 'UserCircleIcon',
                 'url' => UrlHelper::cpUrl('myaccount'),
             ],
             [
-				'type' => 'link',
+                'type' => 'link',
                 'name' => 'Logout',
                 'subtitle' => 'User',
                 'icon' => 'LogoutIcon',
@@ -55,8 +53,6 @@ class ActionsController extends Controller
 
     /**
      * Return a list of the navigation items available to the signed in user
-     *
-     * @return array
      */
     private function _navigationActions(): array
     {
@@ -69,7 +65,7 @@ class ActionsController extends Controller
                 );
 
                 return [
-					'type' => 'link',
+                    'type' => 'link',
                     'name' => $i['label'],
                     'subtitle' => '',
                     'icon' => 'MenuIcon',
@@ -83,7 +79,7 @@ class ActionsController extends Controller
         // Only include an action to go to the homepage if we're on the control panel
         if ($this->_isCpRequest()) {
             $actions->prepend([
-				'type' => 'link',
+                'type' => 'link',
                 'name' => Craft::$app->getSystemName(),
                 'subtitle' => 'Go to '.UrlHelper::siteUrl(),
                 'icon' => 'GlobeAltIcon',
@@ -96,14 +92,12 @@ class ActionsController extends Controller
 
     /**
      * Return a list of the utility sections available to the signed in user
-     *
-     * @return array
      */
     private function _utilityActions(): array
     {
         return collect(Craft::$app->getUtilities()->getAuthorizedUtilityTypes())
             ->map(fn ($class) => [
-				'type' => 'link',
+                'type' => 'link',
                 'name' => $class::displayName(),
                 'subtitle' => 'Utilities',
                 'icon' => 'AdjustmentsIcon',
@@ -117,8 +111,6 @@ class ActionsController extends Controller
 
     /**
      * Add admin-level actions. Will return an empty array if the logged in user is not an admin
-     *
-     * @return array
      */
     private function _adminActions(): array
     {
@@ -139,7 +131,7 @@ class ActionsController extends Controller
 
         $fields = collect(Craft::$app->getFields()->getAllFields())
             ->map(fn ($i) => [
-				'type' => 'link',
+                'type' => 'link',
                 'name' => $i->name,
                 'subtitle' => "Fields > {$i->displayName()}",
                 'icon' => 'CodeIcon',
@@ -148,7 +140,7 @@ class ActionsController extends Controller
 
         $sections = collect(Craft::$app->entries->getAllSections())
             ->map(fn ($i) => [
-				'type' => 'link',
+                'type' => 'link',
                 'name' => $i->name,
                 'subtitle' => 'Sections > '.ucfirst($i->type),
                 'icon' => 'CollectionIcon',
@@ -157,9 +149,9 @@ class ActionsController extends Controller
 
         $entryTypes = collect(Craft::$app->entries->getAllEntryTypes())
             ->map(fn ($i) => [
-				'type' => 'link',
+                'type' => 'link',
                 'name' => $i->name,
-                'subtitle' => "Sections > Entry Types",
+                'subtitle' => 'Sections > Entry Types',
                 'icon' => 'TableIcon',
                 'url' => UrlHelper::cpUrl("settings/entry-types/{$i->id}"),
             ])->toArray();
@@ -168,7 +160,7 @@ class ActionsController extends Controller
             ->map(function ($i, $section) {
                 return collect($i)->map(function ($item, $slug) use ($section) {
                     return [
-						'type' => 'link',
+                        'type' => 'link',
                         'name' => $item['label'],
                         'url' => $section === 'Plugins'
                             ? UrlHelper::cpUrl($item['url'])
@@ -191,7 +183,7 @@ class ActionsController extends Controller
         ];
     }
 
-	private function _getContextActions(): array
+    private function _getContextActions(): array
     {
         return [
             [
@@ -206,8 +198,6 @@ class ActionsController extends Controller
 
     /**
      * Adds a list of actions that are contextual to the front-end page the user is on
-     *
-     * @return array
      */
     private function _getRouteContextActions(): array
     {
@@ -244,22 +234,20 @@ class ActionsController extends Controller
 
             return [
                 [
-					'type' => 'link',
+                    'type' => 'link',
                     'name' => $element->title,
                     'url' => $element->getCpEditUrl(),
                     'subtitle' => 'Edit this element within Craft',
                     'icon' => 'PencilAltIcon',
                 ],
             ];
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return [];
         }
     }
 
     /**
      * Checks if the request was a control panel request
-     *
-     * @return bool
      */
     private function _isCpRequest(): bool
     {
@@ -285,8 +273,6 @@ class ActionsController extends Controller
 
     /**
      * Parses the custom URLs defined by a user and maps them back into a valid Palette structure
-     *
-     * @return array
      */
     private function _customActions(): array
     {
@@ -299,7 +285,7 @@ class ActionsController extends Controller
 
         return collect($customUrls)
             ->map(fn ($item) => [
-				'type' => 'link',
+                'type' => 'link',
                 'name' => $item['name'] ?? '',
                 'url' => $item['url'] ?? '',
                 'subtitle' => $item['subtitle'] ?? '',
