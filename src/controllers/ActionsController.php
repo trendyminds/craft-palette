@@ -19,7 +19,7 @@ class ActionsController extends Controller
             ...$this->_getRouteContextActions(),
             ...$this->_getContextActions(),
             ...$this->_navigationActions(),
-            // ...$this->_adminActions(),
+            ...$this->_adminActions(),
             ...$this->_utilityActions(),
             ...$this->_userActions(),
             ...$this->_customActions(),
@@ -36,14 +36,14 @@ class ActionsController extends Controller
                 'type' => 'link',
                 'name' => 'Edit your profile',
                 'subtitle' => 'User',
-                'icon' => 'UserCircleIcon',
+                'icon' => 'user',
                 'url' => UrlHelper::cpUrl('myaccount'),
             ],
             [
                 'type' => 'link',
                 'name' => 'Logout',
                 'subtitle' => 'User',
-                'icon' => 'LogoutIcon',
+                'icon' => 'logout',
                 'url' => UrlHelper::siteUrl(
                     Craft::$app->getConfig()->getGeneral()->getLogoutPath()
                 ),
@@ -68,7 +68,7 @@ class ActionsController extends Controller
                     'type' => 'link',
                     'name' => $i['label'],
                     'subtitle' => '',
-                    'icon' => 'MenuIcon',
+                    'icon' => 'menu',
                     'badgeCount' => ($i['badgeCount'] && $i['badgeCount'] > 0)
                             ? $i['badgeCount']
                             : null,
@@ -82,7 +82,7 @@ class ActionsController extends Controller
                 'type' => 'link',
                 'name' => Craft::$app->getSystemName(),
                 'subtitle' => 'Go to '.UrlHelper::siteUrl(),
-                'icon' => 'GlobeAltIcon',
+                'icon' => 'globe',
                 'url' => UrlHelper::siteUrl(),
             ]);
         }
@@ -100,7 +100,7 @@ class ActionsController extends Controller
                 'type' => 'link',
                 'name' => $class::displayName(),
                 'subtitle' => 'Utilities',
-                'icon' => 'AdjustmentsIcon',
+                'icon' => 'utility',
                 'badgeCount' => ($class::badgeCount() && $class::badgeCount() > 0)
                         ? $class::badgeCount()
                         : null,
@@ -133,27 +133,29 @@ class ActionsController extends Controller
             ->map(fn ($i) => [
                 'type' => 'link',
                 'name' => $i->name,
-                'subtitle' => "Fields > {$i->displayName()}",
-                'icon' => 'CodeIcon',
+                'subtitle' => "Fields → {$i->getGroup()->name} → {$i->displayName()}",
+                'icon' => 'code',
                 'url' => UrlHelper::cpUrl("settings/fields/edit/{$i->id}"),
             ])->toArray();
 
-        $sections = collect(Craft::$app->entries->getAllSections())
+		$sections = collect(Craft::$app->getSections()->getAllSections())
             ->map(fn ($i) => [
                 'type' => 'link',
                 'name' => $i->name,
-                'subtitle' => 'Sections > '.ucfirst($i->type),
-                'icon' => 'CollectionIcon',
+                'subtitle' => 'Sections → '.ucfirst($i->type),
+                'icon' => 'section',
                 'url' => UrlHelper::cpUrl("settings/sections/{$i->id}"),
             ])->toArray();
 
-        $entryTypes = collect(Craft::$app->entries->getAllEntryTypes())
+		$entryTypes = collect(Craft::$app->getSections()->getAllEntryTypes())
             ->map(fn ($i) => [
                 'type' => 'link',
-                'name' => $i->name,
-                'subtitle' => 'Sections > Entry Types',
-                'icon' => 'TableIcon',
-                'url' => UrlHelper::cpUrl("settings/entry-types/{$i->id}"),
+                'name' => $i->name === 'Default'
+                        ? $i->getSection()->name
+                        : $i->name,
+                'subtitle' => "Sections → {$i->getSection()->name} → Entry Types",
+                'icon' => 'table',
+                'url' => UrlHelper::cpUrl("settings/sections/{$i->getSection()->id}/entrytypes/{$i->id}"),
             ])->toArray();
 
         $settings = collect((new Cp())->settings())
@@ -166,9 +168,9 @@ class ActionsController extends Controller
                             ? UrlHelper::cpUrl($item['url'])
                             : UrlHelper::cpUrl("settings/{$slug}"),
                         'icon' => $section === 'Plugins'
-                            ? 'LightningBoltIcon'
-                            : 'CogIcon',
-                        'subtitle' => "Settings > $section",
+                            ? 'bolt'
+                            : 'settings',
+                        'subtitle' => "Settings → $section",
                     ];
                 })->toArray();
             })
@@ -238,7 +240,7 @@ class ActionsController extends Controller
                     'name' => $element->title,
                     'url' => $element->getCpEditUrl(),
                     'subtitle' => 'Edit this element within Craft',
-                    'icon' => 'PencilAltIcon',
+                    'icon' => 'edit',
                 ],
             ];
         } catch (\Exception $e) {
