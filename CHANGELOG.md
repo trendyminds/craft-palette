@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 4.0.3 - 2024-03-14
+
+### Fixed
+- Recompile the bundle to pull in latest source changes
+
 ## 4.0.2 - 2024-03-14
 
 ### Fixed
