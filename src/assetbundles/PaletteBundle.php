@@ -9,7 +9,7 @@ class PaletteBundle extends AssetBundle
     public function init()
     {
         $this->sourcePath = '@trendyminds/palette/assetbundles/resources';
-        $this->js = ['init.js'];
+        $this->js = ['Init.js'];
         $this->css = ['palette.css'];
 
         parent::init();

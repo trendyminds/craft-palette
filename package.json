@@ -1,33 +1,20 @@
 {
-  "name": "craft-palette",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "config": {
-    "css_in": "styles/palette.pcss",
-    "css_out": "src/assetbundles/resources/palette.css"
-  },
+  "private": true,
+  "type": "module",
   "scripts": {
-    "build": "NODE_ENV=production run-p build:* js",
-    "build:css": "tailwindcss -i $npm_package_config_css_in -o $npm_package_config_css_out --minify --postcss",
-    "js": "node esbuild.config.js",
-    "dev": "NODE_ENV=development run-p dev:* js",
-    "dev:css": "tailwindcss -i $npm_package_config_css_in -o $npm_package_config_css_out --watch --postcss",
-    "start": "npm-run-all dev",
-    "format": "prettier scripts/**/* --write"
+    "dev": "vite",
+    "build": "vite build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "^10.4.0",
-    "browser-sync": "^2.27.5",
-    "esbuild": "^0.14.0",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.4",
-    "postcss-import": "^14.0.2",
-    "prettier": "^2.7.1",
-    "tailwindcss": "^3.0.0"
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.18",
+    "postcss-import": "^16.0.1",
+    "prettier": "^3.2.5",
+    "tailwindcss": "^3.3.3",
+    "vite": "^5.1.6"
   },
   "prettier": {
     "semi": false,
@@ -38,11 +25,12 @@
     "htmlWhitespaceSensitivity": "ignore"
   },
   "dependencies": {
-    "@heroicons/react": "^1.0.5",
-    "clsx": "^1.1.1",
+    "@heroicons/react": "^2.0.18",
+    "clsx": "^2.0.0",
+    "heroicons": "^2.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hotkeys-hook": "^3.4.7",
-    "use-onclickoutside": "^0.4.1"
+    "react-hotkeys-hook": "^4.4.1",
+    "recoil": "^0.7.7"
   }
 }
