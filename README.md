@@ -35,15 +35,7 @@ If you would like to contribute to Palette we tried to make it as easy as possib
 
 1. Clone the repo
 2. Run `npm i` to install the Node dependencies
-3. Run `npm start` to begin the watch task
+3. Run `npm run dev` to begin the watch task
 4. Make your changes
 5. Run `npm run build` to compile and minify the CSS and JS
 6. Submit a PR!
-
-## ❤️ Shout-outs
-
-Palette could not exist without the efforts and incredible work of:
-
-- The Pixel & Tonic team and their hard work on Craft
-- The wonderful Craft CMS community
-- Tools like [Tailwind CSS](https://tailwindcss.com/)
