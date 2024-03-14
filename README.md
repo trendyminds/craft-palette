@@ -7,7 +7,9 @@ Palette allows you to easily jump between areas, entries, assets, and users with
 
 If you're a developer, you likely use something like [Raycast](https://www.raycast.com/), [Alfred](https://www.alfredapp.com/), or [Spotlight](https://support.apple.com/guide/mac-help/search-with-spotlight-mchlp1008/mac).
 
-That should also exist in the CMS you use most, right?
+That should also exist in the CMS you use most, right? With Palette you can now jump around with ease!
+
+<img src="docs/light-and-dark.png" alt="The light and dark themes of Palette shown side by side with the default list of results">
 
 ## ⚡️ Features
 - 🔍 Available on the front-end and in the control panel
@@ -18,8 +20,6 @@ That should also exist in the CMS you use most, right?
 - 🎛️ Change contexts to filter actions or search your content
 - 🔌 Plugins that register navigation links, settings areas, and utilities are included automatically
 - 💅 Add your own custom URLs via the config file (Craft 4+ only)
-
-<img src="docs/light-and-dark.png" alt="The light and dark themes of Palette shown side by side with the default list of results">
 
 ## 📦 Installing
 
