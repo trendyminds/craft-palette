@@ -138,7 +138,7 @@ class ActionsController extends Controller
                 'url' => UrlHelper::cpUrl("settings/fields/edit/{$i->id}"),
             ])->toArray();
 
-		$sections = collect(Craft::$app->getSections()->getAllSections())
+        $sections = collect(Craft::$app->getSections()->getAllSections())
             ->map(fn ($i) => [
                 'type' => 'link',
                 'name' => $i->name,
@@ -147,7 +147,7 @@ class ActionsController extends Controller
                 'url' => UrlHelper::cpUrl("settings/sections/{$i->id}"),
             ])->toArray();
 
-		$entryTypes = collect(Craft::$app->getSections()->getAllEntryTypes())
+        $entryTypes = collect(Craft::$app->getSections()->getAllEntryTypes())
             ->map(fn ($i) => [
                 'type' => 'link',
                 'name' => $i->name === 'Default'

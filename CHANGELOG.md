@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 4.0.2 - 2024-03-14
+
+### Fixed
+- Windows/Linux not longer focuses URL bar when using Meta+K (Thanks, @godismyjudge95)
+
 ## 4.0.1 - 2024-03-13
 
 ### Fixed
