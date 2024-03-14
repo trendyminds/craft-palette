@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 4.0.1 - 2024-03-13
+
+### Fixed
+- Fix case sensitivity on Init.js script
+
 ## 4.0.0 - 2024-03-13
 
 ### Added
