@@ -1,10 +1,13 @@
 # Release Notes for Palette
 
-## 4.0.0 - TBD
+## 4.0.0 - 2024-03-13
 
 ### Added
 - 🪄 New design: Palette is now wider, has a translucent background, new subtitle position and more
 - 🔍 Contexts: On top of searching through Craft "actions" you can now search your site content! Easily perform searches for entries, assets, and users.
+
+### Changed
+- Removed the Palette icon when active. Ensures better compatibility with visual changes in Craft 5 ([Discussion](https://github.com/trendyminds/craft-palette/discussions/35))
 
 ## 3.2.1 - 2023-07-12
 
