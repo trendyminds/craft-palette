@@ -11,7 +11,7 @@ export default function Modal() {
 	const [context, setContext] = useContext()
 
 	// prettier-ignore
-	useHotkeys('meta+k', () => {
+	useHotkeys(['ctrl+k, meta+k'], () => {
 		setOpen((prev) => !prev)
 		setContext('ACTIONS')
 	}, { enableOnFormTags: true, preventDefault: true })
