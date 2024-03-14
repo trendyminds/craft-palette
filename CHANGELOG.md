@@ -9,6 +9,11 @@
 ### Changed
 - Removed the Palette icon when active. Ensures better compatibility with visual changes in Craft 5 ([Discussion](https://github.com/trendyminds/craft-palette/discussions/35))
 
+## 3.2.2 - 2023-07-12
+
+### Fixed
+- Swap `UrlHelper::baseUrl()` for `UrlHelper::siteUrl()` for better URL compatibility ([Discussion](https://github.com/trendyminds/craft-palette/discussions/27))
+
 ## 3.2.1 - 2023-07-12
 
 ### Fixed
