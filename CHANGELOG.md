@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 4.0.4 - 2024-03-14
+
+### Fixed
+- Explicitly define CTRL and META keys for better compatibility
+
 ## 4.0.3 - 2024-03-14
 
 ### Fixed
