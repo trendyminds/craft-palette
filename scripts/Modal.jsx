@@ -14,7 +14,7 @@ export default function Modal() {
 	useHotkeys('meta+k', () => {
 		setOpen((prev) => !prev)
 		setContext('ACTIONS')
-	}, { enableOnFormTags: true })
+	}, { enableOnFormTags: true, preventDefault: true })
 
 	// prettier-ignore
 	useHotkeys('esc', () => {

@@ -3,7 +3,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+		"format": "npm run format:js && npm run format:php",
+		"format:js": "prettier scripts/**/* styles/**/* --write",
+		"format:php": "./vendor/bin/pint"
   },
   "keywords": [],
   "author": "",
