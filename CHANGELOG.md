@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 4.0.5 - 2024-03-18
+
+### Fixed
+- Ensure XHR paths are relative by using the `baseUrl` value in the `config/palette.php` (Thanks, @maartenheideman)
+
 ## 4.0.4 - 2024-03-14
 
 ### Fixed

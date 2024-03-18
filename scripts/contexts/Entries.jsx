@@ -5,6 +5,7 @@ import useQuery from '../hooks/useQuery'
 import useFocus from '../hooks/useFocus'
 import NoResults from '../NoResults'
 import Result from '../Result'
+import { rootUrl } from '../helpers'
 
 export default function Entries() {
 	const [query] = useQuery()
@@ -13,7 +14,8 @@ export default function Entries() {
 
 	// prettier-ignore
 	useDebounce(() => {
-		fetch(`/actions/palette/search?query=${query}`)
+		const url = rootUrl()
+		fetch(`${url}actions/palette/search?query=${query}`)
 			.then((response) => response.json())
 			.then((data) => setEntries(data))
 	}, [query], 200)

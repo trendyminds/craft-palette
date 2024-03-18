@@ -1,5 +1,6 @@
 import { atom, selector, useRecoilState, useRecoilValue } from 'recoil'
 import { queryState } from './useQuery'
+import { rootUrl } from '../helpers'
 
 const unfilteredActionsState = atom({
 	key: 'unfilteredActionsState',
@@ -27,7 +28,8 @@ export default function useActions() {
 	const actions = useRecoilValue(actionsState)
 
 	async function getActions() {
-		const response = await fetch('/actions/palette/actions')
+		const url = rootUrl()
+		const response = await fetch(`${url}actions/palette/actions`)
 		const data = await response.json()
 		setUnfilteredActions(data)
 	}
