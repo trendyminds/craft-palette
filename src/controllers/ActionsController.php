@@ -153,7 +153,7 @@ class ActionsController extends Controller
                 'name' => $i->name,
                 'subtitle' => "Entry Types → {$i->name}",
                 'icon' => 'table',
-                'url' => UrlHelper::cpUrl("settings/entrytypes/{$i->id}"),
+                'url' => UrlHelper::cpUrl("settings/entry-types/{$i->id}"),
             ])->toArray();
 
         $settings = collect((new Cp())->settings())
