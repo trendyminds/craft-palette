@@ -13,7 +13,7 @@ class SearchController extends Controller
 
     public function actionIndex(string $query = ''): \craft\web\Response
     {
-        $entries = Entry::find()->search($query)->limit(10)->collect();
+        $entries = Entry::find()->search($query)->section('*')->limit(10)->collect();
         $users = User::find()->search($query)->limit(10)->collect();
         $assets = Asset::find()->search($query)->limit(10)->collect();
 
