@@ -1,5 +1,11 @@
 # Release Notes for Palette
 
+## 4.0.6 - 2024-03-27
+
+### Added
+- Palette icon displays again on front-end when active
+- Palette now closes when clicking outside the modal boundary
+
 ## 4.0.5 - 2024-03-18
 
 ### Fixed
