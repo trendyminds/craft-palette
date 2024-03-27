@@ -5,6 +5,7 @@ import useContext from './hooks/useContext'
 import Actions from './contexts/Actions'
 import Entries from './contexts/Entries'
 import SearchBar from './SearchBar'
+import { CommandLineIcon } from '@heroicons/react/24/outline'
 
 export default function Modal() {
 	const [open, setOpen] = useOpen()
@@ -44,6 +45,24 @@ export default function Modal() {
 					</div>
 				</div>
 			)}
+
+			<button
+				className={clsx([
+					'p-fixed p-bottom-5 p-right-5 p-z-[100]',
+					'p-flex p-items-center p-justify-center',
+					'p-backdrop-blur-md p-shadow p-rounded-full',
+					'p-bg-zinc-50/70 dark:p-bg-neutral-800/90',
+					'dark:p-text-neutral-300',
+					'p-size-8',
+					'p-cursor-pointer',
+					'p-border-0',
+					'p-transition-transform hover:p-scale-110 active:p-scale-90',
+				])}
+				onClick={() => setOpen(true)}
+				aria-label="Open Palette"
+			>
+				<CommandLineIcon className="p-size-5" />
+			</button>
 		</>
 	)
 }
