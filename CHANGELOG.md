@@ -4,7 +4,8 @@
 
 ### Added
 - Craft 5.0 support
-- Palette icon displays when active
+- Palette icon displays again on front-end when active (Note: this is on the right side to prevent overlapping with the "Expand/Collapse Sidebar" button in the control panel)
+- Palette now closes when clicking outside the modal boundary
 
 ## 4.0.5 - 2024-03-18
 
