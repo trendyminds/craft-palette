@@ -133,12 +133,12 @@ class ActionsController extends Controller
             ->map(fn ($i) => [
                 'type' => 'link',
                 'name' => $i->name,
-                'subtitle' => "Fields → {$i->getGroup()->name} → {$i->displayName()}",
+                'subtitle' => "Fields → {$i->displayName()}",
                 'icon' => 'code',
                 'url' => UrlHelper::cpUrl("settings/fields/edit/{$i->id}"),
             ])->toArray();
 
-        $sections = collect(Craft::$app->getSections()->getAllSections())
+        $sections = collect(Craft::$app->getEntries()->getAllSections())
             ->map(fn ($i) => [
                 'type' => 'link',
                 'name' => $i->name,
@@ -147,15 +147,13 @@ class ActionsController extends Controller
                 'url' => UrlHelper::cpUrl("settings/sections/{$i->id}"),
             ])->toArray();
 
-        $entryTypes = collect(Craft::$app->getSections()->getAllEntryTypes())
+        $entryTypes = collect(Craft::$app->getEntries()->getAllEntryTypes())
             ->map(fn ($i) => [
                 'type' => 'link',
-                'name' => $i->name === 'Default'
-                        ? $i->getSection()->name
-                        : $i->name,
-                'subtitle' => "Sections → {$i->getSection()->name} → Entry Types",
+                'name' => $i->name,
+                'subtitle' => "Entry Types → {$i->name}",
                 'icon' => 'table',
-                'url' => UrlHelper::cpUrl("settings/sections/{$i->getSection()->id}/entrytypes/{$i->id}"),
+                'url' => UrlHelper::cpUrl("settings/entrytypes/{$i->id}"),
             ])->toArray();
 
         $settings = collect((new Cp())->settings())
