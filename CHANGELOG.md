@@ -1,5 +1,11 @@
 # Release Notes for Palette
 
+## 5.0.0 - 2024-03-27
+
+### Added
+- Craft 5.0 support
+- Palette icon displays when active
+
 ## 4.0.5 - 2024-03-18
 
 ### Fixed
