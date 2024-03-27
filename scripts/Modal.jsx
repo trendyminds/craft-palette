@@ -2,13 +2,16 @@ import clsx from 'clsx'
 import { useHotkeys } from 'react-hotkeys-hook'
 import useOpen from './hooks/useOpen'
 import useContext from './hooks/useContext'
+import useOutsideClick from './hooks/useClickOutside'
 import Actions from './contexts/Actions'
 import Entries from './contexts/Entries'
 import SearchBar from './SearchBar'
+import { CommandLineIcon } from '@heroicons/react/24/outline'
 
 export default function Modal() {
 	const [open, setOpen] = useOpen()
 	const [context, setContext] = useContext()
+	const modal = useOutsideClick(() => setOpen(false))
 
 	// prettier-ignore
 	useHotkeys(['ctrl+k, meta+k'], () => {
@@ -28,6 +31,7 @@ export default function Modal() {
 				<div className="p-fixed p-inset-0 p-z-[9999] p-size-full p-flex p-justify-center p-antialiased">
 					<div className="p-w-full p-max-w-2xl">
 						<div
+							ref={modal}
 							className={clsx([
 								'p-bg-white/70 dark:p-bg-zinc-950/90',
 								'p-outline-zinc-300 dark:p-outline-zinc-900 p-outline p-outline-1',
@@ -44,6 +48,24 @@ export default function Modal() {
 					</div>
 				</div>
 			)}
+
+			<button
+				className={clsx([
+					'p-fixed p-bottom-5 p-left-5 p-z-[100]',
+					'p-flex p-items-center p-justify-center',
+					'p-backdrop-blur-md p-shadow p-rounded-full',
+					'p-bg-zinc-50/70 dark:p-bg-neutral-800/90',
+					'dark:p-text-neutral-300',
+					'p-size-8',
+					'p-cursor-pointer',
+					'p-border-0',
+					'p-transition-transform hover:p-scale-110 active:p-scale-90',
+				])}
+				onClick={() => setOpen(true)}
+				aria-label="Open Palette"
+			>
+				<CommandLineIcon className="p-size-5" />
+			</button>
 		</>
 	)
 }
