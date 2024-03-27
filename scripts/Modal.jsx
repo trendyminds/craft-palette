@@ -2,6 +2,7 @@ import clsx from 'clsx'
 import { useHotkeys } from 'react-hotkeys-hook'
 import useOpen from './hooks/useOpen'
 import useContext from './hooks/useContext'
+import useOutsideClick from './hooks/useClickOutside'
 import Actions from './contexts/Actions'
 import Entries from './contexts/Entries'
 import SearchBar from './SearchBar'
@@ -10,6 +11,7 @@ import { CommandLineIcon } from '@heroicons/react/24/outline'
 export default function Modal() {
 	const [open, setOpen] = useOpen()
 	const [context, setContext] = useContext()
+	const modal = useOutsideClick(() => setOpen(false))
 
 	// prettier-ignore
 	useHotkeys(['ctrl+k, meta+k'], () => {
@@ -29,6 +31,7 @@ export default function Modal() {
 				<div className="p-fixed p-inset-0 p-z-[9999] p-size-full p-flex p-justify-center p-antialiased">
 					<div className="p-w-full p-max-w-2xl">
 						<div
+							ref={modal}
 							className={clsx([
 								'p-bg-white/70 dark:p-bg-zinc-950/90',
 								'p-outline-zinc-300 dark:p-outline-zinc-900 p-outline p-outline-1',
