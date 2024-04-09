@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 5.1.0 - 2024-04-09
+
+### Added
+- Show links to section-specific entries (Thanks, @kylecotter)
+
 ## 5.0.0 - 2024-03-27
 
 ### Added
