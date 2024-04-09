@@ -19,6 +19,7 @@ class ActionsController extends Controller
             ...$this->_getRouteContextActions(),
             ...$this->_getContextActions(),
             ...$this->_navigationActions(),
+            ...$this->_entriesActions(),
             ...$this->_adminActions(),
             ...$this->_utilityActions(),
             ...$this->_userActions(),
@@ -271,6 +272,25 @@ class ActionsController extends Controller
         }
 
         return false;
+    }
+
+    /**
+     * Returns a list of sections that a user has permission to create entries in
+     */
+    private function _entriesActions(): array
+    {
+        return collect(Craft::$app->getSections()->getAllSections())
+            ->filter(fn ($section) => $section->type !== 'single')
+            ->filter(fn ($section) => Craft::$app->getUser()->checkPermission('createEntries:'.$section->uid))
+            ->map(fn ($section) => [
+                'type' => 'link',
+                'name' => "{$section->name} Entries",
+                'url' => UrlHelper::cpUrl('entries/'.$section->handle),
+                'subtitle' => "Entries → {$section->name}",
+                'icon' => 'docs',
+            ])
+            ->values()
+            ->toArray();
     }
 
     /**
