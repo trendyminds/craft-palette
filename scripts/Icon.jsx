@@ -7,6 +7,7 @@ import {
 	CodeBracketSquareIcon,
 	Cog8ToothIcon,
 	DocumentIcon,
+	DocumentDuplicateIcon,
 	GlobeAltIcon,
 	MagnifyingGlassIcon,
 	PaperClipIcon,
@@ -67,6 +68,10 @@ export default function Icon({ name, ...props }) {
 
 	if (name === 'utility') {
 		return <AdjustmentsVerticalIcon {...props} />
+	}
+
+	if (name === 'docs') {
+		return <DocumentDuplicateIcon {...props} />
 	}
 
 	if (name === 'user') {
