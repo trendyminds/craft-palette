@@ -6,4 +6,9 @@ module.exports = {
 	},
 	prefix: 'p-',
 	important: true,
+	screens: {
+		xs: '480px',
+		sm: '640px',
+		md: '768px',
+	},
 }
