@@ -1,5 +1,11 @@
 # Release Notes for Palette
 
+## 4.1.1 - 2024-04-26
+
+### Fixed
+- Lengthy text is truncated to prevent awkward wrapping
+- Improved UI for smaller screen sizes
+
 ## 4.1.0 - 2024-04-09
 
 ### Added
