@@ -42,8 +42,8 @@ export default function Result({ url, title, subtitle, icon, type, focused }) {
 				'p-flex p-items-center p-gap-2',
 				'p-font-sans p-text-sm p-text-zinc-700 dark:p-text-zinc-300 p-no-underline',
 				'p-px-3 p-py-2.5 p-mx-2 p-rounded-lg',
-				focused && 'p-bg-zinc-200/75 dark:p-bg-zinc-700/50',
-				'hover:p-bg-zinc-200/75 dark:hover:p-bg-zinc-700/50'
+				focused && 'p-bg-zinc-200 dark:p-bg-zinc-700/50',
+				'hover:p-bg-zinc-200 dark:hover:p-bg-zinc-700/50'
 			)}
 			onMouseEnter={() => setFocus(null)}
 			href={type === 'link' ? url : null}

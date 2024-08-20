@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Ensure fonts aren't replaced by a site's custom one */
+[data-palette] * {
+	@apply p-font-sans;
+}

@@ -1,5 +1,11 @@
 # Release Notes for Palette
 
+## 5.1.2 - 2024-08-20
+
+### Fixed
+- Force Tailwind's default font stack across all elements
+- Improve contrast in light mode when opened on top of darker elements
+
 ## 5.1.1 - 2024-04-26
 
 ### Fixed
