@@ -13,7 +13,7 @@ export default function SearchBar({ placeholder = 'Search' }) {
 	}, [context])
 
 	return (
-		<div className="p-flex p-px-2 p-items-center p-gap-1 p-border-b p-border-zinc-200 dark:p-border-zinc-700">
+		<div className="p-flex p-px-2 p-items-center p-gap-1 p-border-b p-border-zinc-300 dark:p-border-zinc-700">
 			{context !== 'ACTIONS' && (
 				<div>
 					<button
