@@ -33,7 +33,7 @@ export default function Modal() {
 						<div
 							ref={modal}
 							className={clsx([
-								'p-bg-white/70 dark:p-bg-zinc-950/90',
+								'p-bg-white/95 dark:p-bg-zinc-950/90',
 								'p-outline-zinc-300 dark:p-outline-zinc-900 p-outline p-outline-1',
 								'p-border p-border-white dark:p-border-zinc-500',
 								'p-rounded-lg p-translate-y-24 p-overflow-hidden p-backdrop-blur-xl p-shadow-2xl',
