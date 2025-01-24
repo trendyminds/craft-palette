@@ -233,15 +233,26 @@ class ActionsController extends Controller
                 return [];
             }
 
-            return [
-                [
-                    'type' => 'link',
-                    'name' => $element->title,
-                    'url' => $element->getCpEditUrl(),
-                    'subtitle' => 'Edit this element within Craft',
-                    'icon' => 'edit',
-                ],
+            $actions[] = [
+                'type' => 'link',
+                'name' => $element->title,
+                'url' => $element->getCpEditUrl(),
+                'subtitle' => 'Edit this element within Craft',
+                'icon' => 'edit',
             ];
+
+            // If we're on Craft 5.6 or newer we can add a direct Live Preview link
+            if (version_compare(Craft::$app->getVersion(), '5.6.0', '>=')) {
+                $actions[] = [
+                    'type' => 'link',
+                    'name' => 'Live Preview',
+                    'url' => UrlHelper::cpUrl('preview/'.$element->id),
+                    'subtitle' => 'Edit this element using Live Preview',
+                    'icon' => 'signal',
+                ];
+            }
+
+            return $actions;
         } catch (\Exception $e) {
             return [];
         }

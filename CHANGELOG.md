@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 5.2.0 - 2025-01-24
+
+### Added
+- Include a direct link to an entry's Live Preview route (Craft 5.6+ only)
+
 ## 5.1.2 - 2024-08-20
 
 ### Fixed

@@ -15,11 +15,16 @@ import {
 	Squares2X2Icon,
 	TableCellsIcon,
 	UserCircleIcon,
+	SignalIcon,
 } from '@heroicons/react/24/outline'
 
 export default function Icon({ name, ...props }) {
 	if (name === 'document') {
 		return <DocumentIcon {...props} />
+	}
+
+	if (name === 'signal') {
+		return <SignalIcon {...props} />
 	}
 
 	if (name === 'table') {
