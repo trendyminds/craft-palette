@@ -54,7 +54,7 @@ export default function Result({ url, title, subtitle, icon, type, focused }) {
 				<div className="p-flex p-items-center p-gap-3 p-flex-1">
 					<Icon name={icon} className="p-size-5 p-opacity-75" />
 					<div className="p-flex-1 p-flex p-flex-col sm:p-flex-row sm:p-justify-between sm:p-items-center p-gap-1">
-						<p className="p-flex-1 p-leading-none p-m-0 p-font-sans p-font-medium p-line-clamp-1">
+						<p className="p-flex-1 p-leading-none p-m-0 p-font-sans p-font-medium p-text-sm p-line-clamp-1">
 							{title}
 						</p>
 						{subtitle && (

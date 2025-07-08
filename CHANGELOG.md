@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 5.2.1 - 2025-07-08
+
+### Fixed
+- Apply font sizing class to menu items directly to override site styles
+
 ## 5.2.0 - 2025-01-24
 
 ### Added
