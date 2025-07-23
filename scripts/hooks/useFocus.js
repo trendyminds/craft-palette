@@ -1,13 +1,10 @@
-import { atom, useRecoilState } from 'recoil'
+import { atom, useAtom } from 'jotai'
 import { useEffect } from 'react'
 
-export const focusState = atom({
-	key: 'focus',
-	default: 0,
-})
+export const focusAtom = atom(0)
 
 export default function useFocus(results) {
-	const [focus, setFocus] = useRecoilState(focusState)
+	const [focus, setFocus] = useAtom(focusAtom)
 
 	// Reset focus when results change
 	useEffect(() => {
@@ -36,9 +33,5 @@ export default function useFocus(results) {
 		}
 	}
 
-	return {
-		setFocus,
-		moveFocus,
-		focus,
-	}
+	return { setFocus, moveFocus, focus }
 }

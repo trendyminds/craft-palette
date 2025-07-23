@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import Root from './Root'
 
 // Create an element to insert the React component into
@@ -10,4 +10,4 @@ document.body.appendChild($el)
 // Select the element and insert Palette into it
 document
 	.querySelectorAll('[data-palette]')
-	.forEach(($el) => render(<Root />, $el))
+	.forEach(($el) => createRoot($el).render(<Root />))

@@ -1,31 +1,24 @@
-import { atom, selector, useRecoilState, useRecoilValue } from 'recoil'
+import { atom, useAtom, useSetAtom, useAtomValue } from 'jotai'
+import { atom as jotaiAtom } from 'jotai'
+import { useMemo } from 'react'
 import { queryState } from './useQuery'
 import { rootUrl } from '../helpers'
 
-const unfilteredActionsState = atom({
-	key: 'unfilteredActionsState',
-	default: [],
-})
+const unfilteredActionsAtom = atom([])
 
-const actionsState = selector({
-	key: 'actionsState',
-	get: ({ get }) => {
-		const query = get(queryState)
-		const unfilteredActions = get(unfilteredActionsState)
+export default function useActions() {
+	const [unfilteredActions, setUnfilteredActions] = useAtom(
+		unfilteredActionsAtom
+	)
+	const query = useAtomValue(queryState)
+	const actions = useMemo(() => {
 		return unfilteredActions.filter((action) => {
 			return (
 				action.name.toLowerCase().includes(query.toLowerCase()) ||
 				action.subtitle.toLowerCase().includes(query.toLowerCase())
 			)
 		})
-	},
-})
-
-export default function useActions() {
-	const [unfilteredActions, setUnfilteredActions] = useRecoilState(
-		unfilteredActionsState
-	)
-	const actions = useRecoilValue(actionsState)
+	}, [unfilteredActions, query])
 
 	async function getActions() {
 		const url = rootUrl()
@@ -34,8 +27,5 @@ export default function useActions() {
 		setUnfilteredActions(data)
 	}
 
-	return {
-		getActions,
-		actions,
-	}
+	return { getActions, actions }
 }

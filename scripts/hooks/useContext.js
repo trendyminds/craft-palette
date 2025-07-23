@@ -1,8 +1,5 @@
-import { atom, useRecoilState } from 'recoil'
+import { atom, useAtom } from 'jotai'
 
-export const contextState = atom({
-	key: 'context',
-	default: 'ACTIONS',
-})
+export const contextAtom = atom('ACTIONS')
 
-export default () => useRecoilState(contextState)
+export default () => useAtom(contextAtom)
