@@ -1,5 +1,10 @@
 # Release Notes for Palette
 
+## 5.2.2 - 2025-07-23
+
+### Added
+- Update front-end dependencies
+
 ## 5.2.1 - 2025-07-08
 
 ### Fixed

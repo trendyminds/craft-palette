@@ -1,8 +1,5 @@
-import { atom, useRecoilState } from 'recoil'
+import { atom, useAtom } from 'jotai'
 
-export const openState = atom({
-	key: 'open',
-	default: false,
-})
+export const openAtom = atom(false)
 
-export default () => useRecoilState(openState)
+export default () => useAtom(openAtom)

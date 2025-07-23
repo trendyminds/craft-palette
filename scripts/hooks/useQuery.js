@@ -1,8 +1,5 @@
-import { atom, useRecoilState } from 'recoil'
+import { atom, useAtom } from 'jotai'
 
-export const queryState = atom({
-	key: 'query',
-	default: '',
-})
+export const queryState = atom('')
 
-export default () => useRecoilState(queryState)
+export default () => useAtom(queryState)

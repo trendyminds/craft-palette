@@ -1,10 +1,10 @@
-import { RecoilRoot } from 'recoil'
+import { Provider as JotaiProvider } from 'jotai'
 import Modal from './Modal'
 
 export default function Palette() {
 	return (
-		<RecoilRoot>
+		<JotaiProvider>
 			<Modal />
-		</RecoilRoot>
+		</JotaiProvider>
 	)
 }

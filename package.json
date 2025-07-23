@@ -4,9 +4,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-		"format": "npm run format:js && npm run format:php",
-		"format:js": "prettier scripts/**/* styles/**/* --write",
-		"format:php": "./vendor/bin/pint"
+    "format": "npm run format:js && npm run format:php",
+    "format:js": "prettier scripts/**/* styles/**/* --write",
+    "format:php": "./vendor/bin/pint"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +17,7 @@
     "postcss-import": "^16.0.1",
     "prettier": "^3.2.5",
     "tailwindcss": "^3.3.3",
-    "vite": "^5.1.6"
+    "vite": "^7.0.5"
   },
   "prettier": {
     "semi": false,
@@ -31,9 +31,9 @@
     "@heroicons/react": "^2.0.18",
     "clsx": "^2.0.0",
     "heroicons": "^2.1.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-hotkeys-hook": "^4.4.1",
-    "recoil": "^0.7.7"
+    "jotai": "^2.12.5",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-hotkeys-hook": "^5.1.0"
   }
 }
