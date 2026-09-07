@@ -39,26 +39,26 @@ export default function Result({ url, title, subtitle, icon, type, focused }) {
 	return (
 		<a
 			className={clsx(
-				'p-flex p-items-center p-gap-2',
-				'p-font-sans p-text-sm p-text-zinc-700 dark:p-text-zinc-300 p-no-underline',
-				'p-px-3 p-py-2.5 p-mx-2 p-rounded-lg',
-				focused && 'p-bg-zinc-200 dark:p-bg-zinc-700/50',
-				'hover:p-bg-zinc-200 dark:hover:p-bg-zinc-700/50'
+				'p:flex p:items-center p:gap-2',
+				'p:font-sans p:text-sm p:text-zinc-700 p:dark:text-zinc-300 p:no-underline',
+				'p:px-3 p:py-2.5 p:mx-2 p:rounded-lg',
+				focused && 'p:bg-zinc-200 p:dark:bg-zinc-700/50',
+				'p:hover:bg-zinc-200 p:dark:hover:bg-zinc-700/50'
 			)}
 			onMouseEnter={() => setFocus(null)}
 			href={type === 'link' ? url : null}
 			onClick={() => (type === 'context' ? setContext(url) : null)}
 			ref={el}
 		>
-			<div className="p-flex p-items-center p-justify-between p-gap-2 p-flex-1">
-				<div className="p-flex p-items-center p-gap-3 p-flex-1">
-					<Icon name={icon} className="p-size-5 p-opacity-75" />
-					<div className="p-flex-1 p-flex p-flex-col sm:p-flex-row sm:p-justify-between sm:p-items-center p-gap-1">
-						<p className="p-flex-1 p-leading-none p-m-0 p-font-sans p-font-medium p-text-sm p-line-clamp-1">
+			<div className="p:flex p:items-center p:justify-between p:gap-2 p:flex-1">
+				<div className="p:flex p:items-center p:gap-3 p:flex-1">
+					<Icon name={icon} className="p:size-5 p:opacity-75" />
+					<div className="p:flex-1 p:flex p:flex-col p:sm:flex-row p:sm:justify-between p:sm:items-center p:gap-1">
+						<p className="p:flex-1 p:leading-none p:m-0 p:font-sans p:font-medium p:text-sm p:line-clamp-1">
 							{title}
 						</p>
 						{subtitle && (
-							<p className="p-block p-leading-none p-text-xs p-m-0 p-font-sans p-opacity-75">
+							<p className="p:block p:leading-none p:text-xs p:m-0 p:font-sans p:opacity-75">
 								{subtitle}
 							</p>
 						)}
