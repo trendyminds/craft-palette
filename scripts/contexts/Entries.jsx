@@ -12,7 +12,6 @@ export default function Entries() {
 	const [entries, setEntries] = useState([])
 	const { focus, moveFocus } = useFocus(entries)
 
-	// prettier-ignore
 	useDebounce(() => {
 		const url = rootUrl()
 		fetch(`${url}actions/palette/search?query=${query}`)
@@ -20,13 +19,11 @@ export default function Entries() {
 			.then((data) => setEntries(data))
 	}, [query], 200)
 
-	// prettier-ignore
 	useHotkeys('up', () => moveFocus('up', entries), {
 		enableOnFormTags: true,
 		preventDefault: true,
 	})
 
-	// prettier-ignore
 	useHotkeys('down', () => moveFocus('down', entries), {
 		enableOnFormTags: true,
 		preventDefault: true,

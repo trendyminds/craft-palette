@@ -10,7 +10,6 @@ export default function Result({ url, title, subtitle, icon, type, focused }) {
 	const [context, setContext] = useContext()
 	const { focus, setFocus } = useFocus()
 
-	// prettier-ignore
 	useHotkeys('enter', () => {
 		if (!focused) return
 		if (type === 'link') {
@@ -20,7 +19,6 @@ export default function Result({ url, title, subtitle, icon, type, focused }) {
 		}
 	}, { enableOnFormTags: true })
 
-	// prettier-ignore
 	useHotkeys('meta+enter', () => {
 		if (!focused) return
 		if (type === 'link') {

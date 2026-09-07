@@ -4,8 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "format": "npm run format:js && npm run format:php",
-    "format:js": "prettier scripts/**/* styles/**/* --write",
+    "format": "npm run format:php",
     "format:php": "./vendor/bin/pint"
   },
   "keywords": [],
@@ -14,17 +13,8 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
     "@vitejs/plugin-react": "^6.1.1",
-    "prettier": "^3.9.6",
     "tailwindcss": "^4.3.3",
     "vite": "^8.2.2"
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "es5",
-    "useTabs": true,
-    "htmlWhitespaceSensitivity": "ignore"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
