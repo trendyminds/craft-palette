@@ -5,7 +5,7 @@ export default defineConfig({
 	plugins: [react()],
 	build: {
 		outDir: './src/assetbundles/resources/',
-		rollupOptions: {
+		rolldownOptions: {
 			input: [
 				'./scripts/Init.jsx',
 				'./scripts/access.js',
