@@ -3,9 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "format": "npm run format:php",
-    "format:php": "./vendor/bin/pint"
+    "build": "vite build"
   },
   "keywords": [],
   "author": "",
