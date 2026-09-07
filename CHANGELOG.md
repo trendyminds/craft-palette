@@ -5,7 +5,6 @@
 ### Changed
 - Updated front-end dependencies
 - Upgraded to Tailwind CSS 4, Vite 8 and React 19.2
-- Colors now come from Tailwind's oklch palette, so a few shades shift very slightly
 
 ## 5.2.4 - 2025-11-19
 
