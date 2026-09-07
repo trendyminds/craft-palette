@@ -4,13 +4,14 @@ namespace trendyminds\palette\controllers;
 
 use Craft;
 use craft\web\Controller;
+use craft\web\Response;
 use trendyminds\palette\assetbundles\PaletteBundle;
 
 class AccessController extends Controller
 {
     protected array|int|bool $allowAnonymous = true;
 
-    public function actionIndex(): \craft\web\Response
+    public function actionIndex(): Response
     {
         // We don't want to do anything for anonymous users
         if (Craft::$app->user->isGuest) {

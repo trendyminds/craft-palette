@@ -1,15 +1,16 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-	plugins: [react()],
+	plugins: [react(), tailwindcss()],
 	build: {
 		outDir: './src/assetbundles/resources/',
-		rollupOptions: {
+		rolldownOptions: {
 			input: [
 				'./scripts/Init.jsx',
 				'./scripts/access.js',
-				'./styles/palette.pcss',
+				'./styles/palette.css',
 			],
 			output: {
 				entryFileNames: `[name].js`,

@@ -1,5 +1,11 @@
 # Release Notes for Palette
 
+## 5.3.0 - 2026-09-07
+
+### Changed
+- Updated front-end dependencies
+- Upgraded to Tailwind CSS 4, Vite 8 and React 19.2
+
 ## 5.2.4 - 2025-11-19
 
 ### Fixed

@@ -9,13 +9,11 @@ export default function Actions() {
 	const { actions, getActions } = useActions()
 	const { focus, moveFocus } = useFocus(actions)
 
-	// prettier-ignore
 	useHotkeys('up', () => moveFocus('up', actions), {
 		enableOnFormTags: true,
 		preventDefault: true,
 	})
 
-	// prettier-ignore
 	useHotkeys('down', () => moveFocus('down', actions), {
 		enableOnFormTags: true,
 		preventDefault: true,

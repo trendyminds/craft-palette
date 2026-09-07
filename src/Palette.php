@@ -60,8 +60,8 @@ class Palette extends Plugin
         );
     }
 
-    protected function createSettingsModel(): ?craft\base\Model
+    protected function createSettingsModel(): ?Craft\base\Model
     {
-        return new Settings();
+        return new Settings;
     }
 }

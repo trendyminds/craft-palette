@@ -1,6 +1,6 @@
 export default function NoResults({ text = 'No matching results found' }) {
 	return (
-		<div className="p-flex p-flex-col p-justify-center p-items-center p-py-6 p-text-zinc-400 dark:p-text-zinc-500">
+		<div className="p:flex p:flex-col p:justify-center p:items-center p:py-6 p:text-zinc-400 p:dark:text-zinc-500">
 			<div>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +8,7 @@ export default function NoResults({ text = 'No matching results found' }) {
 					viewBox="0 0 24 24"
 					strokeWidth={1.5}
 					stroke="currentColor"
-					className="p-size-12"
+					className="p:size-12"
 				>
 					<path
 						strokeLinecap="round"
@@ -17,7 +17,7 @@ export default function NoResults({ text = 'No matching results found' }) {
 					/>
 				</svg>
 			</div>
-			<p className="p-text-lg p-mt-1">{text}</p>
+			<p className="p:text-lg p:mt-1">{text}</p>
 		</div>
 	)
 }
