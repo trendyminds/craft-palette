@@ -6,12 +6,13 @@ use craft\elements\Asset;
 use craft\elements\Entry;
 use craft\elements\User;
 use craft\web\Controller;
+use craft\web\Response;
 
 class SearchController extends Controller
 {
     protected array|int|bool $allowAnonymous = false;
 
-    public function actionIndex(string $query = ''): \craft\web\Response
+    public function actionIndex(string $query = ''): Response
     {
         $entries = Entry::find()->search($query)->section('*')->limit(10)->collect();
         $users = User::find()->search($query)->limit(10)->collect();

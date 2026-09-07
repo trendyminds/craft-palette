@@ -6,6 +6,7 @@ use Craft;
 use craft\elements\User;
 use craft\helpers\UrlHelper;
 use craft\web\Controller;
+use craft\web\Response;
 use craft\web\twig\variables\Cp;
 use trendyminds\palette\Palette;
 
@@ -13,7 +14,7 @@ class ActionsController extends Controller
 {
     protected array|int|bool $allowAnonymous = false;
 
-    public function actionIndex(): \craft\web\Response
+    public function actionIndex(): Response
     {
         return $this->asJson([
             ...$this->_getRouteContextActions(),
@@ -57,7 +58,7 @@ class ActionsController extends Controller
      */
     private function _navigationActions(): array
     {
-        $actions = collect((new Cp())->nav())
+        $actions = collect((new Cp)->nav())
             ->map(function ($i) {
                 $url = str_replace(
                     UrlHelper::siteUrl(),
@@ -157,7 +158,7 @@ class ActionsController extends Controller
                 'url' => UrlHelper::cpUrl("settings/entry-types/{$i->id}"),
             ])->toArray();
 
-        $settings = collect((new Cp())->settings())
+        $settings = collect((new Cp)->settings())
             ->map(function ($i, $section) {
                 return collect($i)->map(function ($item, $slug) use ($section) {
                     return [
