@@ -12,7 +12,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "@vitejs/plugin-react": "^6.1.1",
     "tailwindcss": "^4.3.3",
-    "vite": "^8.2.2"
+    "vite": "^8.3.4"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
